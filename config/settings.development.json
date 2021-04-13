@@ -1,7 +1,8 @@
 {
   "defaultAccounts": [
     { "email": "admin@foo.com", "password": "changeme", "role": "admin" },
-    { "email": "john@foo.com", "password": "changeme" }
+    { "email": "john@foo.com", "password": "changeme" },
+    { "email": "e@hawaii.com", "password": "changeme" }
   ],
 
   "defaultData": [
@@ -9,5 +10,11 @@
     { "name": "Bicycle", "quantity": 2, "owner": "john@foo.com", "condition": "poor" },
     { "name": "Banana", "quantity": 2, "owner": "admin@foo.com", "condition": "good" },
     { "name": "Boogie Board", "quantity": 2, "owner": "admin@foo.com", "condition": "excellent" }
+  ],
+
+  "defaultEvent": [
+    { "title": "STAR Job", "image": "https://www.star.hawaii.edu/help/public/images/STARlogo.png", "owner": "john@foo.com", "description": "Assistant Programmer" },
+    { "title": "Accounting Job", "image": "https://www.star.hawaii.edu/help/public/images/STARlogo.png", "owner": "john@foo.com", "description": "Assistant Programmer" },
+    { "title": "STAa Job", "image": "https://www.star.hawaii.edu/help/public/images/STARlogo.png", "owner": "john@foo.com", "description": "Assistant Programmer" }
   ]
 }
