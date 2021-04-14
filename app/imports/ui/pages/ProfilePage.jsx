@@ -1,10 +1,11 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Container, Card, Header, Loader, Image, Icon } from 'semantic-ui-react';
+import { Container, Header, Loader, Image, Grid, Segment, List } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
+import { users } from '../../api/user/users';
 import { Stuffs } from '../../api/stuff/Stuff';
-import StuffItem from '../components/StuffItem';
+// import UserProfile from '../components/UserProfile';
 
 /** Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
 class ProfilePage extends React.Component {
@@ -18,25 +19,76 @@ class ProfilePage extends React.Component {
   renderPage() {
     return (
       <Container>
-        <Header as="h2" textAlign="center">Student Profiles</Header>
-        <Card>
-          <Image src='https://react.semantic-ui.com/images/avatar/large/matthew.png' wrapped ui={false} />
-          <Card.Content>
-            <Card.Header>Matthew</Card.Header>
-            <Card.Meta>
-              <span className='date'>Joined in 2015</span>
-            </Card.Meta>
-            <Card.Description>
-              Matthew is a musician living in Nashville.
-            </Card.Description>
-          </Card.Content>
-          <Card.Content extra>
-            <a>
-              <Icon name='user' />
-              22 Friends
-            </a>
-          </Card.Content>
-        </Card>
+        <Header as="h2" style={{
+          fontSize: '40px',
+          fontWeight: 'normal',
+          marginTop: '40px',
+          textAlign: 'left',
+          marginLeft: '20px',
+        }}>Matthew Williams</Header>
+        <Segment style={{ padding: '10px' }} vertical>
+          <Grid container stackable>
+            <Grid.Row>
+              <Grid.Column floated='left' width={6}>
+                <Image bordered rounded size='medium' src='https://react.semantic-ui.com/images/avatar/large/matthew.png'/>
+              </Grid.Column>
+              <Grid.Column floated='left' width={6}>
+                <List>
+                  <List.Item>
+                    <List.Icon name='users' />
+                    <List.Content>Apple</List.Content>
+                  </List.Item>
+                  <List.Item>
+                    <List.Icon name='marker' />
+                    <List.Content>New York, NY</List.Content>
+                  </List.Item>
+                  <List.Item>
+                    <List.Icon name='mail' />
+                    <List.Content>
+                      <a href='mailto:joon@foo.com'>john@foo.com</a>
+                    </List.Content>
+                  </List.Item>
+                  <List.Item>
+                    <List.Icon name='linkify' />
+                    <List.Content>
+                      <a href='http://www.apple.com'>apple.com</a>
+                    </List.Content>
+                  </List.Item>
+                </List>
+              </Grid.Column>
+            </Grid.Row>
+            <Grid.Row>
+              <Grid.Column textAlign='left'>
+                <Header as='h2' style={{ fontSize: '24px' }}>
+                  Company and Position:
+                </Header>
+                <p style={{ fontSize: '18px' }}>
+                  Apple, Senior Software Engineer
+                </p>
+              </Grid.Column>
+            </Grid.Row>
+            <Grid.Row>
+              <Grid.Column textAlign='left'>
+                <Header as='h2' style={{ fontSize: '24px' }}>
+                  Interests:
+                </Header>
+                <p style={{ fontSize: '18px' }}>
+                  Coding, Software Engineering, Robotics
+                </p>
+              </Grid.Column>
+            </Grid.Row>
+            <Grid.Row>
+              <Grid.Column textAlign='left'>
+                <Header as='h2' style={{ fontSize: '24px' }}>
+                  Description:
+                </Header>
+                <p style={{ fontSize: '18px' }}>
+                  A senior software engineer who works at Apple.
+                </p>
+              </Grid.Column>
+            </Grid.Row>
+          </Grid>
+        </Segment>
       </Container>
     );
   }
@@ -55,7 +107,7 @@ export default withTracker(() => {
   // Determine if the subscription is ready
   const ready = subscription.ready();
   // Get the Stuff documents
-  const stuffs = Stuffs.collection.find({}).fetch();
+  const stuffs = users.collection.find({}).fetch();
   return {
     stuffs,
     ready,
