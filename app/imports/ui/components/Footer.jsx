@@ -1,17 +1,22 @@
 import React from 'react';
+import { Button } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
 
 /** The Footer appears at the bottom of every page. Rendered by the App Layout component. */
 class Footer extends React.Component {
   render() {
-    const divStyle = { paddingTop: '15px' };
+    const greenText = { color: '#024731' };
     return (
-      <footer>
-        <div style={divStyle} className="ui center aligned container">
-          <hr />
-              Department of Information and Computer Sciences <br />
-              University of Hawaii<br />
-              Honolulu, HI 96822 <br />
-          <a href="http://ics-software-engineering.github.io/meteor-application-template-react">Template Home Page</a>
+      <footer className='footer-fixation'>
+        <div>
+          <Button.Group widths='2'>
+            <Button>
+              <a href="https://bowed-in.github.io" style={greenText}>About BowedIn</a>
+            </Button>
+            <Button>
+              <Link to="/signup" style={greenText}>About the BowedIn Team</Link>
+            </Button>
+          </Button.Group>
         </div>
       </footer>
     );
