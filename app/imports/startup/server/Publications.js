@@ -1,7 +1,17 @@
 import { Meteor } from 'meteor/meteor';
 import { Roles } from 'meteor/alanning:roles';
 import { Stuffs } from '../../api/stuff/Stuff';
-import { Events } from '../../api/event/Event';
+import { Positions } from '../../api/position/Position';
+import { users } from '../../api/user/users';
+
+// User-level publication.
+// If logged in, then publish documents owned by this user. Otherwise publish nothing.
+Meteor.publish(users.userPublicationName, function () {
+  if (this.userId) {
+    return users.collection.find();
+  }
+  return this.ready();
+});
 
 // User-level publication.
 // If logged in, then publish documents owned by this user. Otherwise publish nothing.
@@ -14,10 +24,10 @@ Meteor.publish(Stuffs.userPublicationName, function () {
 });
 
 // User-level publication.
-// If logged in, then publish all events. Otherwise publish nothing.
-Meteor.publish(Events.userPublicationName, function () {
+// If logged in, then publish documents owned by this user. Otherwise publish nothing.
+Meteor.publish(Positions.userPublicationName, function () {
   if (this.userId) {
-    return Events.collection.find();
+    return Positions.collection.find();
   }
   return this.ready();
 });

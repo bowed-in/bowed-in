@@ -20,6 +20,14 @@ class UsersCollection {
       position: String,
       description: String,
       owner: String,
+      role: {
+        type: String,
+        allowedValues: ['student', 'company'],
+      },
+      location: String,
+      interest: String,
+      skill: String,
+      email: String,
     }, { tracker: Tracker });
     // Attach the schema to the collection, so all attempts to insert a document are checked against schema.
     this.collection.attachSchema(this.schema);

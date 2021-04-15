@@ -7,7 +7,7 @@ import { HashRouter as Router, Route, Switch, Redirect } from 'react-router-dom'
 import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
 import Landing from '../pages/Landing';
-import ListEvent from '../pages/ListEvent';
+import ListStuff from '../pages/ListStuff';
 import ProfilePage from '../pages/ProfilePage';
 import ListStuffAdmin from '../pages/ListStuffAdmin';
 import AddStuff from '../pages/AddStuff';
@@ -17,6 +17,8 @@ import Signin from '../pages/Signin';
 import Signup from '../pages/Signup';
 import Signout from '../pages/Signout';
 import Positions from '../pages/Positions';
+import UserHomePage from '../pages/UserHomePage';
+import CompanyHomePage from '../pages/CompanyHomePage';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 class App extends React.Component {
@@ -30,7 +32,9 @@ class App extends React.Component {
             <Route path="/signin" component={Signin}/>
             <Route path="/signup" component={Signup}/>
             <Route path="/signout" component={Signout}/>
-            <ProtectedRoute path="/list" component={ListEvent}/>
+            <ProtectedRoute path="/companyhome" component={CompanyHomePage}/>
+            <ProtectedRoute path="/userhome" component={UserHomePage}/>
+            <ProtectedRoute path="/list" component={ListStuff}/>
             <ProtectedRoute path="/profile" component={ProfilePage}/>
             <ProtectedRoute path="/positions" component={Positions}/>
             <ProtectedRoute path="/add" component={AddStuff}/>
