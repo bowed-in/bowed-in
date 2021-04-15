@@ -8,7 +8,7 @@ class Position extends React.Component {
   render() {
     return (
       <Item>
-        <Image size='medium' src='https://react.semantic-ui.com/images/wireframe/image.png' />
+        <Image size='medium' src={this.props.position.image} />
         <Item.Content>
           <Item.Header as='a'>{this.props.position.name}</Item.Header>
           <Item.Meta>Job Type: {this.props.position.jobType}</Item.Meta>

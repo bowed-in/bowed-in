@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 import { Users } from '../../api/user/User';
 import { Positions } from '../../api/position/Position';
 import Position from '../components/Position';
+import UserCard from '../components/UserCard';
 
 /** Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
 class UserHomePage extends React.Component {
@@ -20,8 +21,8 @@ class UserHomePage extends React.Component {
     return (
       <Container>
         <Grid>
-          <Grid.Column width={4}>
-            Bitch
+          <Grid.Column verticalAlign='middle' width={4}>
+            {this.props.currentUser.map((currentUser, index) => <UserCard key={index} currentUser={currentUser} />)}
           </Grid.Column>
           <Grid.Column width={8}>
             <Header as='h2' textAlign='center'>Positions Available</Header>
@@ -29,11 +30,7 @@ class UserHomePage extends React.Component {
               {this.props.positions.map((position, index) => <Position key={index} position={position} />)}
             </Item.Group>
           </Grid.Column>
-          <Grid.Column width={4}>
-            Bitch
-          </Grid.Column>
         </Grid>
-
       </Container>
     );
   }
@@ -41,7 +38,7 @@ class UserHomePage extends React.Component {
 
 // Require an array of Stuff documents in the props.
 UserHomePage.propTypes = {
-  currentUser: PropTypes.array.isRequired,
+  currentUser: PropTypes.array.isRequired, // Returns only the current user
   positions: PropTypes.array.isRequired,
   ready: PropTypes.bool.isRequired,
 };
@@ -52,10 +49,11 @@ export default withTracker(() => {
   const subscription = Meteor.subscribe(Users.userPublicationName);
   const subscription2 = Meteor.subscribe(Positions.userPublicationName);
   // Determine if the subscription is ready
-  const ready = subscription2.ready() && subscription.ready();
+  const ready = subscription.ready() && subscription2.ready();
   // Get the Stuff documents
-  const currentUser = Users.collection.find({}).fetch();
   const positions = Positions.collection.find({}).fetch();
+  const currentUsername = Meteor.user() ? Meteor.user().username : '';
+  const currentUser = Users.collection.find({ email: currentUsername }).fetch();
   return {
     currentUser,
     positions,
