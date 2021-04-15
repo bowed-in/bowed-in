@@ -8,15 +8,15 @@ import { Users } from '../../api/user/User';
 import { UsersPositions } from '../../api/UserPosition/UserPositions';
 import { Positions } from '../../api/position/Position';
 
-/** Returns the Profiles and Projects associated with the passed Interest. */
-function getInterestData(name) {
+/** Returns the Profiles associated with the passed position. */
+function getPositionData(name) {
   const profiles = _.pluck(UsersPositions.collection.find({ position: name }).fetch(), 'profile');
   const profilePictures = profiles.map(profile => Users.collection.findOne({ email: profile }).picture);
-  // console.log(_.extend({ }, data, { interests }));
+  // console.log(_.extend({ }, data, { positions }));
   return _.extend({ }, { name, profiles: profilePictures });
 }
 
-/** Component for layout out an Interest Card. */
+/** Component for layout out a position Card. */
 const MakeCard = (props) => (
   <Card>
     <Card.Content>
@@ -32,7 +32,7 @@ MakeCard.propTypes = {
   position: PropTypes.object.isRequired,
 };
 
-/** Renders the Interests as a set of Cards. */
+/** Renders the positions as a set of Cards. */
 class PositionsPage extends React.Component {
 
   /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */
@@ -43,7 +43,7 @@ class PositionsPage extends React.Component {
   /** Render the page once subscriptions have been received. */
   renderPage() {
     const positions = _.pluck(Positions.collection.find().fetch(), 'name');
-    const positionData = positions.map(position => getInterestData(position));
+    const positionData = positions.map(position => getPositionData(position));
     return (
       <Container id="positions-page">
         <Card.Group>

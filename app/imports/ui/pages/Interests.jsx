@@ -4,11 +4,11 @@ import { Container, Loader, Card, Image } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { _ } from 'meteor/underscore';
-import { Interests } from '../../api/interests/Interests';
+import { Interests } from '../../api/interest/Interest';
 import { Users } from '../../api/user/User';
 import { UsersInterests } from '../../api/UserInterest/UserInterests';
 
-/** Returns the Profiles and Projects associated with the passed Interest. */
+/** Returns the Profiles associated with the passed Interest. */
 function getInterestData(name) {
   const profiles = _.pluck(UsersInterests.collection.find({ interest: name }).fetch(), 'profile');
   const profilePictures = profiles.map(profile => Users.collection.findOne({ email: profile }).picture);
