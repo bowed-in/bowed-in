@@ -1,6 +1,26 @@
 import { Meteor } from 'meteor/meteor';
 import { Roles } from 'meteor/alanning:roles';
 import { Stuffs } from '../../api/stuff/Stuff';
+import { Users } from '../../api/user/User';
+import { Positions } from '../../api/position/Position';
+
+// User-level publication.
+// If logged in, then publish documents owned by this user. Otherwise publish nothing.
+Meteor.publish(Users.userPublicationName, function () {
+  if (this.userId) {
+    return Users.collection.find();
+  }
+  return this.ready();
+});
+
+// User-level publication.
+// If logged in, then publish documents owned by this user. Otherwise publish nothing.
+Meteor.publish(Positions.userPublicationName, function () {
+  if (this.userId) {
+    return Positions.collection.find();
+  }
+  return this.ready();
+});
 
 // User-level publication.
 // If logged in, then publish documents owned by this user. Otherwise publish nothing.

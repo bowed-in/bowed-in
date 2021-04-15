@@ -1,7 +1,8 @@
 {
   "defaultAccounts": [
-    { "email": "admin@foo.com", "password": "changeme", "role": "admin" },
-    { "email": "john@foo.com", "password": "changeme" }
+    { "email": "admin@foo.com", "password": "changeme", "role": "company" },
+    { "email": "john@foo.com", "password": "changeme", "role": "student" },
+    { "email": "e@hawaii.com", "password": "changeme", "role": "student" }
   ],
 
   "defaultData": [
@@ -9,5 +10,17 @@
     { "name": "Bicycle", "quantity": 2, "owner": "john@foo.com", "condition": "poor" },
     { "name": "Banana", "quantity": 2, "owner": "admin@foo.com", "condition": "good" },
     { "name": "Boogie Board", "quantity": 2, "owner": "admin@foo.com", "condition": "excellent" }
+  ],
+
+  "defaultUser": [
+    {"email": "admin@foo.com", "firstName": "Admin", "lastName":  "Foo", "role": "company", "location": "Hawaii", "interest": "software engineering", "skill": "Java", "description": "I'm a company representative"  },
+    {"email": "john@foo.com", "firstName": "john", "lastName":  "Foo", "role": "student", "location": "Hawaii", "interest": "computer science", "skill": "Java", "description": "I'm a student from UHM"},
+    {"email": "e@hawaii.com", "firstName": "Edward", "lastName":  "Hawaii", "role": "student", "location": "Hawaii", "interest": "software engineering", "skill": "Java", "description": "I'm a student from UHM" }
+  ],
+
+  "defaultPosition": [
+    { "name": "Assistant Programmer", "hire": 3, "owner": "admin@foo.com", "skills": "Java", "jobType": "both", "description": "Maintain Star website", "lowerSalary": 20000, "higherSalary": 21000},
+    { "name": "Data Clerk", "hire": 5, "owner": "admin@foo.com", "skills": "Java", "jobType": "both", "description": "Maintain database", "lowerSalary": 40000, "higherSalary": 7000},
+    { "name": "McDonalds", "hire": 10, "owner": "admin@foo.com", "skills": "None", "jobType": "permanent", "description": "McD's Stuff", "lowerSalary": 5000, "higherSalary": 6000}
   ]
 }
