@@ -10,7 +10,7 @@ import { Positions } from '../../api/position/Position';
 
 /** Returns the Profiles and Projects associated with the passed Interest. */
 function getInterestData(name) {
-  const profiles = _.pluck(UsersPositions.collection.find({ interest: name }).fetch(), 'profile');
+  const profiles = _.pluck(UsersPositions.collection.find({ position: name }).fetch(), 'profile');
   const profilePictures = profiles.map(profile => Users.collection.findOne({ email: profile }).picture);
   // console.log(_.extend({ }, data, { interests }));
   return _.extend({ }, { name, profiles: profilePictures });
