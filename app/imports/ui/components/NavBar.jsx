@@ -17,7 +17,9 @@ class NavBar extends React.Component {
           <Header as='h1' style={greenText}>BowedIn</Header>
         </Menu.Item>
         {this.props.currentUser ? (
-          [<Menu.Item style={greenText} as={NavLink} activeClassName="active" exact to="/profile" key='profile'>Company Profile</Menu.Item>]
+          [<Menu.Item style={greenText} as={NavLink} activeClassName="active" exact to="/add" key='add'>Add Stuff</Menu.Item>,
+            <Menu.Item style={greenText} as={NavLink} activeClassName="active" exact to="/list" key='list'>List Stuff</Menu.Item>,
+            <Menu.Item style={greenText} as={NavLink} activeClassName="active" exact to="/profile" key='profile'>Company Profile</Menu.Item>]
         ) : ''}
         {Roles.userIsInRole(Meteor.userId(), 'admin') ? (
           <Menu.Item as={NavLink} activeClassName="active" exact to="/admin" key='admin'>Admin</Menu.Item>
@@ -26,14 +28,14 @@ class NavBar extends React.Component {
           <Dropdown style={greenText} id="Filter-dropdown" text="Filter" pointing="top right" icon={'angle down'}>
             <Dropdown.Menu>
               <Dropdown.Item style={greenText} id="filter-dropdown-interests" icon="book" text="Interests" as={NavLink} exact to="/signin"/>
-              <Dropdown.Item style={greenText} id="filter-dropdown-position" icon="warehouse" text="Position" as={NavLink} exact to="/positions"/>
+              <Dropdown.Item style={greenText} id="filter-dropdown-positions" icon="warehouse" text="Positions" as={NavLink} exact to="/positions"/>
               <Dropdown.Item style={greenText} id="filter-dropdown-location" icon="globe" text="Location" as={NavLink} exact to="/signup"/>
             </Dropdown.Menu>
           </Dropdown>
         </Menu.Item>
         <Menu.Item position="right">
           {this.props.currentUser === '' ? (
-            <Dropdown style={greenText} id="login-dropdown" text="Login" pointing="top right" icon={'user'}>
+            <Dropdown style={greenText} id="login-dropdown" text="Login or Sign Up Today!" pointing="top right" icon={'user'}>
               <Dropdown.Menu>
                 <Dropdown.Item style={greenText} id="login-dropdown-sign-in" icon="user" text="Sign In" as={NavLink} exact to="/signin"/>
                 <Dropdown.Item style={greenText} id="login-dropdown-sign-up" icon="add user" text="Sign Up" as={NavLink} exact to="/signup"/>
