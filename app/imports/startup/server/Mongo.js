@@ -1,20 +1,21 @@
 import { Meteor } from 'meteor/meteor';
 import { Stuffs } from '../../api/stuff/Stuff.js';
 import { Events } from '../../api/event/Event.js';
+import { users } from '../../api/user/users';
 
 /* eslint-disable no-console */
 
 // Initialize the database with a default data document.
 function addData(data) {
-  console.log(`  Adding: ${data.name} (${data.owner})`);
-  Stuffs.collection.insert(data);
+  console.log(`  Adding: ${data.lastName} (${data.owner})`);
+  users.collection.insert(data);
 }
 
 // Initialize the StuffsCollection if empty.
-if (Stuffs.collection.find().count() === 0) {
-  if (Meteor.settings.defaultData) {
-    console.log('Creating default data.');
-    Meteor.settings.defaultData.map(data => addData(data));
+if (users.collection.find().count() === 0) {
+  if (Meteor.settings.defaultUserData) {
+    console.log('Creating default profiles.');
+    Meteor.settings.defaultUserData.map(data => addData(data));
   }
 }
 
