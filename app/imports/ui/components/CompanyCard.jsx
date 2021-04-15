@@ -13,9 +13,8 @@ class CompanyCard extends React.Component {
         </Card.Content>
         <Card.Content>
           <Card.Header>{this.props.user.firstName} {this.props.user.lastName}</Card.Header>
-          <Card.Meta>{this.props.user.position}</Card.Meta>
           <Card.Description>
-            {this.props.user.description}
+            Description: {this.props.user.description}
           </Card.Description>
         </Card.Content>
         <Card.Content extra>

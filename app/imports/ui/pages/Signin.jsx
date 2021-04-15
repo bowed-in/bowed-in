@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Link, Redirect } from 'react-router-dom';
 import { Meteor } from 'meteor/meteor';
 import { Container, Form, Grid, Header, Message, Segment } from 'semantic-ui-react';
+import { Roles } from 'meteor/alanning:roles';
 
 /**
  * Signin page overrides the form’s submit event and call Meteor’s loginWithPassword().
@@ -35,9 +36,17 @@ export default class Signin extends React.Component {
 
   // Render the signin form.
   render() {
+    const isCompany = Roles.userIsInRole(Meteor.userId(), 'company');
+    const isStudent = Roles.userIsInRole(Meteor.userId(), 'student');
     const { from } = this.props.location.state || { from: { pathname: '/' } };
     // if correct authentication, redirect to page instead of login screen
     if (this.state.redirectToReferer) {
+      if (isCompany) {
+        return <Redirect to={'/chome'}/>;
+      }
+      if (isStudent) {
+        return <Redirect to={'/uhome'}/>;
+      }
       return <Redirect to={from}/>;
     }
     // Otherwise return the Login form.

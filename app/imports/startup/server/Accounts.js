@@ -16,7 +16,7 @@ function createUser(email, password, role) {
     Roles.addUsersToRoles(userID, 'company');
   } else {
     Roles.createRole(role, { unlessExists: true });
-    Roles.addUsersToRoles(userID, 'user');
+    Roles.addUsersToRoles(userID, 'student');
   }
 }
 
