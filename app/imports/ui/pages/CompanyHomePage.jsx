@@ -7,6 +7,7 @@ import { Users } from '../../api/user/User';
 import { Positions } from '../../api/position/Position';
 import Position from '../components/Position';
 import CompanyCard from '../components/CompanyCard';
+import PotentialHireList from '../components/PotentialHireList';
 
 /** Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
 class CompanyHomePage extends React.Component {
@@ -30,6 +31,12 @@ class CompanyHomePage extends React.Component {
               {this.props.positions.map((position, index) => <Position key={index} position={position} />)}
             </Item.Group>
           </Grid.Column>
+          <Grid.Column verticalAlign='middle' width={4}>
+            <Header as='h2' textAlign='center'>Potential Hire List</Header>
+            <Item.Group>
+              {this.props.users.map((currentUser, index) => <PotentialHireList key={index} potentialHire={currentUser} />)}
+            </Item.Group>
+          </Grid.Column>
         </Grid>
       </Container>
     );
@@ -39,6 +46,7 @@ class CompanyHomePage extends React.Component {
 // Require an array of Stuff documents in the props.
 CompanyHomePage.propTypes = {
   currentUser: PropTypes.array.isRequired, // Returns only the current user
+  users: PropTypes.array.isRequired,
   positions: PropTypes.array.isRequired,
   ready: PropTypes.bool.isRequired,
 };
@@ -52,11 +60,13 @@ export default withTracker(() => {
   const ready = subscription.ready() && subscription2.ready();
   // Get the Stuff documents
   const positions = Positions.collection.find({}).fetch();
+  const users = Users.collection.find({ role: 'student' }).fetch();
   const currentUsername = Meteor.user() ? Meteor.user().username : '';
   const currentUser = Users.collection.find({ email: currentUsername }).fetch();
   return {
     currentUser,
     positions,
+    users,
     ready,
   };
 })(CompanyHomePage);
