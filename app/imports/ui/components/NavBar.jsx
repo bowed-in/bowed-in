@@ -29,6 +29,7 @@ class NavBar extends React.Component {
             <Dropdown.Menu>
               <Dropdown.Item style={greenText} id="filter-dropdown-interests" icon="book" text="Interests" as={NavLink} exact to="/signin"/>
               <Dropdown.Item style={greenText} id="filter-dropdown-company" icon="warehouse" text="Company" as={NavLink} exact to="/signup"/>
+              <Dropdown.Item style={greenText} id="filter-dropdown-company" icon="warehouse" text="Company" as={NavLink} exact to="/signin"/>
               <Dropdown.Item style={greenText} id="filter-dropdown-location" icon="globe" text="Location" as={NavLink} exact to="/signup"/>
             </Dropdown.Menu>
           </Dropdown>
