@@ -7,7 +7,7 @@ import { withRouter } from 'react-router-dom';
 class UserCard extends React.Component {
   render() {
     return (
-      <Card centered>
+      <Card>
         <Card.Content>
           <Image src={this.props.currentUser.image} />
         </Card.Content>

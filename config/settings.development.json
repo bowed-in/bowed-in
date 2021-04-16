@@ -13,7 +13,7 @@
 
   "defaultUser": [
     {"email": "admin@foo.com", "firstName": "Admin", "lastName":  "Foo", "role": "company", "location": "Hawaii", "interest": "software engineering", "skill": "All skills required", "description": "I'm a representative from the company connecting website: Indeed. ", "image": "https://upload.wikimedia.org/wikipedia/commons/f/fa/Indeed_logo.png", "company": "Indeed", "position": "representative", "owner": "admin@foo.com" },
-    {"email": "john@foo.com", "firstName": "John", "lastName":  "Foo", "role": "student", "location": "Hawaii", "interest": "computer science", "skill": "Java", "description": "I'm a student from UHM", "image": "https://media.istockphoto.com/vectors/sad-face-icon-unhappy-face-symbol-vector-id934714316?k=6&m=934714316&s=170667a&w=0&h=5Tn4NDO6HAvElaTn3KrZ9YrncMzJ4B7Vo3c_IlWNPcc=", "company": "Indeed", "position": "representative", "owner": "admin@foo.com"},
+    {"email": "john@foo.com", "firstName": "John", "lastName":  "Foo", "role": "student", "location": "Hawaii", "interest": "computer science", "skill": "Java", "description": "I'm a student from UHM", "image": "https://www.nps.gov/jame/learn/historyculture/images/jsmith-apva.jpg?maxwidth=650&autorotate=false", "company": "Indeed", "position": "representative", "owner": "admin@foo.com"},
     {"email": "e@hawaii.com", "firstName": "Edward", "lastName":  "Hawaii", "role": "student", "location": "Hawaii", "interest": "software engineering", "skill": "Java", "description": "I'm a student from UHM", "image": "https://cdn3.iconfinder.com/data/icons/emojies-1/50/11-512.png", "company": "Indeed", "position": "representative", "owner": "admin@foo.com" }
   ],
 

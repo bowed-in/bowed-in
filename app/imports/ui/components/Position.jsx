@@ -6,17 +6,18 @@ import { withRouter } from 'react-router-dom';
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
 class Position extends React.Component {
   render() {
+    const font = { color: 'white', fontSize: 20 };
     return (
       <Item>
         <Image size='medium' src={this.props.position.image} />
-        <Item.Content>
-          <Item.Header as='a'>{this.props.position.name}</Item.Header>
-          <Item.Meta>Job Type: {this.props.position.jobType}</Item.Meta>
-          <Item.Description>
+        <Item.Content verticalAlign='middle'>
+          <Item.Header as='a' style={font}>{this.props.position.name}</Item.Header>
+          <Item.Meta style={font}>Job Type: {this.props.position.jobType}</Item.Meta>
+          <Item.Description style={font}>
             {this.props.position.description}
           </Item.Description>
-          <Item.Extra>Salary Range: {this.props.position.lowerSalary} - {this.props.position.higherSalary}</Item.Extra>
-          <Item.Extra>Number of Positions: {this.props.position.hire}</Item.Extra>
+          <Item.Extra style={font}>Salary Range: {this.props.position.lowerSalary} - {this.props.position.higherSalary}</Item.Extra>
+          <Item.Extra style={font}>Number of Positions: {this.props.position.hire}</Item.Extra>
         </Item.Content>
       </Item>
     );

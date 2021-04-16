@@ -6,13 +6,14 @@ import { withRouter } from 'react-router-dom';
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
 class PotentialHire extends React.Component {
   render() {
+    const font = { color: 'white' };
     return (
       <Item>
         <Image size='small' src={this.props.potentialHire.image} />
         <Item.Content>
-          <Item.Header as='a'>{this.props.potentialHire.firstName} {this.props.potentialHire.lastName}</Item.Header>
-          <Item.Extra>Skills: {this.props.potentialHire.skill}</Item.Extra>
-          <Item.Extra>Interests: {this.props.potentialHire.interest}</Item.Extra>
+          <Item.Header style={font} as='a'>{this.props.potentialHire.firstName} {this.props.potentialHire.lastName}</Item.Header>
+          <Item.Extra style={font}>Skills: {this.props.potentialHire.skill}</Item.Extra>
+          <Item.Extra style={font}>Interests: {this.props.potentialHire.interest}</Item.Extra>
         </Item.Content>
       </Item>
     );

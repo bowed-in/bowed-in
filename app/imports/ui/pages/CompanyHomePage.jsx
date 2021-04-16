@@ -19,26 +19,29 @@ class CompanyHomePage extends React.Component {
 
   // Render the page once subscriptions have been received.
   renderPage() {
+    const whiteFont = { color: 'white' };
     return (
-      <Container>
-        <Grid>
-          <Grid.Column verticalAlign='middle' width={4}>
-            {this.props.currentUser.map((currentUser, index) => <CompanyCard key={index} user={currentUser} />)}
-          </Grid.Column>
-          <Grid.Column width={8}>
-            <Header as='h2' textAlign='center'>Positions You Posted</Header>
-            <Item.Group>
-              {this.props.positions.map((position, index) => <Position key={index} position={position} />)}
-            </Item.Group>
-          </Grid.Column>
-          <Grid.Column verticalAlign='middle' width={4}>
-            <Header as='h2' textAlign='center'>Potential Hire List</Header>
-            <Item.Group>
-              {this.props.usersList.map((currentUser, index) => <PotentialHire key={index} potentialHire={currentUser} />)}
-            </Item.Group>
-          </Grid.Column>
-        </Grid>
-      </Container>
+      <div className='home-background'>
+        <Container>
+          <Grid stackable>
+            <Grid.Column centered verticalAlign='top' width={4}>
+              {this.props.currentUser.map((currentUser, index) => <CompanyCard key={index} user={currentUser} />)}
+            </Grid.Column>
+            <Grid.Column width={8}>
+              <Header as='h2' centered inverted textAlign='center'>Positions You Posted</Header>
+              <Item.Group>
+                {this.props.positions.map((position, index) => <Position key={index} position={position} />)}
+              </Item.Group>
+            </Grid.Column>
+            <Grid.Column centered verticalAlign='middle' width={4} color='green'>
+              <Header as='h2' style={whiteFont} textAlign='center'>Potential Hire List</Header>
+              <Item.Group>
+                {this.props.usersList.map((currentUser, index) => <PotentialHire key={index} potentialHire={currentUser} />)}
+              </Item.Group>
+            </Grid.Column>
+          </Grid>
+        </Container>
+      </div>
     );
   }
 }
