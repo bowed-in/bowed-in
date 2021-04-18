@@ -58,6 +58,10 @@ EditStuff.propTypes = {
 // withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
 export default withTracker(({ match }) => {
   // Get the documentID from the URL field. See imports/ui/layouts/App.jsx for the route containing :_id.
+  // const documentId = match.params.email
+  // use this new documentId to set the email field in the new form
+  console.log(match);
+
   const documentId = match.params._id;
   // Get access to Stuff documents.
   const subscription = Meteor.subscribe(Stuffs.userPublicationName);
