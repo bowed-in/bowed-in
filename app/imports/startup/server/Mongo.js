@@ -1,18 +1,33 @@
 import { Meteor } from 'meteor/meteor';
-import { Stuffs } from '../../api/stuff/Stuff.js';
+import { Positions } from '../../api/position/Position';
+import { users } from '../../api/user/users';
 
 /* eslint-disable no-console */
 
 // Initialize the database with a default data document.
 function addData(data) {
-  console.log(`  Adding: ${data.name} (${data.owner})`);
-  Stuffs.collection.insert(data);
+  console.log(`  Adding: ${data.lastName} (${data.owner})`);
+  users.collection.insert(data);
 }
 
 // Initialize the StuffsCollection if empty.
-if (Stuffs.collection.find().count() === 0) {
-  if (Meteor.settings.defaultData) {
-    console.log('Creating default data.');
-    Meteor.settings.defaultData.map(data => addData(data));
+if (users.collection.find().count() === 0) {
+  if (Meteor.settings.defaultUser) {
+    console.log('Creating default profiles.');
+    Meteor.settings.defaultUser.map(data => addData(data));
+  }
+}
+
+// Initialize the database with a default positions.
+function addPosition(data) {
+  console.log(`  Adding: ${data.name}`);
+  Positions.collection.insert(data);
+}
+
+// Initialize the PositionsCollection if empty.
+if (Positions.collection.find().count() === 0) {
+  if (Meteor.settings.defaultPosition) {
+    console.log('Creating default position.');
+    Meteor.settings.defaultPosition.map(data => addPosition(data));
   }
 }

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Link, Redirect } from 'react-router-dom';
 import { Meteor } from 'meteor/meteor';
 import { Container, Form, Grid, Header, Message, Segment } from 'semantic-ui-react';
+import { Roles } from 'meteor/alanning:roles';
 
 /**
  * Signin page overrides the form’s submit event and call Meteor’s loginWithPassword().
@@ -35,9 +36,17 @@ export default class Signin extends React.Component {
 
   // Render the signin form.
   render() {
+    const isCompany = Roles.userIsInRole(Meteor.userId(), 'company');
+    const isStudent = Roles.userIsInRole(Meteor.userId(), 'student');
     const { from } = this.props.location.state || { from: { pathname: '/' } };
     // if correct authentication, redirect to page instead of login screen
     if (this.state.redirectToReferer) {
+      if (isCompany) {
+        return <Redirect to={'/companyhome'}/>;
+      }
+      if (isStudent) {
+        return <Redirect to={'/userhome'}/>;
+      }
       return <Redirect to={from}/>;
     }
     // Otherwise return the Login form.
@@ -45,7 +54,7 @@ export default class Signin extends React.Component {
       <Container id="signin-page">
         <Grid textAlign="center" verticalAlign="middle" centered columns={2}>
           <Grid.Column>
-            <Header as="h2" textAlign="center">
+            <Header as="h2" textAlign="center" style={{ color: '#024731' }}>
               Login to your account
             </Header>
             <Form onSubmit={this.submit}>
@@ -73,8 +82,8 @@ export default class Signin extends React.Component {
                 <Form.Button id="signin-form-submit" content="Submit"/>
               </Segment>
             </Form>
-            <Message>
-              <Link to="/signup">Click here to Register</Link>
+            <Message color='teal'>
+              <Link to="/signup">Don&apos;t have an account? Click here to sign up today!</Link>
             </Message>
             {this.state.error === '' ? (
               ''

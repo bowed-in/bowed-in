@@ -1,5 +1,5 @@
 .top-landing-background {
-  background: url('images/LandingBackground.jpeg') no-repeat center center fixed;
+  background: url('images/Option2.jpeg') no-repeat center center fixed;
   background-size: cover;
   height: 500px;
 }
@@ -15,17 +15,38 @@
   background-color: gray;
   color: coral;
   padding-top: 30px;
-  padding-bottom: 30px;
+  padding-bottom: 60px;
 }
 
 .gray-footer {
   background-color: gray;
+  border: darkgreen;
   color: coral;
 }
 
-.gray-footer-menu {
-  background: none;
-  border: none;
-  color: coral;
+.sign-in-page {
+  padding-bottom: 50px;
 }
 
+.sign-in-backdrop {
+  background: url('images/Option2.jpeg');
+  background-size: cover;
+}
+
+.footer-fixation {
+  bottom: 0;
+  left: 0;
+  top: auto;
+  right: auto;
+  position: fixed;
+  width: 100%;
+}
+
+.home-background {
+  background: url("https://manoa.hawaii.edu/admissions/virtual/downloads/ManoaGreenBG.jpg") no-repeat center center fixed;
+  background-size: cover;
+}
+
+.ui.item.item {
+  color: white;
+}

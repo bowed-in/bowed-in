@@ -12,20 +12,34 @@ class NavBar extends React.Component {
     const menuStyle = { marginBottom: '10px', backgroundColor: 'white' };
     const greenText = { color: '#024731' };
     return (
-      <Menu style={menuStyle} attached="top" borderless inverted>
+      <Menu style={menuStyle} attached="top" borderless>
         <Menu.Item as={NavLink} activeClassName="" exact to="/">
           <Header as='h1' style={greenText}>BowedIn</Header>
         </Menu.Item>
         {this.props.currentUser ? (
-          [<Menu.Item style={greenText} as={NavLink} activeClassName="active" exact to="/add" key='add'>Add Stuff</Menu.Item>,
-            <Menu.Item style={greenText} as={NavLink} activeClassName="active" exact to="/list" key='list'>List Stuff</Menu.Item>]
+          [
+            <Menu.Item style={greenText} as={NavLink} activeClassName="active" exact to="/add" key='add'>Add Stuff</Menu.Item>,
+            <Menu.Item style={greenText} as={NavLink} activeClassName="active" exact to="/list" key='list'>List Stuff</Menu.Item>,
+            <Menu.Item style={greenText} as={NavLink} activeClassName="active" exact to="/profile" key='profile'>Company Profile</Menu.Item>,
+            <Menu.Item style={greenText} as={NavLink} activeClassName="active" exact to="/companyhome" key='companyhome'>Company Home Page [Only Available in the Mockup]</Menu.Item>,
+            <Menu.Item style={greenText} as={NavLink} activeClassName="active" exact to="/userhome" key='userhome'>User Home Page [Only Available in the Mockup]</Menu.Item>,
+          ]
         ) : ''}
         {Roles.userIsInRole(Meteor.userId(), 'admin') ? (
           <Menu.Item as={NavLink} activeClassName="active" exact to="/admin" key='admin'>Admin</Menu.Item>
         ) : ''}
+        <Menu.Item position="left">
+          <Dropdown style={greenText} id="Filter-dropdown" text="Filter" pointing="top right" icon={'angle down'}>
+            <Dropdown.Menu>
+              <Dropdown.Item style={greenText} id="filter-dropdown-interests" icon="book" text="Interests" as={NavLink} exact to="/signin"/>
+              <Dropdown.Item style={greenText} id="filter-dropdown-positions" icon="warehouse" text="Positions" as={NavLink} exact to="/positions"/>
+              <Dropdown.Item style={greenText} id="filter-dropdown-location" icon="globe" text="Location" as={NavLink} exact to="/signup"/>
+            </Dropdown.Menu>
+          </Dropdown>
+        </Menu.Item>
         <Menu.Item position="right">
           {this.props.currentUser === '' ? (
-            <Dropdown style={greenText} id="login-dropdown" text="Login" pointing="top right" icon={'user'}>
+            <Dropdown style={greenText} id="login-dropdown" text="Login or Sign Up Today!" pointing="top right" icon={'user'}>
               <Dropdown.Menu>
                 <Dropdown.Item style={greenText} id="login-dropdown-sign-in" icon="user" text="Sign In" as={NavLink} exact to="/signin"/>
                 <Dropdown.Item style={greenText} id="login-dropdown-sign-up" icon="add user" text="Sign Up" as={NavLink} exact to="/signup"/>
@@ -34,6 +48,7 @@ class NavBar extends React.Component {
           ) : (
             <Dropdown style={greenText} id="navbar-current-user" text={this.props.currentUser} pointing="top right" icon={'user'}>
               <Dropdown.Menu>
+                <Dropdown.Item style={greenText} id="navbar-profile" icon="address card" text="View Profile" as={NavLink} exact to="/Profile"/>
                 <Dropdown.Item style={greenText} id="navbar-sign-out" icon="sign out" text="Sign Out" as={NavLink} exact to="/signout"/>
               </Dropdown.Menu>
             </Dropdown>
