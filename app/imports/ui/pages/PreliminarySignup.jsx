@@ -35,9 +35,9 @@ class Signup extends React.Component {
       } else {
         // student redirect
         if (choice === 'student') {
-          this.setState({ error: '', redirectTo: '/signin' });
+          this.setState({ error: '', redirectTo: '/studentsignup' });
         }
-        this.setState({ error: '', redirectTo: '/signin' });
+        this.setState({ error: '', redirectTo: '/studentsignup' });
       }
       /* NOTES:
        If account type === student...redeirectTo: studentPath (StudentSignup)
@@ -116,7 +116,7 @@ class Signup extends React.Component {
             ) : (
               <Message
                 error
-                header="Registration was not successful"
+                header="Oops, something went wrong. Please, try again!"
                 content={this.state.error}
               />
             )}

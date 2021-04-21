@@ -10,7 +10,6 @@ import { Roles } from 'meteor/alanning:roles';
  * Authentication errors modify the component’s state to be displayed
  */
 export default class Signin extends React.Component {
-
   // Initialize component state with properties for login and redirection.
   constructor(props) {
     super(props);

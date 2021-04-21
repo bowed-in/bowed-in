@@ -11,10 +11,12 @@ import ListStuff from '../pages/ListStuff';
 import ProfilePage from '../pages/ProfilePage';
 import ListStuffAdmin from '../pages/ListStuffAdmin';
 import AddStuff from '../pages/AddStuff';
-import EditStuff from '../pages/EditStuff';
+// import EditStuff from '../pages/EditStuff';
 import NotFound from '../pages/NotFound';
 import Signin from '../pages/Signin';
-import Signup from '../pages/Signup';
+import Signup from '../pages/PreliminarySignup';
+import StudentSignup from '../pages/StudentSignup';
+import EditStudent from '../pages/EditStudentUniform';
 import Signout from '../pages/Signout';
 import Positions from '../pages/Positions';
 import UserHomePage from '../pages/UserHomePage';
@@ -32,13 +34,14 @@ class App extends React.Component {
             <Route path="/signin" component={Signin}/>
             <Route path="/signup" component={Signup}/>
             <Route path="/signout" component={Signout}/>
+            <Route path="/studentsignup" component={StudentSignup}/>
             <ProtectedRoute path="/companyhome" component={CompanyHomePage}/>
             <ProtectedRoute path="/userhome" component={UserHomePage}/>
             <ProtectedRoute path="/list" component={ListStuff}/>
             <ProtectedRoute path="/profile" component={ProfilePage}/>
             <ProtectedRoute path="/positions" component={Positions}/>
             <ProtectedRoute path="/add" component={AddStuff}/>
-            <ProtectedRoute path="/edit/:_id" component={EditStuff}/>
+            <ProtectedRoute path="/edit/:email" component={EditStudent}/>
             <AdminProtectedRoute path="/admin" component={ListStuffAdmin}/>
             <Route component={NotFound}/>
           </Switch>
