@@ -32,7 +32,7 @@ function exampleReducer(state, action) {
   }
 }
 
-function SearchExampleStandard() {
+function SearchPosting() {
   const [state, dispatch] = React.useReducer(exampleReducer, initialState);
   const { loading, results, value } = state;
 
@@ -61,7 +61,7 @@ function SearchExampleStandard() {
   }, []);
 
   return (
-    <Grid>
+    <Grid container>
       <Grid.Column width={6}>
         <Search
           loading={loading}
@@ -75,11 +75,11 @@ function SearchExampleStandard() {
 
       <Grid.Column width={10}>
         <Segment>
-          <Header>State</Header>
+          <Header>Your Results</Header>
           <pre style={{ overflowX: 'auto' }}>
             {JSON.stringify({ loading, results, value }, null, 2)}
           </pre>
-          <Header>Options</Header>
+          <Header>Postings</Header>
           <pre style={{ overflowX: 'auto' }}>
             {JSON.stringify(source, null, 2)}
           </pre>
@@ -89,4 +89,4 @@ function SearchExampleStandard() {
   );
 }
 
-export default SearchExampleStandard;
+export default SearchPosting;

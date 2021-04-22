@@ -3,7 +3,7 @@ import { Item, Image } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 
-/** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
+/** Renders a single row in the List Stuff table. See pages/SearchPosting.jsx. */
 class Position extends React.Component {
   render() {
     const font = { color: 'white', fontSize: 20 };
