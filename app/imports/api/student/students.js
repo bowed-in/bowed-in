@@ -31,6 +31,8 @@ const StudentSchema = new SimpleSchema({
   gpa: Number,
 }, { tracker: Tracker });
 
+StudentCollection.userPublicationName = 'StudentCollection.publication.user';
+
 /** Attach the schema to the collection. */
 StudentCollection.attachSchema(StudentSchema);
 

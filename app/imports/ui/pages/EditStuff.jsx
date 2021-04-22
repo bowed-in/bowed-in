@@ -16,7 +16,7 @@ class EditStuff extends React.Component {
   // On successful submit, insert the data.
   submit(data) {
     const { name, quantity, condition, _id } = data;
-    console.log(_id);
+    // console.log(_id);
     Stuffs.collection.update(_id, { $set: { name, quantity, condition } }, (error) => (error ?
       swal('Error', error.message, 'error') :
       swal('Success', 'Item updated successfully', 'success')));
@@ -61,11 +61,11 @@ export default withTracker(({ match }) => {
   // Get the documentID from the URL field. See imports/ui/layouts/App.jsx for the route containing :_id.
   // const documentId = match.params.email
   // use this new documentId to set the email field in the new form
-  console.log(match);
+  // console.log(match);
   const documentId = match.params._id;
   const email = match.params.email;
-  console.log(documentId);
-  console.log(email);
+  // console.log(documentId);
+  // console.log(email);
   // Get access to Stuff documents.
   const subscription = Meteor.subscribe(Stuffs.userPublicationName);
   // Determine if the subscription is ready

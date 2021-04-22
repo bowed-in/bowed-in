@@ -37,7 +37,7 @@ class StudentSignup extends React.Component {
     if (updateError) {
       swal('Error', updateError.message, 'error');
     } else {
-      this.setState({ redirectTo: '/signin' });
+      this.setState({ redirectTo: '/profile' });
       swal('Success', 'Your data has been recorded.', 'success');
     }
   }

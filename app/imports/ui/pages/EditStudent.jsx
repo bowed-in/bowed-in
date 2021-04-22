@@ -8,6 +8,7 @@ import PropTypes from 'prop-types';
 import { withTracker } from 'meteor/react-meteor-data';
 import { Meteor } from 'meteor/meteor';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
+import { Redirect } from 'react-router-dom';
 import MultiSelectField from '../forms/controllers/MultiSelectField';
 import { StudentFormSchema } from '../forms/StudentFormSchema';
 import { StudentCollection } from '../../api/student/students';
@@ -16,17 +17,23 @@ const bridge = new SimpleSchema2Bridge(StudentFormSchema);
 
 /** Renders the Page for editing a document. */
 class EditStudent extends React.Component {
+  constructor(props) {
+    super(props);
+    /* NOTE: change this.state = { email, choice: ' ', ... } Double check the dropdown field settings */
+    this.state = { redirectTo: undefined };
+  }
 
   /** On submit, try to insert the data. If successful, reset the form. */
   submit(data) {
     let updateError;
-    const studentId = this.props.studentDoc._id;
+    const studentId = this.props.doc._id;
     const { firstName, lastName, image, link, bio, major, interests, hobbies, level, gpa } = data;
     StudentCollection.update(studentId, { $set: { firstName, lastName, image, link, bio, major, interests, hobbies, level, gpa } }, (error) => { updateError = error; });
     if (updateError) {
       swal('Error', updateError.message, 'error');
     } else {
-      swal('Success', 'The student record was updated.', 'success');
+      this.setState({ redirectTo: '/profile' });
+      swal('Success', 'Your information has been updated.', 'success');
     }
   }
 
@@ -37,8 +44,11 @@ class EditStudent extends React.Component {
 
   /** Render the form. Use Uniforms: https://github.com/vazco/uniforms */
   renderPage() {
+    if (this.state.redirectTo) {
+      return <Redirect to={ this.state.redirectTo }/>;
+    }
     // Build the model object that Uniforms will use to fill in the form.
-    const model = _.extend({}, this.props.studentDoc);
+    const model = _.extend({}, this.props.doc);
     return (
       <Grid container centered>
         <Grid.Column>
@@ -72,7 +82,7 @@ class EditStudent extends React.Component {
 
 /** Require a studentdata and enrollment doc.  Uniforms adds 'model' to the props, which we use. */
 EditStudent.propTypes = {
-  studentDoc: PropTypes.object,
+  doc: PropTypes.object,
   model: PropTypes.object,
   ready: PropTypes.bool.isRequired,
 };
@@ -81,14 +91,12 @@ EditStudent.propTypes = {
 export default withTracker(({ match }) => {
   // Get the email from the URL field. See imports/ui/layouts/App.jsx for the route containing :email.
   const documentId = match.params._id;
-  console.log(documentId);
-  const email = match.params.email;
-  console.log(email);
-  console.log(match);
+  // console.log(documentId);
   // Request StudentData and Enrollment docs. Won't be locally available until ready() returns true.
-  const studentSubscription = Meteor.subscribe('StudentCollection');
+  const studentSubscription = Meteor.subscribe(StudentCollection.userPublicationName);
+  const doc = StudentCollection.findOne({ _id: documentId });
   return {
-    studentDoc: StudentCollection.findOne({ email }),
+    doc,
     ready: studentSubscription.ready(),
   };
 })(EditStudent);
