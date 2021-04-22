@@ -19,8 +19,8 @@ class PositionsCollection {
       skills: String,
       jobType: {
         type: String,
-        allowedValues: ['internship', 'permanent', 'both'],
-        defaultValue: 'both',
+        allowedValues: ['Internship', 'Permanent', 'Internship & Permanent'],
+        defaultValue: 'Internship & Permanent',
       },
       description: String,
       lowerSalary: Number,
