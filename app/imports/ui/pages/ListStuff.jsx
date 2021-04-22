@@ -1,58 +1,92 @@
+import _ from 'lodash';
+import faker from 'faker';
 import React from 'react';
-import { Meteor } from 'meteor/meteor';
-import { Container, Table, Header, Loader } from 'semantic-ui-react';
-import { withTracker } from 'meteor/react-meteor-data';
-import PropTypes from 'prop-types';
-import { Stuffs } from '../../api/stuff/Stuff';
-import StuffItem from '../components/StuffItem';
+import { Search, Grid, Header, Segment } from 'semantic-ui-react';
 
-/** Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
-class ListStuff extends React.Component {
+const source = _.times(5, () => ({
+  title: faker.company.companyName(),
+  description: faker.company.catchPhrase(),
+  image: faker.internet.avatar(),
+  price: faker.finance.amount(0, 100, 2, '$'),
+}));
 
-  // If the subscription(s) have been received, render the page, otherwise show a loading icon.
-  render() {
-    return (this.props.ready) ? this.renderPage() : <Loader active>Getting data</Loader>;
-  }
+const initialState = {
+  loading: false,
+  results: [],
+  value: '',
+};
 
-  // Render the page once subscriptions have been received.
-  renderPage() {
-    return (
-      <Container>
-        <Header as="h2" textAlign="center">List Stuff</Header>
-        <Table celled>
-          <Table.Header>
-            <Table.Row>
-              <Table.HeaderCell>Name</Table.HeaderCell>
-              <Table.HeaderCell>Quantity</Table.HeaderCell>
-              <Table.HeaderCell>Condition</Table.HeaderCell>
-              <Table.HeaderCell>Edit</Table.HeaderCell>
-            </Table.Row>
-          </Table.Header>
-          <Table.Body>
-            {this.props.stuffs.map((stuff) => <StuffItem key={stuff._id} stuff={stuff} />)}
-          </Table.Body>
-        </Table>
-      </Container>
-    );
+function exampleReducer(state, action) {
+  switch (action.type) {
+  case 'CLEAN_QUERY':
+    return initialState;
+  case 'START_SEARCH':
+    return { ...state, loading: true, value: action.query };
+  case 'FINISH_SEARCH':
+    return { ...state, loading: false, results: action.results };
+  case 'UPDATE_SELECTION':
+    return { ...state, value: action.selection };
+
+  default:
+    throw new Error();
   }
 }
 
-// Require an array of Stuff documents in the props.
-ListStuff.propTypes = {
-  stuffs: PropTypes.array.isRequired,
-  ready: PropTypes.bool.isRequired,
-};
+function SearchExampleStandard() {
+  const [state, dispatch] = React.useReducer(exampleReducer, initialState);
+  const { loading, results, value } = state;
 
-// withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
-export default withTracker(() => {
-  // Get access to Stuff documents.
-  const subscription = Meteor.subscribe(Stuffs.userPublicationName);
-  // Determine if the subscription is ready
-  const ready = subscription.ready();
-  // Get the Stuff documents
-  const stuffs = Stuffs.collection.find({}).fetch();
-  return {
-    stuffs,
-    ready,
-  };
-})(ListStuff);
+  const timeoutRef = React.useRef();
+  const handleSearchChange = React.useCallback((e, data) => {
+    clearTimeout(timeoutRef.current);
+    dispatch({ type: 'START_SEARCH', query: data.value });
+
+    timeoutRef.current = setTimeout(() => {
+      if (data.value.length === 0) {
+        dispatch({ type: 'CLEAN_QUERY' });
+        return;
+      }
+
+      const re = new RegExp(_.escapeRegExp(data.value), 'i');
+      const isMatch = (result) => re.test(result.title);
+
+      dispatch({
+        type: 'FINISH_SEARCH',
+        results: _.filter(source, isMatch),
+      });
+    }, 300);
+  }, []);
+  React.useEffect(() => () => {
+    clearTimeout(timeoutRef.current);
+  }, []);
+
+  return (
+    <Grid>
+      <Grid.Column width={6}>
+        <Search
+          loading={loading}
+          onResultSelect={(e, data) => dispatch({ type: 'UPDATE_SELECTION', selection: data.result.title })
+          }
+          onSearchChange={handleSearchChange}
+          results={results}
+          value={value}
+        />
+      </Grid.Column>
+
+      <Grid.Column width={10}>
+        <Segment>
+          <Header>State</Header>
+          <pre style={{ overflowX: 'auto' }}>
+            {JSON.stringify({ loading, results, value }, null, 2)}
+          </pre>
+          <Header>Options</Header>
+          <pre style={{ overflowX: 'auto' }}>
+            {JSON.stringify(source, null, 2)}
+          </pre>
+        </Segment>
+      </Grid.Column>
+    </Grid>
+  );
+}
+
+export default SearchExampleStandard;

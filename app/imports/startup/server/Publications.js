@@ -3,6 +3,8 @@ import { Roles } from 'meteor/alanning:roles';
 import { Stuffs } from '../../api/stuff/Stuff';
 import { Positions } from '../../api/position/Position';
 import { users } from '../../api/user/users';
+import { StudentCollection } from '../../api/student/students';
+import { StudentsPositions } from '../../api/student/StudentsPositions';
 
 // User-level publication.
 // If logged in, then publish documents owned by this user. Otherwise publish nothing.
@@ -31,6 +33,10 @@ Meteor.publish(Positions.userPublicationName, function () {
   }
   return this.ready();
 });
+
+Meteor.publish(StudentCollection.userPublicationName, () => StudentCollection.collection.find());
+
+Meteor.publish(StudentsPositions.userPublicationName, () => StudentsPositions.collection.find());
 
 // Admin-level publication.
 // If logged in and with admin role, then publish all documents from all users. Otherwise publish nothing.

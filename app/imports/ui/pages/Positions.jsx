@@ -1,84 +1,70 @@
 import React from 'react';
-import { Button, Card, Image, Header, Container } from 'semantic-ui-react';
+import { Meteor } from 'meteor/meteor';
+import { Container, Loader, Card, Image } from 'semantic-ui-react';
+import { withTracker } from 'meteor/react-meteor-data';
+import PropTypes from 'prop-types';
+import { _ } from 'meteor/underscore';
+import { Positions } from '../../api/position/Position';
+import { StudentCollection } from '../../api/student/students';
+import { StudentsPositions } from '../../api/student/StudentsPositions';
 
-const MockupPositions = () => (
-  <Container>
-    <Header as="h2" textAlign="center">Positions Available!</Header>
-    <Card.Group>
-      <Card>
-        <Card.Content>
-          <Image
-            floated='right'
-            size='mini'
-            src='https://d2q79iu7y748jz.cloudfront.net/s/_logo/9e2984fb2967e94265968e42771331a0'
-          />
-          <Card.Header>Health Data Analyst</Card.Header>
-          <Card.Meta>AlohaCare</Card.Meta>
-          <Card.Description>
-            <strong>Join AlohaCare to help create a healthier Hawaii. Request for application..</strong> <p>Interests/Skills in health, data analytics, R programming</p>
-          </Card.Description>
-        </Card.Content>
-        <Card.Content extra>
-          <div className='ui two buttons'>
-            <Button basic color='green'>
-                      Add
-            </Button>
-            <Button basic color='blue'>
-                      Message
-            </Button>
-          </div>
-        </Card.Content>
-      </Card>
-      <Card>
-        <Card.Content>
-          <Image
-            floated='right'
-            size='mini'
-            src='https://img.s-hawaiianairlines.com/static/images/brand/refresh/imagenewpualani2x.png?version=a947&sc_lang=en'
-          />
-          <Card.Header>Software Developer</Card.Header>
-          <Card.Meta>Hawaiian Airlines</Card.Meta>
-          <Card.Description>
-            <strong>Visit our website to get your application!</strong> <p>Interests/Skills in software engineering, graphic design, problem solving</p>
-          </Card.Description>
-        </Card.Content>
-        <Card.Content extra>
-          <div className='ui two buttons'>
-            <Button basic color='green'>
-                      Add
-            </Button>
-            <Button basic color='blue'>
-                      Message
-            </Button>
-          </div>
-        </Card.Content>
-      </Card>
-      <Card>
-        <Card.Content>
-          <Image
-            floated='right'
-            size='mini'
-            src='https://alohastadium.hawaii.gov/wp-content/uploads/2013/11/BOH_Stacked_293.pdf_reverse-e1414786234300.jpg'
-          />
-          <Card.Header>Systems Engineer, Intern</Card.Header>
-          <Card.Meta>Bank of Hawaii</Card.Meta>
-          <Card.Description>
-            <strong> Please contact us to get more information.</strong> <p>Interests/Skills in software engineering, information systems, communication</p>
-          </Card.Description>
-        </Card.Content>
-        <Card.Content extra>
-          <div className='ui two buttons'>
-            <Button basic color='green'>
-                      Add
-            </Button>
-            <Button basic color='blue'>
-                      Message
-            </Button>
-          </div>
-        </Card.Content>
-      </Card>
-    </Card.Group>
-  </Container>
+/** Returns the Profiles associated with the passed position. */
+function getPositionData(name) {
+  const profiles = _.pluck(StudentsPositions.collection.find({ position: name }).fetch(), 'student');
+  const profilePictures = profiles.map(student => StudentCollection.collection.findOne({ email: student }).picture);
+  // console.log(_.extend({ }, data, { positions }));
+  return _.extend({ }, { name, profiles: profilePictures });
+}
+
+/** Component for layout out a position Card. */
+const MakeCard = (props) => (
+  <Card>
+    <Card.Content>
+      <Card.Header style={{ marginTop: '0px' }}>{props.position.name}</Card.Header>
+    </Card.Content>
+    <Card.Content extra>
+      {_.map(props.position.profiles, (p, index) => <Image key={index} circular size='mini' src={p}/>)}
+    </Card.Content>
+  </Card>
 );
 
-export default MockupPositions;
+MakeCard.propTypes = {
+  position: PropTypes.object.isRequired,
+};
+
+/** Renders the positions as a set of Cards. */
+class PositionsPage extends React.Component {
+
+  /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */
+  render() {
+    return (this.props.ready) ? this.renderPage() : <Loader active>Getting data</Loader>;
+  }
+
+  /** Render the page once subscriptions have been received. */
+  renderPage() {
+    const positions = _.pluck(Positions.collection.find().fetch(), 'name');
+    const positionData = positions.map(position => getPositionData(position));
+    return (
+      <Container id="positions-page">
+        <Card.Group>
+          {_.map(positionData, (position, index) => <MakeCard key={index} position={position}/>)}
+        </Card.Group>
+      </Container>
+    );
+  }
+}
+
+PositionsPage.propTypes = {
+  ready: PropTypes.bool.isRequired,
+};
+
+/** withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker */
+export default withTracker(() => {
+  // Ensure that minimongo is populated with all collections prior to running render().
+  const sub1 = Meteor.subscribe(StudentCollection.userPublicationName);
+  const sub2 = Meteor.subscribe(Positions.userPublicationName);
+  const sub3 = Meteor.subscribe(StudentsPositions.userPublicationName);
+  return {
+    ready: sub1.ready() && sub2.ready() && sub3.ready(),
+  };
+})(PositionsPage);
