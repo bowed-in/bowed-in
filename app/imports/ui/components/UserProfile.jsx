@@ -7,7 +7,7 @@ import { withRouter } from 'react-router-dom';
 class UserProfile extends React.Component {
   render() {
     return (
-      <Card centered>
+      <Card>
         <Card.Content>
           <Image
             floated='right'

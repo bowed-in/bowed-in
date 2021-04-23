@@ -8,6 +8,7 @@ import { Positions } from '../../api/position/Position';
 import Position from '../components/Position';
 import CompanyCard from '../components/CompanyCard';
 import PotentialHire from '../components/PotentialHire';
+import UserCard from '../components/UserCard';
 
 /** Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
 class CompanyHomePage extends React.Component {
@@ -20,27 +21,26 @@ class CompanyHomePage extends React.Component {
   // Render the page once subscriptions have been received.
   renderPage() {
     const whiteFont = { color: 'white' };
+    const leftGrid = { marginLeft: '20px' };
     return (
       <div className='home-background'>
-        <Container>
-          <Grid stackable>
-            <Grid.Column centered verticalAlign='top' width={4}>
-              {this.props.currentUser.map((currentUser, index) => <CompanyCard key={index} user={currentUser} />)}
-            </Grid.Column>
-            <Grid.Column width={8}>
-              <Header as='h2' centered inverted textAlign='center'>Positions You Posted</Header>
-              <Item.Group>
-                {this.props.positions.map((position, index) => <Position key={index} position={position} />)}
-              </Item.Group>
-            </Grid.Column>
-            <Grid.Column centered verticalAlign='middle' width={4} color='green'>
-              <Header as='h2' style={whiteFont} textAlign='center'>Potential Hire List</Header>
-              <Item.Group>
-                {this.props.usersList.map((currentUser, index) => <PotentialHire key={index} potentialHire={currentUser} />)}
-              </Item.Group>
-            </Grid.Column>
-          </Grid>
-        </Container>
+        <Grid stackable>
+          <Grid.Column textAlign='center' floated="left" width={4} style={leftGrid}>
+            {this.props.currentUser.map((currentUser, index) => <CompanyCard key={index} user={currentUser} />)}
+          </Grid.Column>
+          <Grid.Column width={8} centered>
+            <Header as='h2' centered inverted textAlign='center'>Positions You Posted</Header>
+            <Item.Group>
+              {this.props.positions.map((position, index) => <Position key={index} position={position} />)}
+            </Item.Group>
+          </Grid.Column>
+          <Grid.Column>
+            <Header as='h2' style={whiteFont} textAlign='center'>Potential Hire List</Header>
+            <Item.Group>
+              {this.props.usersList.map((currentUser, index) => <PotentialHire key={index} potentialHire={currentUser} />)}
+            </Item.Group>
+          </Grid.Column>
+        </Grid>
       </div>
     );
   }

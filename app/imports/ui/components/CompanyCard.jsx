@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Image } from 'semantic-ui-react';
+import { Card, Grid, Image } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 
@@ -7,17 +7,18 @@ import { withRouter } from 'react-router-dom';
 class CompanyCard extends React.Component {
   render() {
     return (
-      <Card >
-        <Card.Content>
-          <Image src={this.props.user.image} />
-        </Card.Content>
-        <Card.Content>
-          <Card.Header>{this.props.user.firstName} {this.props.user.lastName}</Card.Header>
-          <Card.Description>
-            {this.props.user.description}
-          </Card.Description>
-        </Card.Content>
-      </Card>
+      <Grid.Column>
+        <Card centered>
+          <Image src={this.props.user.image} wrapped circular ui={false}/>
+          <Card.Content>
+            <Card.Header>{this.props.user.firstName} {this.props.user.lastName}</Card.Header>
+            <Card.Meta>{this.props.user.position}</Card.Meta>
+            <Card.Description>
+              {this.props.user.description}
+            </Card.Description>
+          </Card.Content>
+        </Card>
+      </Grid.Column>
     );
   }
 }
