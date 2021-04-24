@@ -50,3 +50,8 @@
 .ui.item.item {
   color: white;
 }
+
+#results {
+  padding-top: 50px;
+  padding-bottom: 100px;
+}

@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import faker from 'faker';
 import React from 'react';
-import { Search, Grid, Header, Segment } from 'semantic-ui-react';
+import { Search, Grid, Header, Container, Card } from 'semantic-ui-react';
 
 const source = _.times(5, () => ({
   title: faker.company.companyName(),
@@ -11,12 +11,11 @@ const source = _.times(5, () => ({
 }));
 
 const initialState = {
-  loading: false,
   results: [],
   value: '',
 };
 
-function exampleReducer(state, action) {
+function Reducer(state, action) {
   switch (action.type) {
   case 'CLEAN_QUERY':
     return initialState;
@@ -33,7 +32,7 @@ function exampleReducer(state, action) {
 }
 
 function SearchPosting() {
-  const [state, dispatch] = React.useReducer(exampleReducer, initialState);
+  const [state, dispatch] = React.useReducer(Reducer, initialState);
   const { loading, results, value } = state;
 
   const timeoutRef = React.useRef();
@@ -62,7 +61,7 @@ function SearchPosting() {
 
   return (
     <Grid container>
-      <Grid.Column width={6}>
+      <Grid.Column centered>
         <Search
           loading={loading}
           onResultSelect={(e, data) => dispatch({ type: 'UPDATE_SELECTION', selection: data.result.title })
@@ -71,19 +70,19 @@ function SearchPosting() {
           results={results}
           value={value}
         />
-      </Grid.Column>
 
-      <Grid.Column width={10}>
-        <Segment>
+        <Container id='results'>
           <Header>Your Results</Header>
-          <pre style={{ overflowX: 'auto' }}>
-            {JSON.stringify({ loading, results, value }, null, 2)}
-          </pre>
+          <Card>
+            <pre style={{ overflowX: 'auto' }}>
+              {JSON.stringify({ results, value }, null, 2)}
+            </pre>
+          </Card>
           <Header>Postings</Header>
           <pre style={{ overflowX: 'auto' }}>
             {JSON.stringify(source, null, 2)}
           </pre>
-        </Segment>
+        </Container>
       </Grid.Column>
     </Grid>
   );
