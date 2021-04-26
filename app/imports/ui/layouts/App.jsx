@@ -16,7 +16,6 @@ import NotFound from '../pages/NotFound';
 import Signin from '../pages/Signin';
 import Signup from '../pages/Signup';
 import Signout from '../pages/Signout';
-import Positions from '../pages/Positions';
 import UserHomePage from '../pages/UserHomePage';
 import CompanyHomePage from '../pages/CompanyHomePage';
 
@@ -36,7 +35,6 @@ class App extends React.Component {
             <ProtectedRoute path="/userhome" component={UserHomePage}/>
             <ProtectedRoute path="/search" component={SearchPosting}/>
             <ProtectedRoute path="/profile" component={ProfilePage}/>
-            <ProtectedRoute path="/positions" component={Positions}/>
             <ProtectedRoute path="/add" component={AddStuff}/>
             <ProtectedRoute path="/edit/:_id" component={EditStuff}/>
             <AdminProtectedRoute path="/admin" component={ListStuffAdmin}/>
