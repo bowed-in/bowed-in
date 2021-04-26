@@ -4,19 +4,17 @@ import { Container, Header, Loader, Image, Grid, Segment, List } from 'semantic-
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 // import { Accounts } from 'meteor/accounts-base';
+import { Link } from 'react-router-dom';
 import { users } from '../../api/user/users';
 import { Stuffs } from '../../api/stuff/Stuff';
 import { StudentCollection } from '../../api/student/students';
-import { Link } from 'react-router-dom';
 // import UserProfile from '../components/UserProfile';
-
 
 /*
 <List.Item>
-                    <Link to={`/editstudent/${this.props.stuff._id}`}>Edit</Link>
-                  </List.Item>
+  <Link to={`/editstudent/${this.props.stuff._id}`}>Edit</Link>
+</List.Item>
  */
-
 
 /** Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
 class ProfilePage extends React.Component {

@@ -20,6 +20,8 @@ import EditStudent from '../pages/EditStudent';
 import Signout from '../pages/Signout';
 import Positions from '../pages/Positions';
 import UserHomePage from '../pages/UserHomePage';
+import StudentRouteTest from '../pages/StudentRouteTest';
+import CompanyRouteTest from '../pages/CompanyRouteTest';
 import CompanyHomePage from '../pages/CompanyHomePage';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
@@ -44,6 +46,8 @@ class App extends React.Component {
             <ProtectedRoute path="/edit/:_id" component={EditStuff}/>
             <ProtectedRoute path="/editstudent/:_id" component={EditStudent}/>
             <AdminProtectedRoute path="/admin" component={ListStuffAdmin}/>
+            <StudentProtectedRoute path="/student" component={StudentRouteTest}/>
+            <CompanyProtectedRoute path="/company" component={CompanyRouteTest}/>
             <Route component={NotFound}/>
           </Switch>
           <Footer/>
@@ -90,6 +94,44 @@ const AdminProtectedRoute = ({ component: Component, ...rest }) => (
   />
 );
 
+/**
+ * StudentProtectedRoute (see React Router v4 sample)
+ * Checks for Meteor login and 'student' role before routing to the requested page, otherwise goes to signin page.
+ * @param {any} { component: Component, ...rest }
+ */
+const StudentProtectedRoute = ({ component: Component, ...rest }) => (
+  <Route
+    {...rest}
+    render={(props) => {
+      const isLogged = Meteor.userId() !== null;
+      const isStudent = Roles.userIsInRole(Meteor.userId(), 'student');
+      return (isLogged && isStudent) ?
+        (<Component {...props} />) :
+        (<Redirect to={{ pathname: '/signin', state: { from: props.location } }}/>
+        );
+    }}
+  />
+);
+
+/**
+ * CompanyProtectedRoute (see React Router v4 sample)
+ * Checks for Meteor login and admin role before routing to the requested page, otherwise goes to signin page.
+ * @param {any} { component: Component, ...rest }
+ */
+const CompanyProtectedRoute = ({ component: Component, ...rest }) => (
+  <Route
+    {...rest}
+    render={(props) => {
+      const isLogged = Meteor.userId() !== null;
+      const isCompany = Roles.userIsInRole(Meteor.userId(), 'company');
+      return (isLogged && isCompany) ?
+        (<Component {...props} />) :
+        (<Redirect to={{ pathname: '/signin', state: { from: props.location } }}/>
+        );
+    }}
+  />
+);
+
 // Require a component and location to be passed to each ProtectedRoute.
 ProtectedRoute.propTypes = {
   component: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
@@ -98,6 +140,18 @@ ProtectedRoute.propTypes = {
 
 // Require a component and location to be passed to each AdminProtectedRoute.
 AdminProtectedRoute.propTypes = {
+  component: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
+  location: PropTypes.object,
+};
+
+// Require a component and location to be passed to each StudentProtectedRoute.
+StudentProtectedRoute.propTypes = {
+  component: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
+  location: PropTypes.object,
+};
+
+// Require a component and location to be passed to each CompanyProtectedRoute.
+CompanyProtectedRoute.propTypes = {
   component: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
   location: PropTypes.object,
 };
