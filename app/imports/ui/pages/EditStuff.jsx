@@ -63,7 +63,7 @@ export default withTracker(({ match }) => {
   // use this new documentId to set the email field in the new form
   // console.log(match);
   const documentId = match.params._id;
-  const email = match.params.email;
+  // const email = match.params.email;
   // console.log(documentId);
   // console.log(email);
   // Get access to Stuff documents.

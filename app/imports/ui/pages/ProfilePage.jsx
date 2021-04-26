@@ -15,7 +15,6 @@ import { StudentCollection } from '../../api/student/students';
   <Link to={`/editstudent/${this.props.stuff._id}`}>Edit</Link>
 </List.Item>
  */
-
 /** Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
 class ProfilePage extends React.Component {
 
