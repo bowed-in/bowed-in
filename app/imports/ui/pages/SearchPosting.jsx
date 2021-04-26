@@ -1,6 +1,6 @@
 import _ from 'lodash';
 import React from 'react';
-import { Search, Grid, Header, Container, Loader, Card } from 'semantic-ui-react';
+import { Search, Grid, Container, Loader, Card, Label } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import { Meteor } from 'meteor/meteor';
 import PropTypes from 'prop-types';
@@ -54,14 +54,13 @@ class SearchPosting extends React.Component {
   }
 
   renderPage() {
-    const { loading, results, value } = this.state;
+    const { results, value } = this.state;
 
     return (
       <div className='search-background'>
         <Grid container>
           <Grid.Column centered>
             <Search
-              loading={loading}
               onResultSelect={this.onResultSelect}
               onSearchChange={this.handleSearchChange}
               resultRenderer={this.resultRenderer}
@@ -70,11 +69,11 @@ class SearchPosting extends React.Component {
             />
 
             <Container align='center' id='results'>
-              <Header as="h1" inverted>Your Results</Header>
+              <Label id='yours' size='huge' circular color='teal' key='white'>Your Results</Label>
               <Card.Group centered>
                 {results.map((positions) => <Position key={positions._id} position={positions}/>)};
               </Card.Group>
-              <Header as="h1" inverted>Postings</Header>
+              <Label id='postings' size='huge' circular color='teal' key='white'>Postings</Label>
               <Card.Group centered>
                 {this.props.positions.map((positions) => <Position key={positions._id} position={positions}/>)};
               </Card.Group>
