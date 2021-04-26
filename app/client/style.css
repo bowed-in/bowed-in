@@ -48,7 +48,7 @@
 }
 
 .search-background {
-  background: url('images/ManoaLandscape.jpeg') no-repeat center center fixed;
+  background: url('images/ManoaLandscape.jpeg');
   background-size: cover;
 }
 
