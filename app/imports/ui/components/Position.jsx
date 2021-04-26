@@ -6,7 +6,7 @@ import { withRouter } from 'react-router-dom';
 /** Renders a single row in the List Stuff table. See pages/SearchPosting.jsx. */
 class Position extends React.Component {
   render() {
-    const font = { color: 'white', fontSize: 20 };
+    const font = { color: 'black', fontSize: 20 };
     return (
       <Item>
         <Image size='medium' src={this.props.position.image} />
