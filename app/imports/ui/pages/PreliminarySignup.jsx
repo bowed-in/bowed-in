@@ -37,7 +37,7 @@ class Signup extends React.Component {
         if (choice === 'student') {
           this.setState({ error: '', redirectTo: '/studentsignup' });
         }
-        this.setState({ error: '', redirectTo: '/studentsignup' });
+        this.setState({ error: '', redirectTo: '/companysignup' });
       }
       /* NOTES:
        If account type === student...redeirectTo: studentPath (StudentSignup)

@@ -9,12 +9,12 @@ import { Redirect } from 'react-router-dom';
 // import MultiSelectField from '../forms/controllers/MultiSelectField';
 // import { StudentFormSchema as formSchema, gpa2String, gpa2Number } from '../forms/StudentFormInfo';
 import { users } from '../../api/user/users';
-import { StudentFormSchema } from '../forms/StudentFormSchema';
+import { CompanyFormSchema } from '../forms/CompanyFormSchema';
 
-const bridge = new SimpleSchema2Bridge(StudentFormSchema);
+const bridge = new SimpleSchema2Bridge(CompanyFormSchema);
 
 /** Renders the Page for editing a document. */
-class StudentSignup extends React.Component {
+class CompanySignup extends React.Component {
   constructor(props) {
     super(props);
     /* NOTE: change this.state = { email, choice: ' ', ... } Double check the dropdown field settings */
@@ -25,16 +25,13 @@ class StudentSignup extends React.Component {
   submit(data) {
     let updateError;
     const email = Meteor.user().username;
-    console.log(email);
     const owner = Meteor.user().username;
-    const role = 'student';
-    // company or student assignment (Clean up)
+    const role = 'company';
     Meteor.call('role.update', {
-      role: 'student',
+      role: 'company',
     });
-    const { firstName, lastName, image, skill, interest } = data;
-    console.log(data);
-    users.collection.insert({ firstName, lastName, image, skill, interest, email, owner, role },
+    const { company, image, location, interest } = data;
+    users.collection.insert({ company, image, location, interest, email, owner, role },
       (error) => { updateError = error; });
     if (updateError) {
       swal('Error', updateError.message, 'error');
@@ -55,18 +52,17 @@ class StudentSignup extends React.Component {
     return (
       <Grid container centered>
         <Grid.Column>
-          <Header as="h2" textAlign="center">Please tell us more about yourself!</Header>
+          <Header as="h2" textAlign="center">Please tell us more about your company!</Header>
           <AutoForm schema={bridge} onSubmit={data => this.submit(data)}>
             <Segment>
               <Form.Group widths={'equal'}>
-                <TextField name='firstName' showInlineError={true} placeholder={'Your first name'}/>
-                <TextField name='lastName' showInlineError={true} placeholder={'Your last name'}/>
+                <TextField name='company' showInlineError={true} placeholder={'Your first name'}/>
               </Form.Group>
               <Form.Group widths={'equal'}>
                 <TextField name='image' showInlineError={true} placeholder={'URL goes here'}/>
               </Form.Group>
+              <TextField name='location' showInlineError={true} placeholder={'City...'}/>
               <TextField name='interest' showInlineError={true} placeholder={'Interest 1, Interest 2, Interest 3, ...'}/>
-              <TextField name='skill' showInlineError={true} placeholder={'Skill 1, Skill 2, Skill 3, ...'}/>
               <SubmitField value='Submit'/>
             </Segment>
           </AutoForm>
@@ -76,4 +72,4 @@ class StudentSignup extends React.Component {
   }
 }
 
-export default (StudentSignup);
+export default (CompanySignup);
