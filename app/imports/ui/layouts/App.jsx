@@ -19,6 +19,7 @@ import Signout from '../pages/Signout';
 import Positions from '../pages/Positions';
 import UserHomePage from '../pages/UserHomePage';
 import CompanyHomePage from '../pages/CompanyHomePage';
+import ProfilePageAdmin from '../pages/ProfilePageAdmin';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 class App extends React.Component {
@@ -39,7 +40,7 @@ class App extends React.Component {
             <ProtectedRoute path="/positions" component={Positions}/>
             <ProtectedRoute path="/add" component={AddStuff}/>
             <ProtectedRoute path="/edit/:_id" component={EditStuff}/>
-            <AdminProtectedRoute path="/admin" component={ListStuffAdmin}/>
+            <AdminProtectedRoute path="/profileadmin" component={ProfilePageAdmin}/>
             <Route component={NotFound}/>
           </Switch>
           <Footer/>

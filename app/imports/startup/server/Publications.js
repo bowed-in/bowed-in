@@ -50,3 +50,10 @@ Meteor.publish(null, function () {
   }
   return this.ready();
 });
+
+Meteor.publish(users.adminPublicationName, function () {
+  if (this.userId && Roles.userIsInRole(this.userId, 'admin')) {
+    return users.collection.find();
+  }
+  return this.ready();
+});
