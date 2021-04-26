@@ -1,6 +1,6 @@
 import _ from 'lodash';
 import React from 'react';
-import { Search, Grid, Header, Container, Loader } from 'semantic-ui-react';
+import { Search, Grid, Header, Container, Loader, Card } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import { Meteor } from 'meteor/meteor';
 import PropTypes from 'prop-types';
@@ -20,23 +20,7 @@ class SearchPosting extends React.Component {
     this.state = { results: [], value: '' };
   }
 
-  resultRenderer = ({ name, skills, description, lowerSalary, higherSalary, image }) => <PositionResult name={name} skills={skills} description={description} lowerSalary={lowerSalary} higherSalary={higherSalary} image={image}/>
-
-  // Reducer = (state, action) => {
-  //   switch (action.type) {
-  //   case 'CLEAN_QUERY':
-  //     return initialState;
-  //   case 'START_SEARCH':
-  //     return { ...state, loading: true, value: action.query };
-  //   case 'FINISH_SEARCH':
-  //     return { ...state, loading: false, results: action.results };
-  //   case 'UPDATE_SELECTION':
-  //     return { ...state, value: action.selection };
-  //
-  //   default:
-  //     throw new Error();
-  //   }
-  // }
+  resultRenderer = ({ name, skills, location, lowerSalary, higherSalary, image }) => <PositionResult name={name} skills={skills} location={location} lowerSalary={lowerSalary} higherSalary={higherSalary} image={image}/>
 
   handleSearchChange = (e, data) => {
     this.setState({ loading: true, value: data.value });
@@ -73,29 +57,31 @@ class SearchPosting extends React.Component {
     const { loading, results, value } = this.state;
 
     return (
-      <Grid container>
-        <Grid.Column centered>
-          <Search
-            loading={loading}
-            onResultSelect={this.onResultSelect}
-            onSearchChange={this.handleSearchChange}
-            resultRenderer={this.resultRenderer}
-            results={results}
-            value={value}
-          />
+      <div className='search-background'>
+        <Grid container>
+          <Grid.Column centered>
+            <Search
+              loading={loading}
+              onResultSelect={this.onResultSelect}
+              onSearchChange={this.handleSearchChange}
+              resultRenderer={this.resultRenderer}
+              results={results}
+              value={value}
+            />
 
-          <Container id='results'>
-            <Header>Your Results</Header>
-            <pre style={{ overflowX: 'auto' }}>
-              {results.map((positions) => <Position key={positions._id} position={positions}/>)};
-            </pre>
-            <Header>Postings</Header>
-            <pre style={{ overflowX: 'auto' }}>
-              {this.props.positions.map((positions) => <Position key={positions._id} position={positions}/>)};
-            </pre>
-          </Container>
-        </Grid.Column>
-      </Grid>
+            <Container align='center' id='results'>
+              <Header as="h1" inverted>Your Results</Header>
+              <Card.Group centered>
+                {results.map((positions) => <Position key={positions._id} position={positions}/>)};
+              </Card.Group>
+              <Header as="h1" inverted>Postings</Header>
+              <Card.Group centered>
+                {this.props.positions.map((positions) => <Position key={positions._id} position={positions}/>)};
+              </Card.Group>
+            </Container>
+          </Grid.Column>
+        </Grid>
+      </div>
     );
   }
 }

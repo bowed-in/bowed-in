@@ -47,6 +47,11 @@
   background-size: cover;
 }
 
+.search-background {
+  background: url('images/ManoaLandscape.jpeg') no-repeat center center fixed;
+  background-size: cover;
+}
+
 .ui.item.item {
   color: white;
 }
