@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Container, Header, Loader, Item, Grid } from 'semantic-ui-react';
+import { Label, Item, Message, Card, Header, Loader, Grid } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { users } from '../../api/user/users';
@@ -18,21 +18,23 @@ class UserHomePage extends React.Component {
 
   // Render the page once subscriptions have been received.
   renderPage() {
+    const rightGrid = { marginRight: '200px' };
     return (
       <div className='home-background'>
-        <Container>
-          <Grid stackable>
-            <Grid.Column verticalAlign='middle' width={4}>
+        <Grid stackable columns='3'>
+          <Grid.Row centered>
+            <Grid.Column verticalAlign='middle' style={rightGrid}>
               {this.props.currentUser.map((currentUser, index) => <UserCard key={index} currentUser={currentUser} />)}
             </Grid.Column>
-            <Grid.Column width={8}>
-              <Header as='h2' inverted textAlign='center'>Positions Available</Header>
-              <Item.Group>
-                {this.props.positions.map((position, index) => <Position key={index} position={position} />)}
-              </Item.Group>
+            <Grid.Column textAlign='left' style={rightGrid}>
+              <Label id='yours' size='massive' circular color='teal' key='white'>Current Interested Positions</Label>
+              {this.props.positions ?
+                this.props.positions.map((position, index) => <Position key={index} position={position}/>) :
+                <Message>Currently None</Message>
+              }
             </Grid.Column>
-          </Grid>
-        </Container>
+          </Grid.Row>
+        </Grid>
       </div>
     );
   }
