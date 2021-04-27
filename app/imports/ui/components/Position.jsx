@@ -28,7 +28,7 @@ class Position extends React.Component {
             <Button basic color='teal'>
               Add
             </Button>
-            <Button basic color='blue'>
+            <Button basic color='green'>
               Message
             </Button>
           </div>
