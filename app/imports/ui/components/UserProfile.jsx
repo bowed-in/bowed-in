@@ -24,10 +24,6 @@ class UserProfile extends React.Component {
               <Grid.Column floated='left' width={6}>
                 <List>
                   <List.Item>
-                    <List.Icon name='users' />
-                    <List.Content>{this.props.profile.company}</List.Content>
-                  </List.Item>
-                  <List.Item>
                     <List.Icon name='marker' />
                     <List.Content>{this.props.profile.location}</List.Content>
                   </List.Item>
@@ -38,16 +34,6 @@ class UserProfile extends React.Component {
                     </List.Content>
                   </List.Item>
                 </List>
-              </Grid.Column>
-            </Grid.Row>
-            <Grid.Row>
-              <Grid.Column textAlign='left'>
-                <Header as='h2' style={{ fontSize: '24px' }}>
-                    Company and Position:
-                </Header>
-                <p style={{ fontSize: '18px' }}>
-                  {this.props.profile.company}, {this.props.profile.position}
-                </p>
               </Grid.Column>
             </Grid.Row>
             <Grid.Row>

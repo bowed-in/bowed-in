@@ -4,6 +4,7 @@ import { Container, Loader } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { users } from '../../api/user/users';
+import { StudentCollection } from '../../api/student/students';
 import UserProfile from '../components/UserProfile';
 
 /** Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
@@ -28,18 +29,26 @@ class ProfilePage extends React.Component {
 ProfilePage.propTypes = {
   profile: PropTypes.array.isRequired,
   ready: PropTypes.bool.isRequired,
+  studentReady: PropTypes.bool.isRequired,
+  doc: PropTypes.object,
 };
 
 // withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
 export default withTracker(() => {
   // Get access to Stuff documents.
   const subscription = Meteor.subscribe(users.userPublicationName);
+  const studentSubscription = Meteor.subscribe(StudentCollection.userPublicationName);
+  const studentReady = studentSubscription.ready();
   // Determine if the subscription is ready
   const ready = subscription.ready();
   // Get the Stuff documents
   const profile = users.collection.find({}).fetch();
+  const user = Meteor.user() ? Meteor.user().username : '';
+  const doc = StudentCollection.findOne({ owner: user });
   return {
     profile,
     ready,
+    studentReady,
+    doc,
   };
 })(ProfilePage);

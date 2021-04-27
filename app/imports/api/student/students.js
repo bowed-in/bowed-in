@@ -19,18 +19,19 @@ const StudentSchema = new SimpleSchema({
   email: String,
   image: String,
   owner: String,
-  link: String,
-  role: String,
-  bio: { type: String, optional: true, defaultValue: '' },
-  major: { type: Array, optional: true },
-  'major.$': { type: String, allowedValues: StudentArray.majors },
-  interests: { type: Array, optional: true },
-  'interests.$': { type: String, allowedValues: StudentArray.interests },
-  hobbies: { type: Array, optional: true },
-  'hobbies.$': { type: String, allowedValues: StudentArray.hobbies },
-  level: { type: String, allowedValues: StudentArray.levels },
-  gpa: Number,
+  // link: String,
+  // bio: { type: String, optional: true, defaultValue: '' },
+  // major: { type: Array, optional: true },
+  // 'major.$': { type: String, allowedValues: StudentArray.majors },
+  // interests: { type: Array, optional: true },
+  // 'interests.$': { type: String, allowedValues: StudentArray.interests },
+  // hobbies: { type: Array, optional: true },
+  // 'hobbies.$': { type: String, allowedValues: StudentArray.hobbies },
+  // level: { type: String, allowedValues: StudentArray.levels },
+  // gpa: Number,
 }, { tracker: Tracker });
+
+StudentCollection.userPublicationName = 'StudentCollection.publication.user';
 
 /** Attach the schema to the collection. */
 StudentCollection.attachSchema(StudentSchema);

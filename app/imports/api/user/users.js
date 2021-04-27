@@ -13,20 +13,20 @@ class UsersCollection {
     this.collection = new Mongo.Collection(this.name);
     // Define the structure of each document in the collection.
     this.schema = new SimpleSchema({
-      firstName: String,
-      lastName: String,
-      image: String,
-      company: String,
-      position: String,
-      description: String,
-      owner: String,
+      firstName: { type: String, optional: true },
+      lastName: { type: String, optional: true },
+      image: { type: String, optional: true },
+      company: { type: String, optional: true },
+      position: { type: String, optional: true },
+      description: { type: String, optional: true },
+      owner: { type: String, optional: true },
       role: {
         type: String,
         allowedValues: ['student', 'company'],
       },
-      location: String,
-      interest: String,
-      skill: String,
+      location: { type: String, optional: true },
+      interest: { type: String, optional: true },
+      skill: { type: String, optional: true },
       email: String,
     }, { tracker: Tracker });
     // Attach the schema to the collection, so all attempts to insert a document are checked against schema.
