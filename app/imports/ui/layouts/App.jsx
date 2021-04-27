@@ -17,7 +17,7 @@ import Signin from '../pages/Signin';
 import Signup from '../pages/PreliminarySignup';
 import StudentSignup from '../pages/StudentSignup';
 import CompanySignup from '../pages/CompanySignup';
-import EditStudent from '../pages/EditStudent';
+import EditUser from '../pages/EditUser';
 import Signout from '../pages/Signout';
 import UserHomePage from '../pages/UserHomePage';
 import StudentRouteTest from '../pages/StudentRouteTest';
@@ -46,7 +46,7 @@ class App extends React.Component {
             <ProtectedRoute path="/profile" component={ProfilePage}/>
             <ProtectedRoute path="/add" component={AddStuff}/>
             <ProtectedRoute path="/edit/:_id" component={EditStuff}/>
-            <ProtectedRoute path="/editstudent/:_id" component={EditStudent}/>
+            <ProtectedRoute path="/editdata/:_id" component={EditUser}/>
             <AdminProtectedRoute path="/profileadmin" component={ProfilePageAdmin}/>
             <StudentProtectedRoute path="/student" component={StudentRouteTest}/>
             <CompanyProtectedRoute path="/company" component={CompanyRouteTest}/>

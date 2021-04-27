@@ -1,7 +1,7 @@
 import React from 'react';
 import { Image, Header, Segment, Grid, List, Container } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 
 /** Renders a single row in the List Stuff table. See pages/SearchPosting.jsx. */
 class UserProfile extends React.Component {
@@ -31,6 +31,12 @@ class UserProfile extends React.Component {
                     <List.Icon name='mail' />
                     <List.Content>
                       <a href='mailto:{this.props.profile.email}'>{this.props.profile.email}</a>
+                    </List.Content>
+                  </List.Item>
+                  <List.Item>
+                    <List.Icon name='edit' />
+                    <List.Content>
+                      <Link to={ `/editdata/${this.props.profile._id}` }>Click here to edit your information</Link>
                     </List.Content>
                   </List.Item>
                 </List>
