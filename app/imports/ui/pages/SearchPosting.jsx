@@ -20,7 +20,7 @@ class SearchPosting extends React.Component {
     this.state = { results: [], value: '' };
   }
 
-  resultRenderer = ({ name, skills, location, lowerSalary, higherSalary, image }) => <PositionResult name={name} skills={skills} location={location} lowerSalary={lowerSalary} higherSalary={higherSalary} image={image}/>
+  resultRenderer = ({ name, skills, location, image }) => <PositionResult name={name} skills={skills} location={location} image={image}/>
 
   handleSearchChange = (e, data) => {
     this.setState({ loading: true, value: data.value });
@@ -30,7 +30,7 @@ class SearchPosting extends React.Component {
     }
 
     const re = new RegExp(_.escapeRegExp(data.value), 'i');
-    const isMatch = (result) => re.test(result.name) || re.test(result.skills);
+    const isMatch = (result) => re.test(result.name) || re.test(result.skills) || re.test(result.location);
 
     this.setState({
       loading: false,
