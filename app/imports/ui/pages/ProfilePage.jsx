@@ -18,7 +18,7 @@ class ProfilePage extends React.Component {
   // Render the page once subscriptions have been received.
   renderPage() {
     return (
-      <Container>
+      <Container id="view-profile-page">
         {this.props.profile.map((profile) => <UserProfile key={profile._id} profile={profile} />)}
       </Container>
     );
