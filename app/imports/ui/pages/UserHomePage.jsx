@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Label, Item, Message, Card, Header, Loader, Grid } from 'semantic-ui-react';
+import { Label, Message, Loader, Grid } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { users } from '../../api/user/users';
