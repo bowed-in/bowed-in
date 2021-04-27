@@ -21,7 +21,7 @@ class CompanyHomePage extends React.Component {
   renderPage() {
     const rightGrid = { marginRight: '200px' };
     return (
-      <div className='home-background'>
+      <div id='companyhome' className='home-background'>
         <Grid stackable columns='5'>
           <Grid.Row centered>
             <Grid.Column id='company-card' verticalAlign='middle' style={rightGrid}>
@@ -55,9 +55,10 @@ CompanyHomePage.propTypes = {
 // withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
 export default withTracker(() => {
   // Get access to Stuff documents.
-  const subscription = Meteor.subscribe(Positions.userPublicationName);
+  const subscription = Meteor.subscribe(users.userPublicationName);
+  const subscription2 = Meteor.subscribe(Positions.userPublicationName);
   // Determine if the subscription is ready
-  const ready = subscription.ready();
+  const ready = subscription2.ready() || subscription.ready();
   // Get the Stuff documents
   const usersList = users.collection.find({ role: 'student' }).fetch();
   const currentUsername = Meteor.user() ? Meteor.user().username : '';

@@ -7,7 +7,7 @@ import BottomLanding from '../components/BottomLanding';
 class Landing extends React.Component {
   render() {
     return (
-      <div>
+      <div id='landing-page'>
         <TopLanding/>
         <MiddleLanding/>
         <BottomLanding/>

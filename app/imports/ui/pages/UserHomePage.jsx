@@ -21,7 +21,7 @@ class UserHomePage extends React.Component {
     const rightGrid = { marginRight: '200px' };
     return (
       <div className='home-background'>
-        <Grid stackable columns='3'>
+        <Grid id='studenthome' stackable columns='3'>
           <Grid.Row centered>
             <Grid.Column verticalAlign='middle' style={rightGrid}>
               {this.props.currentUser.map((currentUser, index) => <UserCard key={index} currentUser={currentUser} />)}
@@ -50,9 +50,10 @@ UserHomePage.propTypes = {
 // withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
 export default withTracker(() => {
   // Get access to Stuff documents.
-  const subscription = Meteor.subscribe(Positions.userPublicationName);
+  const subscription = Meteor.subscribe(users.userPublicationName);
+  const subscription2 = Meteor.subscribe(Positions.userPublicationName);
   // Determine if the subscription is ready
-  const ready = subscription.ready();
+  const ready = subscription2.ready() || subscription.ready();
   // Get the Stuff documents
   const positions = Positions.collection.find({}).fetch();
   const currentUsername = Meteor.user() ? Meteor.user().username : '';
