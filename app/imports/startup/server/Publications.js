@@ -8,7 +8,8 @@ import { users } from '../../api/user/users';
 // If logged in, then publish documents owned by this user. Otherwise publish nothing.
 Meteor.publish(users.userPublicationName, function () {
   if (this.userId) {
-    return users.collection.find();
+    const username = Meteor.users.findOne(this.userId).username;
+    return users.collection.find({ owner: username });
   }
   return this.ready();
 });
@@ -57,6 +58,13 @@ Meteor.publish(Stuffs.adminPublicationName, function () {
 Meteor.publish(null, function () {
   if (this.userId) {
     return Meteor.roleAssignment.find({ 'user._id': this.userId });
+  }
+  return this.ready();
+});
+
+Meteor.publish(users.adminPublicationName, function () {
+  if (this.userId && Roles.userIsInRole(this.userId, 'admin')) {
+    return users.collection.find();
   }
   return this.ready();
 });

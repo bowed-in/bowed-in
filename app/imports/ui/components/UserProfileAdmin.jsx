@@ -3,8 +3,8 @@ import { Image, Header, Segment, Grid, List, Container } from 'semantic-ui-react
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 
-/** Renders a single row in the List Stuff table. See pages/SearchPosting.jsx. */
-class UserProfile extends React.Component {
+/** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
+class UserProfileAdmin extends React.Component {
   render() {
     return (
       <Container>
@@ -24,6 +24,10 @@ class UserProfile extends React.Component {
               <Grid.Column floated='left' width={6}>
                 <List>
                   <List.Item>
+                    <List.Icon name='users' />
+                    <List.Content>{this.props.profile.company}</List.Content>
+                  </List.Item>
+                  <List.Item>
                     <List.Icon name='marker' />
                     <List.Content>{this.props.profile.location}</List.Content>
                   </List.Item>
@@ -34,6 +38,16 @@ class UserProfile extends React.Component {
                     </List.Content>
                   </List.Item>
                 </List>
+              </Grid.Column>
+            </Grid.Row>
+            <Grid.Row>
+              <Grid.Column textAlign='left'>
+                <Header as='h2' style={{ fontSize: '24px' }}>
+                    Company and Position:
+                </Header>
+                <p style={{ fontSize: '18px' }}>
+                  {this.props.profile.company}, {this.props.profile.position}
+                </p>
               </Grid.Column>
             </Grid.Row>
             <Grid.Row>
@@ -64,9 +78,9 @@ class UserProfile extends React.Component {
 }
 
 // Require a document to be passed to this component.
-UserProfile.propTypes = {
+UserProfileAdmin.propTypes = {
   profile: PropTypes.object.isRequired,
 };
 
 // Wrap this component in withRouter since we use the <Link> React Router element.
-export default withRouter(UserProfile);
+export default withRouter(UserProfileAdmin);
