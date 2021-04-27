@@ -60,13 +60,15 @@ class SearchPosting extends React.Component {
       <div className='search-background'>
         <Grid container>
           <Grid.Column centered>
-            <Search
-              onResultSelect={this.onResultSelect}
-              onSearchChange={this.handleSearchChange}
-              resultRenderer={this.resultRenderer}
-              results={results}
-              value={value}
-            />
+            <div centered>
+              <Search
+                onResultSelect={this.onResultSelect}
+                onSearchChange={this.handleSearchChange}
+                resultRenderer={this.resultRenderer}
+                results={results}
+                value={value}
+              />
+            </div>
 
             <Container align='center' id='results'>
               <Label id='yours' size='huge' circular color='teal' key='white'>Your Results</Label>

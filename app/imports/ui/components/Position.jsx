@@ -9,22 +9,23 @@ class Position extends React.Component {
     // const font = { color: 'black', fontSize: 20 };
     return (
       <Card>
-        <Card.Content>
+        <Card.Content align='left'>
           <Image
             floated='right'
             size='mini'
             src={this.props.position.image}
           />
-          <Card.Header textAlign="left">{this.props.position.name}</Card.Header>
-          <Card.Meta textAlign="left">Job Type: {this.props.position.jobType}</Card.Meta>
-          <Card.Meta textAlign="left"> Salary Range: {this.props.position.lowerSalary} - {this.props.position.higherSalary}</Card.Meta>
-          <Card.Meta textAlign="left"> Location: {this.props.position.location}</Card.Meta>
-          <Card.Description textAlign="left"><strong>Description:</strong> {this.props.position.description}</Card.Description>
-          <Card.Description textAlign="left"><strong>Number of Positions:</strong> {this.props.position.hire}</Card.Description>
+          <Card.Header>{this.props.position.name}</Card.Header>
+          <Card.Meta>{this.props.position.location}</Card.Meta>
+          <Card.Description><strong>Description:</strong> {this.props.position.description}</Card.Description>
+          <Card.Description> <strong>Job Type: </strong>{this.props.position.jobType}</Card.Description>
+          <Card.Description> <strong>Salary Range: </strong>{this.props.position.lowerSalary} - {this.props.position.higherSalary}</Card.Description>
+          <Card.Description textAlign="left"><strong>Number of Position(s):</strong> {this.props.position.hire}</Card.Description>
+          <Card.Description> <strong>Skill(s): </strong> {this.props.position.skills}</Card.Description>
         </Card.Content>
         <Card.Content extra>
           <div className='ui two buttons'>
-            <Button basic color='green'>
+            <Button basic color='teal'>
               Add
             </Button>
             <Button basic color='blue'>

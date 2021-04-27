@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image, List } from 'semantic-ui-react';
+import { Image, List, Icon } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 
@@ -12,7 +12,12 @@ class PositionResult extends React.Component {
           <List.Content>
             <Image floated='right' avatar src={this.props.image} />
             <List.Header as='a'>{this.props.name}</List.Header>
-            <List.Description>{this.props.skills}</List.Description>
+            <List.Description>
+              <Icon name='wrench' />{this.props.skills}
+            </List.Description>
+            {/* <List.Description> */}
+            {/*  <Icon name='marker' />{this.props.location} */}
+            {/* </List.Description> */}
           </List.Content>
         </List.Item>
       </List>
