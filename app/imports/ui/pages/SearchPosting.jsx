@@ -20,7 +20,7 @@ class SearchPosting extends React.Component {
     this.state = { results: [], value: '' };
   }
 
-  resultRenderer = ({ name, skills, location, image }) => <PositionResult name={name} skills={skills} location={location} image={image}/>
+  resultRenderer = ({ name, skills, place, image }) => <PositionResult name={name} skills={skills} place={place} image={image}/>
 
   handleSearchChange = (e, data) => {
     this.setState({ loading: true, value: data.value });
@@ -30,7 +30,7 @@ class SearchPosting extends React.Component {
     }
 
     const re = new RegExp(_.escapeRegExp(data.value), 'i');
-    const isMatch = (result) => re.test(result.name) || re.test(result.skills) || re.test(result.location);
+    const isMatch = (result) => re.test(result.name) || re.test(result.skills) || re.test(result.place);
 
     this.setState({
       loading: false,
@@ -60,15 +60,13 @@ class SearchPosting extends React.Component {
       <div className='search-background'>
         <Grid container>
           <Grid.Column centered>
-            <div centered>
-              <Search
-                onResultSelect={this.onResultSelect}
-                onSearchChange={this.handleSearchChange}
-                resultRenderer={this.resultRenderer}
-                results={results}
-                value={value}
-              />
-            </div>
+            <Search
+              onResultSelect={this.onResultSelect}
+              onSearchChange={this.handleSearchChange}
+              resultRenderer={this.resultRenderer}
+              results={results}
+              value={value}
+            />
 
             <Container align='center' id='results'>
               <Label id='yours' size='huge' circular color='teal' key='white'>Your Results</Label>

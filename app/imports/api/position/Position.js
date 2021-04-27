@@ -25,7 +25,7 @@ class PositionsCollection {
       description: String,
       lowerSalary: Number,
       higherSalary: Number,
-      location: String,
+      place: String,
       image: String,
     }, { tracker: Tracker });
     // Attach the schema to the collection, so all attempts to insert a document are checked against schema.

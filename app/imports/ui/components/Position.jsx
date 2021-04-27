@@ -16,7 +16,7 @@ class Position extends React.Component {
             src={this.props.position.image}
           />
           <Card.Header>{this.props.position.name}</Card.Header>
-          <Card.Meta>{this.props.position.location}</Card.Meta>
+          <Card.Meta>{this.props.position.place}</Card.Meta>
           <Card.Description><strong>Description:</strong> {this.props.position.description}</Card.Description>
           <Card.Description> <strong>Job Type: </strong>{this.props.position.jobType}</Card.Description>
           <Card.Description> <strong>Salary Range: </strong>{this.props.position.lowerSalary} - {this.props.position.higherSalary}</Card.Description>

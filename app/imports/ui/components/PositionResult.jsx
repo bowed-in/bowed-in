@@ -15,9 +15,9 @@ class PositionResult extends React.Component {
             <List.Description>
               <Icon name='wrench' />{this.props.skills}
             </List.Description>
-            {/* <List.Description> */}
-            {/*  <Icon name='marker' />{this.props.location} */}
-            {/* </List.Description> */}
+            <List.Description>
+              <Icon name='marker' />{this.props.place}
+            </List.Description>
           </List.Content>
         </List.Item>
       </List>
@@ -32,7 +32,7 @@ PositionResult.propTypes = {
   description: PropTypes.string,
   lowerSalary: PropTypes.number,
   higherSalary: PropTypes.number,
-  location: PropTypes.string,
+  place: PropTypes.string,
   image: PropTypes.string,
 };
 

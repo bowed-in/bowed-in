@@ -18,8 +18,8 @@
   ],
 
   "defaultPosition": [
-    { "name": "Assistant Programmer", "hire": 3, "owner": "admin@foo.com", "skills": "Java", "jobType": "internship and/or permanent", "description": "Maintain Star website", "lowerSalary": 20000, "higherSalary": 21000, "location": "Honolulu", "image": "https://star.hawaii.edu/help/public/images/STARlogo.png"},
-    { "name": "Data Clerk", "hire": 5, "owner": "admin@foo.com", "skills": "Java", "jobType": "internship and/or permanent", "description": "Maintain database", "lowerSalary": 40000, "higherSalary": 7000, "location": "Kaneohe", "image": "https://d2q79iu7y748jz.cloudfront.net/s/_squarelogo/396f4655ba284a534c25c41692e27747"},
-    { "name": "McDonalds", "hire": 10, "owner": "admin@foo.com", "skills": "None", "jobType": "permanent", "description": "McD's Stuff", "lowerSalary": 5000, "higherSalary": 6000, "location": "Nuuanu", "image": "https://media-cdn.tripadvisor.com/media/photo-p/11/a0/00/ed/dirty-discussing-mcdonalds.jpg"}
+    { "name": "Assistant Programmer", "hire": 3, "owner": "admin@foo.com", "skills": "Java", "jobType": "internship and/or permanent", "description": "Maintain Star website", "lowerSalary": 20000, "higherSalary": 21000, "place": "Honolulu", "image": "https://star.hawaii.edu/help/public/images/STARlogo.png"},
+    { "name": "Data Clerk", "hire": 5, "owner": "admin@foo.com", "skills": "Java", "jobType": "internship and/or permanent", "description": "Maintain database", "lowerSalary": 40000, "higherSalary": 7000, "place": "Kaneohe", "image": "https://d2q79iu7y748jz.cloudfront.net/s/_squarelogo/396f4655ba284a534c25c41692e27747"},
+    { "name": "McDonalds", "hire": 10, "owner": "admin@foo.com", "skills": "None", "jobType": "permanent", "description": "McD's Stuff", "lowerSalary": 5000, "higherSalary": 6000, "place": "Nuuanu", "image": "https://media-cdn.tripadvisor.com/media/photo-p/11/a0/00/ed/dirty-discussing-mcdonalds.jpg"}
   ]
 }
