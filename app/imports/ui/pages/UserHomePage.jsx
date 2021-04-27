@@ -53,7 +53,7 @@ export default withTracker(() => {
   const subscription = Meteor.subscribe(users.userPublicationName);
   const subscription2 = Meteor.subscribe(Positions.userPublicationName);
   // Determine if the subscription is ready
-  const ready = subscription2.ready();
+  const ready = subscription2.ready() || subscription.ready();
   // Get the Stuff documents
   const positions = Positions.collection.find({}).fetch();
   const currentUsername = Meteor.user() ? Meteor.user().username : '';
