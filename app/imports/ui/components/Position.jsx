@@ -1,25 +1,39 @@
 import React from 'react';
-import { Item, Image } from 'semantic-ui-react';
+import { Card, Image, Button } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 
-/** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
+/** Renders a single row in the List Stuff table. See pages/SearchPosting.jsx. */
 class Position extends React.Component {
   render() {
-    const font = { color: 'white', fontSize: 20 };
+    // const font = { color: 'black', fontSize: 20 };
     return (
-      <Item>
-        <Image size='medium' src={this.props.position.image} />
-        <Item.Content verticalAlign='middle'>
-          <Item.Header as='a' style={font}>{this.props.position.name}</Item.Header>
-          <Item.Meta style={font}>Job Type: {this.props.position.jobType}</Item.Meta>
-          <Item.Description style={font}>
-            {this.props.position.description}
-          </Item.Description>
-          <Item.Extra style={font}>Salary Range: {this.props.position.lowerSalary} - {this.props.position.higherSalary}</Item.Extra>
-          <Item.Extra style={font}>Number of Positions: {this.props.position.hire}</Item.Extra>
-        </Item.Content>
-      </Item>
+      <Card>
+        <Card.Content align='left'>
+          <Image
+            floated='right'
+            size='mini'
+            src={this.props.position.image}
+          />
+          <Card.Header>{this.props.position.name}</Card.Header>
+          <Card.Meta>{this.props.position.place}</Card.Meta>
+          <Card.Description><strong>Description:</strong> {this.props.position.description}</Card.Description>
+          <Card.Description> <strong>Job Type: </strong>{this.props.position.jobType}</Card.Description>
+          <Card.Description> <strong>Salary Range: </strong>{this.props.position.lowerSalary} - {this.props.position.higherSalary}</Card.Description>
+          <Card.Description textAlign="left"><strong>Number of Position(s):</strong> {this.props.position.hire}</Card.Description>
+          <Card.Description> <strong>Skill(s): </strong> {this.props.position.skills}</Card.Description>
+        </Card.Content>
+        <Card.Content extra>
+          <div className='ui two buttons'>
+            <Button basic color='teal'>
+              Add
+            </Button>
+            <Button basic color='green'>
+              Message
+            </Button>
+          </div>
+        </Card.Content>
+      </Card>
     );
   }
 }

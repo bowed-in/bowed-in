@@ -19,7 +19,7 @@ class NavBar extends React.Component {
         {this.props.currentUser ? (
           [
             <Menu.Item style={greenText} as={NavLink} activeClassName="active" exact to="/add" key='add'>Add Stuff</Menu.Item>,
-            <Menu.Item style={greenText} as={NavLink} activeClassName="active" exact to="/list" key='list'>List Stuff</Menu.Item>,
+            <Menu.Item style={greenText} as={NavLink} activeClassName="active" exact to="/search" key='search'>Search Postings</Menu.Item>,
             <Menu.Item style={greenText} as={NavLink} activeClassName="active" exact to="/profile" key='profile'>Company Profile</Menu.Item>,
             <Menu.Item style={greenText} as={NavLink} activeClassName="active" exact to="/companyhome" key='companyhome'>Company Home Page [Only Available in the Mockup]</Menu.Item>,
             <Menu.Item style={greenText} as={NavLink} activeClassName="active" exact to="/userhome" key='userhome'>User Home Page [Only Available in the Mockup]</Menu.Item>,
@@ -28,15 +28,6 @@ class NavBar extends React.Component {
         {Roles.userIsInRole(Meteor.userId(), 'admin') ? (
           <Menu.Item as={NavLink} activeClassName="active" exact to="/admin" key='admin'>Admin</Menu.Item>
         ) : ''}
-        <Menu.Item position="left">
-          <Dropdown style={greenText} id="Filter-dropdown" text="Filter" pointing="top right" icon={'angle down'}>
-            <Dropdown.Menu>
-              <Dropdown.Item style={greenText} id="filter-dropdown-interests" icon="book" text="Interests" as={NavLink} exact to="/signin"/>
-              <Dropdown.Item style={greenText} id="filter-dropdown-positions" icon="warehouse" text="Positions" as={NavLink} exact to="/positions"/>
-              <Dropdown.Item style={greenText} id="filter-dropdown-location" icon="globe" text="Location" as={NavLink} exact to="/signup"/>
-            </Dropdown.Menu>
-          </Dropdown>
-        </Menu.Item>
         <Menu.Item position="right">
           {this.props.currentUser === '' ? (
             <Dropdown style={greenText} id="login-dropdown" text="Login or Sign Up Today!" pointing="top right" icon={'user'}>
