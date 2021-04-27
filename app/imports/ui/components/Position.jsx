@@ -25,10 +25,10 @@ class Position extends React.Component {
         </Card.Content>
         <Card.Content extra>
           <div className='ui two buttons'>
-            <Button basic color='teal'>
+            <Button basic color='orange'>
               Add
             </Button>
-            <Button basic color='orange'>
+            <Button basic color='teal'>
               Message
             </Button>
           </div>

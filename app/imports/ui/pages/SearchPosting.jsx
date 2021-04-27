@@ -71,11 +71,11 @@ class SearchPosting extends React.Component {
             <Container align='center' id='results'>
               <Label id='yours' size='huge' circular color='teal' key='white'>Your Results</Label>
               <Card.Group centered>
-                {results.map((positions) => <Position key={positions._id} position={positions}/>)};
+                {results.map((positions) => <Position key={positions._id} position={positions}/>)}
               </Card.Group>
               <Label id='postings' size='huge' circular color='teal' key='white'>Postings</Label>
               <Card.Group centered>
-                {this.props.positions.map((positions) => <Position key={positions._id} position={positions}/>)};
+                {this.props.positions.map((positions) => <Position key={positions._id} position={positions}/>)}
               </Card.Group>
             </Container>
           </Grid.Column>
