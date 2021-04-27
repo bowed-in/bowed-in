@@ -25,15 +25,13 @@ class StudentSignup extends React.Component {
   submit(data) {
     let updateError;
     const email = Meteor.user().username;
-    console.log(email);
     const owner = Meteor.user().username;
     const role = 'student';
-    // company or student assignment (Clean up)
+    // company or student assignment (Clean up). role.update is running in background => memory leak?
     Meteor.call('role.update', {
       role: 'student',
     });
     const { firstName, lastName, image, skill, interest } = data;
-    console.log(data);
     users.collection.insert({ firstName, lastName, image, skill, interest, email, owner, role },
       (error) => { updateError = error; });
     if (updateError) {
@@ -77,3 +75,10 @@ class StudentSignup extends React.Component {
 }
 
 export default (StudentSignup);
+
+/*
+VM178 react_devtools_backend.js:2557 Warning: Can't perform a React state update on an unmounted component.
+This is a no-op, but it indicates a memory leak in your application. To fix, cancel all subscriptions and asynchronous tasks in the componentWillUnmount method.
+    in Signup (created by Context.Consumer)
+    in Route (created by App)
+ */

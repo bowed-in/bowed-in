@@ -58,8 +58,8 @@ class SearchPosting extends React.Component {
 
     return (
       <div className='search-background'>
-        <Grid container>
-          <Grid.Column centered>
+        <Grid container centered>
+          <Grid.Column>
             <Search
               onResultSelect={this.onResultSelect}
               onSearchChange={this.handleSearchChange}
@@ -69,11 +69,11 @@ class SearchPosting extends React.Component {
             />
 
             <Container align='center' id='results'>
-              <Label id='yours' size='huge' circular color='teal' key='white'>Your Results</Label>
+              <Label id='yours' size='huge' circular color='teal' >Your Results</Label>
               <Card.Group centered>
                 {results.map((positions) => <Position key={positions._id} position={positions}/>)};
               </Card.Group>
-              <Label id='postings' size='huge' circular color='teal' key='white'>Postings</Label>
+              <Label id='postings' size='huge' circular color='teal' >Postings</Label>
               <Card.Group centered>
                 {this.props.positions.map((positions) => <Position key={positions._id} position={positions}/>)};
               </Card.Group>
