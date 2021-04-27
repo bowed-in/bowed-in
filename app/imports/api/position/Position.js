@@ -19,12 +19,13 @@ class PositionsCollection {
       skills: String,
       jobType: {
         type: String,
-        allowedValues: ['internship', 'permanent', 'both'],
-        defaultValue: 'both',
+        allowedValues: ['internship', 'permanent', 'internship and/or permanent'],
+        defaultValue: 'internship and/or permanent',
       },
       description: String,
       lowerSalary: Number,
       higherSalary: Number,
+      place: String,
       image: String,
     }, { tracker: Tracker });
     // Attach the schema to the collection, so all attempts to insert a document are checked against schema.

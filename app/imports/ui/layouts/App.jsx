@@ -7,7 +7,7 @@ import { HashRouter as Router, Route, Switch, Redirect } from 'react-router-dom'
 import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
 import Landing from '../pages/Landing';
-import ListStuff from '../pages/ListStuff';
+import SearchPosting from '../pages/SearchPosting';
 import ProfilePage from '../pages/ProfilePage';
 import ListStuffAdmin from '../pages/ListStuffAdmin';
 import AddStuff from '../pages/AddStuff';
@@ -20,7 +20,6 @@ import StudentSignup from '../pages/StudentSignup';
 import CompanySignup from '../pages/CompanySignup';
 import EditStudent from '../pages/EditStudent';
 import Signout from '../pages/Signout';
-import Positions from '../pages/Positions';
 import UserHomePage from '../pages/UserHomePage';
 import StudentRouteTest from '../pages/StudentRouteTest';
 import CompanyRouteTest from '../pages/CompanyRouteTest';
@@ -43,9 +42,8 @@ class App extends React.Component {
             <ProtectedRoute path="/companysignup" component={CompanySignup}/>
             <ProtectedRoute path="/companyhome" component={CompanyHomePage}/>
             <ProtectedRoute path="/userhome" component={UserHomePage}/>
-            <ProtectedRoute path="/list" component={ListStuff}/>
+            <ProtectedRoute path="/search" component={SearchPosting}/>
             <ProtectedRoute path="/profile" component={ProfilePage}/>
-            <ProtectedRoute path="/positions" component={Positions}/>
             <ProtectedRoute path="/add" component={AddStuff}/>
             <ProtectedRoute path="/edit/:_id" component={EditStuff}/>
             <ProtectedRoute path="/editstudent/:_id" component={EditStudent}/>

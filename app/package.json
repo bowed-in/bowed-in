@@ -2,6 +2,8 @@
   "name": "meteor-application-template-react",
   "private": true,
   "dependencies": {
+    "faker": "^4.1.0",
+    "lodash": "^4.17.19",
     "@babel/runtime": "^7.13.7",
     "classnames": "^2.2.6",
     "core-js": "^3.9.0",
