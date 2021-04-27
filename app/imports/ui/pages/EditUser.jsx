@@ -75,14 +75,14 @@ class EditUser extends React.Component {
           <AutoForm schema={studentBridge} onSubmit={data => this.studentSubmit(data)} model={model}>
             <Segment>
               <Form.Group widths={'equal'}>
-                <TextField name='firstName' showInlineError={true} placeholder={'Your first name'}/>
-                <TextField name='lastName' showInlineError={true} placeholder={'Your last name'}/>
+                <TextField name='firstName' showInlineError={true} />
+                <TextField name='lastName' showInlineError={true} />
               </Form.Group>
               <Form.Group widths={'equal'}>
-                <TextField name='image' showInlineError={true} placeholder={'URL goes here'}/>
+                <TextField name='image' showInlineError={true} />
               </Form.Group>
-              <TextField name='interest' showInlineError={true} placeholder={'Interest 1, Interest 2, Interest 3, ...'}/>
-              <TextField name='skill' showInlineError={true} placeholder={'Skill 1, Skill 2, Skill 3, ...'}/>
+              <TextField name='interest' showInlineError={true} />
+              <TextField name='skill' showInlineError={true} />
               <SubmitField value='Submit'/>
             </Segment>
           </AutoForm>
@@ -104,13 +104,13 @@ class EditUser extends React.Component {
           <AutoForm schema={companyBridge} onSubmit={data => this.companySubmit(data)} model={model}>
             <Segment>
               <Form.Group widths={'equal'}>
-                <TextField name='company' showInlineError={true} placeholder={'Your first name'}/>
+                <TextField name='company' showInlineError={true} />
               </Form.Group>
               <Form.Group widths={'equal'}>
-                <TextField name='image' showInlineError={true} placeholder={'URL goes here'}/>
+                <TextField name='image' showInlineError={true} />
               </Form.Group>
-              <TextField name='location' showInlineError={true} placeholder={'City...'}/>
-              <TextField name='interest' showInlineError={true} placeholder={'Interest 1, Interest 2, Interest 3, ...'}/>
+              <TextField name='location' showInlineError={true} />
+              <TextField name='interest' showInlineError={true} />
               <SubmitField value='Submit'/>
             </Segment>
           </AutoForm>
