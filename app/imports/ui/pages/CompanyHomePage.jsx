@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Container, Header, Loader, Item, Grid } from 'semantic-ui-react';
+import { Loader, Grid, Label, Message } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { users } from '../../api/user/users';
@@ -19,28 +19,26 @@ class CompanyHomePage extends React.Component {
 
   // Render the page once subscriptions have been received.
   renderPage() {
-    const whiteFont = { color: 'white' };
+    const rightGrid = { marginRight: '200px' };
     return (
       <div className='home-background'>
-        <Container>
-          <Grid stackable>
-            <Grid.Column centered verticalAlign='top' width={4}>
+        <Grid stackable columns='5'>
+          <Grid.Row centered>
+            <Grid.Column id='company-card' verticalAlign='middle' style={rightGrid}>
               {this.props.currentUser.map((currentUser, index) => <CompanyCard key={index} user={currentUser} />)}
             </Grid.Column>
-            <Grid.Column width={8}>
-              <Header as='h2' centered inverted textAlign='center'>Positions You Posted</Header>
-              <Item.Group>
-                {this.props.positions.map((position, index) => <Position key={index} position={position} />)}
-              </Item.Group>
+            <Grid.Column id='owned-positions' textAlign='left' style={rightGrid}>
+              <Label size='massive' circular color='teal' key='white'>Your Positions</Label>
+              {this.props.myPositions ? this.props.myPositions.map((position, index) => <Position key={index} position={position} />) :
+                <Message>Currently None</Message>
+              }
             </Grid.Column>
-            <Grid.Column centered verticalAlign='middle' width={4} color='green'>
-              <Header as='h2' style={whiteFont} textAlign='center'>Potential Hire List</Header>
-              <Item.Group>
-                {this.props.usersList.map((currentUser, index) => <PotentialHire key={index} potentialHire={currentUser} />)}
-              </Item.Group>
+            <Grid.Column id='potential-hire-list' verticalAlign='middle' style={rightGrid}>
+              <Label size='massive' circular color='teal' key='white'>Potential Hiree</Label>
+              {this.props.usersList.map((currentUser, index) => <PotentialHire key={index} potentialHire={currentUser} />)}
             </Grid.Column>
-          </Grid>
-        </Container>
+          </Grid.Row>
+        </Grid>
       </div>
     );
   }
@@ -50,7 +48,7 @@ class CompanyHomePage extends React.Component {
 CompanyHomePage.propTypes = {
   currentUser: PropTypes.array.isRequired, // Returns only the current user
   usersList: PropTypes.array.isRequired,
-  positions: PropTypes.array.isRequired,
+  myPositions: PropTypes.array.isRequired,
   ready: PropTypes.bool.isRequired,
 };
 
@@ -61,13 +59,13 @@ export default withTracker(() => {
   // Determine if the subscription is ready
   const ready = subscription.ready();
   // Get the Stuff documents
-  const positions = Positions.collection.find({}).fetch();
   const usersList = users.collection.find({ role: 'student' }).fetch();
   const currentUsername = Meteor.user() ? Meteor.user().username : '';
   const currentUser = users.collection.find({ email: currentUsername }).fetch();
+  const myPositions = Positions.collection.find({ owner: currentUsername }).fetch();
   return {
     currentUser,
-    positions,
+    myPositions,
     usersList,
     ready,
   };

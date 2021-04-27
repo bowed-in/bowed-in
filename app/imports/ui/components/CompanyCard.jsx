@@ -7,15 +7,17 @@ import { withRouter } from 'react-router-dom';
 class CompanyCard extends React.Component {
   render() {
     return (
-      <Card >
-        <Card.Content>
-          <Image src={this.props.user.image} />
+      <Card>
+        <Image src={this.props.user.image} />
+        <Card.Content textAlign='center'>
+          <Card.Header>{this.props.user.company}</Card.Header>
+          <Card.Meta>Company</Card.Meta>
         </Card.Content>
-        <Card.Content>
-          <Card.Header>{this.props.user.firstName} {this.props.user.lastName}</Card.Header>
-          <Card.Description>
-            {this.props.user.description}
-          </Card.Description>
+        <Card.Content extra>
+          <b>Location: </b> {this.props.user.location}
+        </Card.Content>
+        <Card.Content extra>
+          <b>Interest: </b> {this.props.user.interest}
         </Card.Content>
       </Card>
     );

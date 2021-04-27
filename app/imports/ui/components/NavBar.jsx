@@ -13,16 +13,30 @@ class NavBar extends React.Component {
     const greenText = { color: '#024731' };
     return (
       <Menu style={menuStyle} attached="top" borderless>
-        <Menu.Item as={NavLink} activeClassName="" exact to="/">
-          <Header as='h1' style={greenText}>BowedIn</Header>
-        </Menu.Item>
+        {this.props.currentRole === 'student' ?
+          (
+            <Menu.Item as={NavLink} activeClassName="" exact to="/userhome">
+              <Header as='h1' style={greenText}>BowedIn</Header>
+            </Menu.Item>
+          ) : ''}
+        {this.props.currentRole === 'company' ?
+          (
+            <Menu.Item as={NavLink} activeClassName="" exact to="/companyhome">
+              <Header as='h1' style={greenText}>BowedIn</Header>
+            </Menu.Item>
+          ) : ''}
+        {this.props.currentUser === '' ?
+          (
+            <Menu.Item as={NavLink} activeClassName="" exact to="/">
+              <Header as='h1' style={greenText}>BowedIn</Header>
+            </Menu.Item>
+          ) : ''}
+
         {this.props.currentUser ? (
           [
             <Menu.Item style={greenText} as={NavLink} activeClassName="active" exact to="/add" key='add'>Add Stuff</Menu.Item>,
             <Menu.Item style={greenText} as={NavLink} activeClassName="active" exact to="/search" key='search'>Search Postings</Menu.Item>,
             <Menu.Item style={greenText} as={NavLink} activeClassName="active" exact to="/profile" key='profile'>Company Profile</Menu.Item>,
-            <Menu.Item style={greenText} as={NavLink} activeClassName="active" exact to="/companyhome" key='companyhome'>Company Home Page [Only Available in the Mockup]</Menu.Item>,
-            <Menu.Item style={greenText} as={NavLink} activeClassName="active" exact to="/userhome" key='userhome'>User Home Page [Only Available in the Mockup]</Menu.Item>,
           ]
         ) : ''}
         {Roles.userIsInRole(Meteor.userId(), 'admin') ? (
@@ -53,11 +67,13 @@ class NavBar extends React.Component {
 // Declare the types of all properties.
 NavBar.propTypes = {
   currentUser: PropTypes.string,
+  currentRole: PropTypes.string,
 };
 
 // withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
 const NavBarContainer = withTracker(() => ({
   currentUser: Meteor.user() ? Meteor.user().username : '',
+  currentRole: Roles.getRolesForUser(Meteor.user()) ? Roles.getRolesForUser(Meteor.user())[0] : '',
 }))(NavBar);
 
 // Enable ReactRouter for this component. https://reacttraining.com/react-router/web/api/withRouter

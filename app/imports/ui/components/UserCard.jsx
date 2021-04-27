@@ -8,15 +8,16 @@ class UserCard extends React.Component {
   render() {
     return (
       <Card>
-        <Card.Content>
-          <Image src={this.props.currentUser.image} />
-        </Card.Content>
-        <Card.Content>
+        <Image src={this.props.currentUser.image} />
+        <Card.Content textAlign='center'>
           <Card.Header>{this.props.currentUser.firstName} {this.props.currentUser.lastName}</Card.Header>
-          <Card.Meta>{this.props.currentUser.position}</Card.Meta>
-          <Card.Description>
-            {this.props.currentUser.description}
-          </Card.Description>
+          <Card.Meta>Student at University of Hawaii at Manoa</Card.Meta>
+        </Card.Content>
+        <Card.Content extra>
+          <b>Interests: </b> {this.props.currentUser.interest}
+        </Card.Content>
+        <Card.Content extra>
+          <b>Skills: </b> {this.props.currentUser.skill}
         </Card.Content>
       </Card>
     );
