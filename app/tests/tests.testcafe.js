@@ -75,8 +75,7 @@ test('Test that company signup process works, then logout works', async (testCon
   await navBar.logout(testController);
   await signoutPage.isDisplayed(testController);
 });
- */
-//------------------------------------------------------------------------------------
+Do I also need to test edit company? Edit Student and Edit Company access the same form... */
 test('Test that edit student information process works then logout', async (testController) => {
   // Create a new user email address that's guaranteed to be unique.
   const firstName = 'Sigourney';
