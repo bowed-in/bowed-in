@@ -22,7 +22,7 @@ class PreliminarySignupPage {
     const studentRole = role.find('#student');
     await testController.click(role);
     await testController.click(studentRole);
-    await testController.click(role);
+    // await testController.click(role);
     await testController.click('#signup-form-submit');
   }
 
@@ -34,7 +34,6 @@ class PreliminarySignupPage {
     const companyRole = role.find('#company');
     await testController.click(role);
     await testController.click(companyRole);
-    await testController.click(role);
     await testController.click('#signup-form-submit');
     await navBar.isLoggedIn(testController, username);
   }

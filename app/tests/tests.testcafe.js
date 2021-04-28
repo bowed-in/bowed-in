@@ -6,10 +6,11 @@ import { viewProfilePage } from './viewProfile.page';
 import { viewProfileAdminPage } from './viewProfileAdmin.page';
 import { studentHomePage } from './studenthome.page';
 import { companyHomePage } from './companyhome.page';
-// import { preliminarySignupPage } from './preliminarySignup.page';
-// import { studentSignupPage } from './studentSignup.page';
-// import { companySignupPage } from './companySignup.page';
+import { preliminarySignupPage } from './preliminarySignup.page';
+import { studentSignupPage } from './studentSignup.page';
+import { companySignupPage } from './companySignup.page';
 import { studentEditPage } from './studentEdit.page';
+import { companyEditPage } from './companyEdit.page';
 
 /* global fixture:false, test:false */
 
@@ -48,7 +49,7 @@ test('Test that admin signin and signout work', async (testController) => {
   await navBar.logout(testController);
   await signoutPage.isDisplayed(testController);
 });
-/* Takes extremely long to load the StudentSignup page. Will edit in time for M3
+
 test('Test that student signup process works, then logout works', async (testController) => {
   await navBar.ensureLogout(testController);
   // Create a new user email address that's guaranteed to be unique.
@@ -75,8 +76,8 @@ test('Test that company signup process works, then logout works', async (testCon
   await navBar.logout(testController);
   await signoutPage.isDisplayed(testController);
 });
-Do I also need to test edit company? Edit Student and Edit Company access the same form... */
-test('Test that edit student information process works then logout', async (testController) => {
+
+test('Test that edit student user information process works then logout', async (testController) => {
   // Create a new user email address that's guaranteed to be unique.
   const firstName = 'Sigourney';
   await navBar.gotoSigninPage(testController);
@@ -92,6 +93,26 @@ test('Test that edit student information process works then logout', async (test
   await studentEditPage.isDisplayed(testController);
   await studentEditPage.verifyChange(testController, firstName);
   await navBar.isLoggedIn(testController, studentCred.username);
+  await navBar.logout(testController);
+  await signoutPage.isDisplayed(testController);
+});
+
+test.only('Test that edit company user information process works then logout', async (testController) => {
+  // Create a new user email address that's guaranteed to be unique.
+  const companyName = 'Microsoft';
+  await navBar.gotoSigninPage(testController);
+  await signinPage.signin(testController, companyCred.username, companyCred.password);
+  await navBar.isLoggedIn(testController, companyCred.username);
+  await navBar.gotoViewProfilePage(testController);
+  await viewProfilePage.isDisplayed(testController);
+  await viewProfilePage.goToEditInformation(testController);
+  await companyEditPage.isDisplayed(testController);
+  await companyEditPage.changeCompanyName(testController, companyName);
+  await viewProfilePage.isDisplayed(testController);
+  await viewProfilePage.goToEditInformation(testController);
+  await companyEditPage.isDisplayed(testController);
+  await companyEditPage.verifyChange(testController, companyName);
+  await navBar.isLoggedIn(testController, companyCred.username);
   await navBar.logout(testController);
   await signoutPage.isDisplayed(testController);
 });

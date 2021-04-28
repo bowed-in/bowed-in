@@ -104,14 +104,14 @@ class EditUser extends React.Component {
           <AutoForm schema={companyBridge} onSubmit={data => this.companySubmit(data)} model={model}>
             <Segment>
               <Form.Group widths={'equal'}>
-                <TextField name='company' showInlineError={true} />
+                <TextField id='compaName' name='company' showInlineError={true} />
               </Form.Group>
               <Form.Group widths={'equal'}>
-                <TextField name='image' showInlineError={true} />
+                <TextField id='compaImage' name='image' showInlineError={true} />
               </Form.Group>
-              <TextField name='location' showInlineError={true} />
-              <TextField name='interest' showInlineError={true} />
-              <SubmitField value='Submit'/>
+              <TextField id='compaLocation' name='location' showInlineError={true} />
+              <TextField id='compaInterest' name='interest' showInlineError={true} />
+              <SubmitField id='company-edit-submit' value='Submit'/>
             </Segment>
           </AutoForm>
         </Grid.Column>
