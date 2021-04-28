@@ -51,21 +51,21 @@ class StudentSignup extends React.Component {
       return <Redirect to={ this.state.redirectTo }/>;
     }
     return (
-      <Grid container centered>
+      <Grid container centered id='studentSignup'>
         <Grid.Column>
           <Header as="h2" textAlign="center">Please tell us more about yourself!</Header>
           <AutoForm schema={bridge} onSubmit={data => this.submit(data)}>
             <Segment>
               <Form.Group widths={'equal'}>
-                <TextField name='firstName' showInlineError={true} placeholder={'Your first name'}/>
-                <TextField name='lastName' showInlineError={true} placeholder={'Your last name'}/>
+                <TextField id='studentFirstName' name='firstName' showInlineError={true} placeholder={'Your first name'}/>
+                <TextField id='studentLastName' name='lastName' showInlineError={true} placeholder={'Your last name'}/>
               </Form.Group>
               <Form.Group widths={'equal'}>
-                <TextField name='image' showInlineError={true} placeholder={'URL goes here'}/>
+                <TextField id='studentImage' name='image' showInlineError={true} placeholder={'URL goes here'}/>
               </Form.Group>
-              <TextField name='interest' showInlineError={true} placeholder={'Interest 1, Interest 2, Interest 3, ...'}/>
-              <TextField name='skill' showInlineError={true} placeholder={'Skill 1, Skill 2, Skill 3, ...'}/>
-              <SubmitField value='Submit'/>
+              <TextField id='studentInterest' name='interest' showInlineError={true} placeholder={'Interest 1, Interest 2, Interest 3, ...'}/>
+              <TextField id='studentSkill' name='skill' showInlineError={true} placeholder={'Skill 1, Skill 2, Skill 3, ...'}/>
+              <SubmitField id='studentSubmit' value='Submit'/>
             </Segment>
           </AutoForm>
         </Grid.Column>

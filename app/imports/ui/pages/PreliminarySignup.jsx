@@ -5,8 +5,8 @@ import { Container, Form, Grid, Header, Message, Segment } from 'semantic-ui-rea
 import { Accounts } from 'meteor/accounts-base';
 
 const options = [
-  { key: 's', text: 'Student', value: 'student' },
-  { key: 'c', text: 'Company', value: 'company' },
+  { key: 's', text: 'Student', value: 'student', id: 'student' },
+  { key: 'c', text: 'Company', value: 'company', id: 'company' },
 ];
 /**
  * Signup component is similar to signin component, but we create a new user instead.
@@ -68,7 +68,7 @@ class Signup extends React.Component {
       return <Redirect to={ from }/>;
     }
     return (
-      <Container id="signup-page">
+      <Container id="preliminary-signup-page">
         <Grid textAlign="center" verticalAlign="middle" centered columns={2}>
           <Grid.Column>
             <Header as="h2" textAlign="center">
@@ -98,6 +98,7 @@ class Signup extends React.Component {
                 />
                 <Form.Select
                   fluid
+                  id = "roles"
                   label='I am signing up as a...'
                   options={options}
                   placeholder='Please select one'
