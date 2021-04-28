@@ -15,7 +15,7 @@ class NavBar extends React.Component {
       <Menu style={menuStyle} attached="top" borderless>
         {this.props.currentRole === 'student' ?
           (
-            <Menu.Item as={NavLink} activeClassName="" exact to="/userhome">
+            <Menu.Item as={NavLink} activeClassName="" exact to="/studenthome">
               <Header as='h1' style={greenText}>BowedIn</Header>
             </Menu.Item>
           ) : ''}
