@@ -46,6 +46,11 @@ class NavBar {
   async gotoViewAdminPage(testController) {
     await testController.click('#admin-profile');
   }
+
+  async gotoSearchPage(testController) {
+    await testController.click('#navbar-current-user');
+    await testController.click('#navbar-search');
+  }
 }
 
 export const navBar = new NavBar();

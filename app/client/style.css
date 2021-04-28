@@ -56,6 +56,10 @@
   color: white;
 }
 
+#searchbar {
+  width: 400px;
+}
+
 #results {
   padding-top: 50px;
   padding-bottom: 100px;

@@ -6,6 +6,7 @@ import { viewProfilePage } from './viewProfile.page';
 import { viewProfileAdminPage } from './viewProfileAdmin.page';
 import { studentHomePage } from './studenthome.page';
 import { companyHomePage } from './companyhome.page';
+import { searchPage } from './search.page';
 
 /* global fixture:false, test:false */
 
@@ -53,4 +54,11 @@ test('Test that company home page is reachable', async (testController) => {
   await navBar.gotoSigninPage(testController);
   await signinPage.signin(testController, companyCred.username, companyCred.password);
   await companyHomePage.isDisplayed(testController);
+});
+
+test('Test the search posting page', async (testController) => {
+  await navBar.gotoSigninPage(testController);
+  await signinPage.signin(testController, studentCred.username, studentCred.password);
+  await navBar.gotoSearchPage(testController);
+  await searchPage.isDisplayed(testController);
 });

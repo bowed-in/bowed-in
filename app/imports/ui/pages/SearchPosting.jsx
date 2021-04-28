@@ -57,10 +57,10 @@ class SearchPosting extends React.Component {
     const { results, value } = this.state;
 
     return (
-      <div className='search-background'>
+      <div id='searchpage' className='search-background'>
         <Grid container centered>
           <Grid.Column>
-            <Search
+            <Search id='searchbar' placeholder='Search for any position, location, or skill!'
               onResultSelect={this.onResultSelect}
               onSearchChange={this.handleSearchChange}
               resultRenderer={this.resultRenderer}
