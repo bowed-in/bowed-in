@@ -56,14 +56,14 @@ class CompanySignup extends React.Component {
           <AutoForm schema={bridge} onSubmit={data => this.submit(data)}>
             <Segment>
               <Form.Group widths={'equal'}>
-                <TextField name='company' showInlineError={true} placeholder={'Your first name'}/>
+                <TextField id='companyName' name='company' showInlineError={true} placeholder={'Your first name'}/>
               </Form.Group>
               <Form.Group widths={'equal'}>
-                <TextField name='image' showInlineError={true} placeholder={'URL goes here'}/>
+                <TextField id='companyImage' name='image' showInlineError={true} placeholder={'URL goes here'}/>
               </Form.Group>
-              <TextField name='location' showInlineError={true} placeholder={'City...'}/>
-              <TextField name='interest' showInlineError={true} placeholder={'Interest 1, Interest 2, Interest 3, ...'}/>
-              <SubmitField value='Submit'/>
+              <TextField id='companyLocation' name='location' showInlineError={true} placeholder={'City...'}/>
+              <TextField id='companyInterest' name='interest' showInlineError={true} placeholder={'Interest 1, Interest 2, Interest 3, ...'}/>
+              <SubmitField id='companySubmit' value='Submit'/>
             </Segment>
           </AutoForm>
         </Grid.Column>

@@ -11,6 +11,11 @@ class viewprofilepage {
     // This is first test to be run. Wait 10 seconds to avoid timeouts with GitHub Actions.
     await testController.wait(10000).expect(this.pageSelector.exists).ok();
   }
+
+  async goToEditInformation(testController) {
+    await this.isDisplayed(testController);
+    await testController.click('#edit-link');
+  }
 }
 // eslint-disable-next-line new-cap
 export const viewProfilePage = new viewprofilepage();

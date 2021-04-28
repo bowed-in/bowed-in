@@ -69,21 +69,21 @@ class EditUser extends React.Component {
     // Build the model object that Uniforms will use to fill in the form.
     const model = _.extend({}, this.props.doc);
     return (
-      <Grid container centered>
+      <Grid container centered id='editStudent'>
         <Grid.Column>
           <Header as="h2" textAlign="center">Edit Your Information</Header>
           <AutoForm schema={studentBridge} onSubmit={data => this.studentSubmit(data)} model={model}>
             <Segment>
               <Form.Group widths={'equal'}>
-                <TextField name='firstName' showInlineError={true} />
-                <TextField name='lastName' showInlineError={true} />
+                <TextField id='studentFName' name='firstName' showInlineError={true} />
+                <TextField id='studentLName' name='lastName' showInlineError={true} />
               </Form.Group>
               <Form.Group widths={'equal'}>
                 <TextField name='image' showInlineError={true} />
               </Form.Group>
               <TextField name='interest' showInlineError={true} />
               <TextField name='skill' showInlineError={true} />
-              <SubmitField value='Submit'/>
+              <SubmitField id='student-edit-submit' value='Submit'/>
             </Segment>
           </AutoForm>
         </Grid.Column>
@@ -98,7 +98,7 @@ class EditUser extends React.Component {
     // Build the model object that Uniforms will use to fill in the form.
     const model = _.extend({}, this.props.doc);
     return (
-      <Grid container centered>
+      <Grid container centered id='editCompany'>
         <Grid.Column>
           <Header as="h2" textAlign="center">Edit Your Information</Header>
           <AutoForm schema={companyBridge} onSubmit={data => this.companySubmit(data)} model={model}>

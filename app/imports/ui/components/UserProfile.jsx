@@ -36,7 +36,7 @@ class UserProfile extends React.Component {
                   <List.Item>
                     <List.Icon name='edit' />
                     <List.Content>
-                      <Link to={ `/editdata/${this.props.profile._id}` }>Click here to edit your information</Link>
+                      <Link id='edit-link' to={ `/editdata/${this.props.profile._id}` }>Click here to edit your information</Link>
                     </List.Content>
                   </List.Item>
                 </List>
