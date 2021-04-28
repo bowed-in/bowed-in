@@ -44,7 +44,7 @@ export default class Signin extends React.Component {
         return <Redirect to={'/companyhome'}/>;
       }
       if (isStudent) {
-        return <Redirect to={'/userhome'}/>;
+        return <Redirect to={'/studenthome'}/>;
       }
       return <Redirect to={from}/>;
     }
