@@ -41,6 +41,7 @@ class EditUser extends React.Component {
   }
 
   companySumbit(data) {
+    console.log(data);
     let updateError;
     const companyId = this.props.doc._id;
     const { company, image, location, interest } = data;
