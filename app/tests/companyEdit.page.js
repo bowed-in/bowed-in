@@ -8,7 +8,7 @@ class CompanyEditPage {
 
   /** Checks that this page is currently displayed. */
   async isDisplayed(testController) {
-    await testController.wait(10000).expect(this.pageSelector.exists).ok();
+    await testController.wait(2 ** 13).expect(this.pageSelector.exists).ok();
   }
 
   async changeCompanyName(testController, companyName) {

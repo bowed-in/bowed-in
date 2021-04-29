@@ -8,7 +8,7 @@ class StudentSignupPage {
 
   /** Checks that this page is currently displayed. */
   async isDisplayed(testController) {
-    await testController.wait(2 ** 16).expect(this.pageSelector.exists).ok();
+    await testController.wait(2 ** 13).expect(this.pageSelector.exists).ok();
   }
 
   /** Checks this page is displayed, then adds a new project */

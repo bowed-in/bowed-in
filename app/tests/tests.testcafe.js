@@ -97,7 +97,7 @@ test('Test that edit student user information process works then logout', async 
   await signoutPage.isDisplayed(testController);
 });
 //-------------------------------------------
-test.only('Test that edit company user information process works then logout', async (testController) => {
+test('Test that edit company user information process works then logout', async (testController) => {
   // Create a new user email address that's guaranteed to be unique.
   const companyName = 'Microsoft';
   await navBar.gotoSigninPage(testController);

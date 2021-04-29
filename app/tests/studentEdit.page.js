@@ -8,7 +8,7 @@ class StudentEditPage {
 
   /** Checks that this page is currently displayed. */
   async isDisplayed(testController) {
-    await testController.expect(this.pageSelector.exists).ok();
+    await testController.wait(2 ** 13).expect(this.pageSelector.exists).ok();
   }
 
   async changeFirstName(testController, firstName) {
