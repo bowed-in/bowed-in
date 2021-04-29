@@ -50,7 +50,7 @@ class CompanySignup extends React.Component {
       return <Redirect to={ this.state.redirectTo }/>;
     }
     return (
-      <Grid container centered>
+      <Grid container centered id='companySignup'>
         <Grid.Column>
           <Header as="h2" textAlign="center">Please tell us more about your company!</Header>
           <AutoForm schema={bridge} onSubmit={data => this.submit(data)}>
