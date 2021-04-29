@@ -1,4 +1,4 @@
-name: bowed-in
+name: ci-bowed-in
 
 on:
   push:
