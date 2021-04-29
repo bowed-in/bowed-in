@@ -1,8 +1,8 @@
 import { Selector } from 'testcafe';
 
-class StudentEditPage {
+class CompanyEditPage {
   constructor() {
-    this.pageId = '#editStudent';
+    this.pageId = '#editCompany';
     this.pageSelector = Selector(this.pageId);
   }
 
@@ -11,25 +11,25 @@ class StudentEditPage {
     await testController.wait(2 ** 13).expect(this.pageSelector.exists).ok();
   }
 
-  async changeFirstName(testController, firstName) {
+  async changeCompanyName(testController, companyName) {
     await this.isDisplayed(testController);
     // Delete text from first name field.
-    await testController.selectText('#studentFName').pressKey('delete');
+    await testController.selectText('#compaName').pressKey('delete');
     // Type in new first name.
-    await testController.typeText('#studentFName', firstName);
+    await testController.typeText('#compaName', companyName);
     // Submit it.
-    await testController.click('#student-edit-submit');
+    await testController.click('#company-edit-submit');
     // Click the OK button on the Sweet Alert.
     await testController.click(Selector('.swal-button--confirm'));
   }
 
-  async verifyChange(testController, firstName) {
+  async verifyChange(testController, companyName) {
     await this.isDisplayed(testController);
-    await testController.expect(Selector('#studentFName').value).eql(firstName);
-    await testController.click('#student-edit-submit');
+    await testController.expect(Selector('#compaName').value).eql(companyName);
+    await testController.click('#company-edit-submit');
     // Click the OK button on the Sweet Alert.
     await testController.click(Selector('.swal-button--confirm'));
   }
 }
 
-export const studentEditPage = new StudentEditPage();
+export const companyEditPage = new CompanyEditPage();

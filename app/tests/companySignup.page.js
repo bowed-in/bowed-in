@@ -8,7 +8,7 @@ class CompanySignupPage {
 
   /** Checks that this page is currently displayed. */
   async isDisplayed(testController) {
-    await testController.expect(this.pageSelector.exists).ok();
+    await testController.wait(10000).expect(this.pageSelector.exists).ok();
   }
 
   /** Checks this page is displayed, then adds a new project */
