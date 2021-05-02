@@ -2,11 +2,48 @@ import React from 'react';
 import { Card, Image, Button } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
+import swal from 'sweetalert';
+import { Meteor } from 'meteor/meteor';
+// import SimpleSchema from 'simpl-schema';
+// import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
+import { Positions } from '../../api/position/Position';
+
+// const formSchema = new SimpleSchema({
+//   name: String,
+//   hire: Number,
+//   skills: String,
+//   jobType: {
+//     type: String,
+//     allowedValues: ['internship', 'permanent', 'internship and/or permanent'],
+//     defaultValue: 'internship and/or permanent',
+//   },
+//   description: String,
+//   lowerSalary: Number,
+//   higherSalary: Number,
+//   place: String,
+//   image: String,
+// });
+//
+// const bridge = new SimpleSchema2Bridge(formSchema);
 
 /** Renders a single row in the List Stuff table. See pages/SearchPosting.jsx. */
 class Position extends React.Component {
+  add(data) {
+    const { image, name, place, description, jobType, lowerSalary, higherSalary, hire, skills } = data;
+    const owner = Meteor.user().username;
+    Positions.collection.insert({ image, name, place, description, jobType, lowerSalary, higherSalary, hire, skills, owner },
+      (error) => {
+        if (error) {
+          swal('Error', error.message, 'error');
+        } else {
+          swal('Success', 'Item added successfully', 'success');
+        }
+      });
+  }
+
   render() {
     // const font = { color: 'black', fontSize: 20 };
+    // let fRef = null;
     return (
       <Card>
         <Card.Content align='left'>
@@ -25,8 +62,8 @@ class Position extends React.Component {
         </Card.Content>
         <Card.Content extra>
           <div className='ui two buttons'>
-            <Button basic color='orange'>
-              Add
+            <Button onClick={this.add} basic color='orange'>
+                  Add
             </Button>
             <Button basic color='teal'>
               Message
