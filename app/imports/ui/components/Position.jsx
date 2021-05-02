@@ -6,7 +6,8 @@ import swal from 'sweetalert';
 import { Meteor } from 'meteor/meteor';
 // import SimpleSchema from 'simpl-schema';
 // import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
-import { Positions } from '../../api/position/Position';
+// import { Positions } from '../../api/position/Position';
+import { users } from '../../api/user/users';
 
 // const formSchema = new SimpleSchema({
 //   name: String,
@@ -28,17 +29,16 @@ import { Positions } from '../../api/position/Position';
 
 /** Renders a single row in the List Stuff table. See pages/SearchPosting.jsx. */
 class Position extends React.Component {
-  add(data) {
-    const { image, name, place, description, jobType, lowerSalary, higherSalary, hire, skills } = data;
+  add = () => {
+    const { image, name, place, description, jobType, lowerSalary, higherSalary, hire, skills } = this.props.position;
     const owner = Meteor.user().username;
-    Positions.collection.insert({ image, name, place, description, jobType, lowerSalary, higherSalary, hire, skills, owner },
-      (error) => {
-        if (error) {
-          swal('Error', error.message, 'error');
-        } else {
-          swal('Success', 'Item added successfully', 'success');
-        }
-      });
+    users.collection.insert(image, name, place, description, jobType, lowerSalary, higherSalary, hire, skills, owner, (error) => {
+      if (error) {
+        swal('Error', error.message, 'error');
+      } else {
+        swal('Success', 'Item added successfully', 'success');
+      }
+    });
   }
 
   render() {
