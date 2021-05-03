@@ -3,6 +3,7 @@ import { Roles } from 'meteor/alanning:roles';
 import { Stuffs } from '../../api/stuff/Stuff';
 import { Positions } from '../../api/position/Position';
 import { users } from '../../api/user/users';
+import { Messages } from '../../api/message/Messages';
 
 // User-level publication.
 // If logged in, then publish documents owned by this user. Otherwise publish nothing.
@@ -29,6 +30,15 @@ Meteor.publish(Stuffs.userPublicationName, function () {
 Meteor.publish(Positions.userPublicationName, function () {
   if (this.userId) {
     return Positions.collection.find();
+  }
+  return this.ready();
+});
+
+// EDIT THIS PUBLICATION
+// If logged in, then publish documents owned by this user. Otherwise publish nothing.
+Meteor.publish(Messages.userPublicationName, function () {
+  if (this.userId) {
+    return Messages.collection.find();
   }
   return this.ready();
 });

@@ -2,6 +2,7 @@ import React from 'react';
 import { Card, Image, Button } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
+import AddMessage from './AddMessage';
 
 /** Renders a single row in the List Stuff table. See pages/SearchPosting.jsx. */
 class Position extends React.Component {
@@ -32,6 +33,9 @@ class Position extends React.Component {
               Message
             </Button>
           </div>
+        </Card.Content>
+        <Card.Content extra>
+          <AddMessage owner={this.props.position.owner} contactId={this.props.position._id}/>
         </Card.Content>
       </Card>
     );
