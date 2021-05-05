@@ -7,6 +7,7 @@ import { users } from '../../api/user/users';
 import Position from '../components/Position';
 import { Positions } from '../../api/position/Position';
 import UserCard from '../components/UserCard';
+import { Favorites } from '../../api/favorite/favorites';
 
 /** Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
 class UserHomePage extends React.Component {
@@ -15,6 +16,8 @@ class UserHomePage extends React.Component {
   render() {
     return (this.props.ready) ? this.renderPage() : <Loader active>Getting data</Loader>;
   }
+
+  isInUserFavorites = (positionID) => this.props.favorites.some((favorite) => positionID === favorite.positionID);
 
   // Render the page once subscriptions have been received.
   renderPage() {
@@ -29,7 +32,8 @@ class UserHomePage extends React.Component {
             <Grid.Column textAlign='left' style={rightGrid}>
               <Label id='yours' size='massive' circular color='teal' key='white'>Current Interested Positions</Label>
               {this.props.positions ?
-                this.props.positions.map((position, index) => <Position key={index} position={position}/>) :
+              // eslint-disable-next-line max-len
+                this.props.positions.filter((position) => this.isInUserFavorites(position._id)).map((position, index) => <Position key={index} position={position} favorites={this.props.favorites.filter(favorite => (favorite.positionID === position._id))}/>) :
                 <Message>Currently None</Message>
               }
             </Grid.Column>
@@ -44,6 +48,7 @@ class UserHomePage extends React.Component {
 UserHomePage.propTypes = {
   currentUser: PropTypes.array.isRequired, // Returns only the current user
   positions: PropTypes.array.isRequired,
+  favorites: PropTypes.array.isRequired,
   ready: PropTypes.bool.isRequired,
 };
 
@@ -52,15 +57,18 @@ export default withTracker(() => {
   // Get access to Stuff documents.
   const subscription = Meteor.subscribe(users.userPublicationName);
   const subscription2 = Meteor.subscribe(Positions.userPublicationName);
+  const subscription3 = Meteor.subscribe(Favorites.userPublicationName);
   // Determine if the subscription is ready
-  const ready = subscription2.ready() || subscription.ready();
+  const ready = subscription2.ready() && subscription.ready() && subscription3.ready();
   // Get the Stuff documents
   const positions = Positions.collection.find({}).fetch();
+  const favorites = Favorites.collection.find({}).fetch();
   const currentUsername = Meteor.user() ? Meteor.user().username : '';
   const currentUser = users.collection.find({ email: currentUsername }).fetch();
   return {
     currentUser,
     positions,
+    favorites,
     ready,
   };
 })(UserHomePage);
