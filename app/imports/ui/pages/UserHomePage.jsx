@@ -26,7 +26,7 @@ class UserHomePage extends React.Component {
       <div className='home-background'>
         <Grid id='studenthome' stackable columns='3'>
           <Grid.Row centered>
-            <Grid.Column verticalAlign='middle' style={rightGrid}>
+            <Grid.Column verticalAlign='middle' className={'rightGrid'}>
               {this.props.currentUser.map((currentUser, index) => <UserCard key={index} currentUser={currentUser} />)}
             </Grid.Column>
             <Grid.Column textAlign='left' style={rightGrid}>

@@ -43,7 +43,6 @@ class Position extends React.Component {
     //     { $pull: { likedPositions: this.props.position._id } });
     // }
   };
-
   // add() {
   //   const [favorite, setFavorite] = useState([]);
   //   const addToFavorite = (position) => {
@@ -73,6 +72,12 @@ class Position extends React.Component {
   //     },
   //   });
 
+  cancel = () => {
+    if (this.props.favorites.find(this.includesPosition)) {
+      Favorites.collection.remove(this.props.favorites.find(this.includesPosition)._id);
+    }
+  };
+
   render() {
     // const font = { color: 'black', fontSize: 20 };
     // let fRef = null;
@@ -97,7 +102,7 @@ class Position extends React.Component {
           <div className='ui two buttons'>
             {this.props.favorites.some(this.includesPosition) ? (
             // need to fix onClick to this.delete
-              <Button onClick={this.add} basic color='red'>
+              <Button onClick={this.cancel} basic color='red'>
                   Delete
               </Button>
             ) : <Button onClick={this.add} basic color='orange'>
