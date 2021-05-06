@@ -41,13 +41,13 @@ class Position extends React.Component {
         <Card.Content extra>
           <div className='ui two buttons'>
             {this.props.favorites.some(this.includesPosition) ? (
-              <Button onClick={this.cancel} basic color='red'>
+              <Button onClick={this.cancel} color='red'>
                   Delete
               </Button>
-            ) : <Button onClick={this.add} basic color='green'>
+            ) : <Button onClick={this.add} color='green'>
               Add
             </Button>}
-            <Button basic color='teal'>
+            <Button color='teal'>
                 Message
             </Button>
           </div>
