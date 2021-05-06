@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Image, Button } from 'semantic-ui-react';
+import { Card, Image, Button, Icon } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import { Meteor } from 'meteor/meteor';
@@ -42,12 +42,15 @@ class Position extends React.Component {
           <div className='ui two buttons'>
             {this.props.favorites.some(this.includesPosition) ? (
               <Button onClick={this.cancel} color='red'>
-                  Delete
+                <Icon name='delete' />
+                Delete
               </Button>
             ) : <Button onClick={this.add} color='green'>
+              <Icon name='add' />
               Add
             </Button>}
             <Button color='teal'>
+              <Icon name='mail' />
                 Message
             </Button>
           </div>
