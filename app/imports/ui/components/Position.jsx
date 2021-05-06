@@ -2,31 +2,8 @@ import React from 'react';
 import { Card, Image, Button } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
-// import swal from 'sweetalert';
 import { Meteor } from 'meteor/meteor';
-// import SimpleSchema from 'simpl-schema';
-// import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
-// import { Positions } from '../../api/position/Position';
-// import { users } from '../../api/user/users';
 import { Favorites } from '../../api/favorite/favorites';
-
-// const Schema = new SimpleSchema({
-//   name: String,
-//   hire: Number,
-//   skills: String,
-//   jobType: {
-//     type: String,
-//     allowedValues: ['internship', 'permanent', 'internship and/or permanent'],
-//     defaultValue: 'internship and/or permanent',
-//   },
-//   description: String,
-//   lowerSalary: Number,
-//   higherSalary: Number,
-//   place: String,
-//   image: String,
-// });
-//
-// const bridge = new SimpleSchema2Bridge(Schema);
 
 class Position extends React.Component {
   includesPosition = (favorite) => favorite.positionID === this.props.position._id;
@@ -35,47 +12,9 @@ class Position extends React.Component {
     if (!this.props.favorites.some(this.includesPosition)) {
       Favorites.collection.insert({ positionID: this.props.position._id, userID: Meteor.userId() });
     }
-    // if (!users.findOne({}).likedPositions.includes(this.props.position._id)) {
-    //   users.update({ _id: users.findOne({})._id },
-    //     { $push: { likedPositions: this.props.position._id } });
-    // } else {
-    //   users.update({ _id: users.findOne({})._id },
-    //     { $pull: { likedPositions: this.props.position._id } });
-    // }
   };
 
-  // add() {
-  //   const [favorite, setFavorite] = useState([]);
-  //   const addToFavorite = (position) => {
-  //     console.log('we add to favorites');
-  //     setFavorite([...favorite, position]);
-  //   };
-  // }
-  // const { image, name, place, description, jobType, lowerSalary, higherSalary, hire, skills } = this.props.position;
-  //   const owner = Meteor.user().username;
-  //   users.collection.insert(image, name, place, description, jobType, lowerSalary, higherSalary, hire, skills, owner, (error) => {
-  //     if (error) {
-  //       swal('Error', error.message, 'error');
-  //     } else {
-  //       swal('Success', 'Item added successfully', 'success');
-  //     }
-  //   });
-  // }
-  //   const addProjectMethod = 'Projects.add';
-  //
-  //   Meteor.methods({
-  //     'Projects.add' ({ image, name, place, description, jobType, lowerSalary, higherSalary, hire, skills, owner }) {
-  //       Positions.collection.insert({ image, name, place, description, jobType, lowerSalary, higherSalary, hire, skills, owner });
-  //       users.collection.remove({ position: name });
-  //       if (participants) {
-  //         participants.map((participant) => Favorites.collection.insert({ position: name, user: participant }));
-  //       }
-  //     },
-  //   });
-
   render() {
-    // const font = { color: 'black', fontSize: 20 };
-    // let fRef = null;
     return (
       <Card>
         <Card.Content align='left'>
