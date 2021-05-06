@@ -13,12 +13,11 @@ class NavBar extends React.Component {
     const greenText = { color: '#024731' };
     return (
       <Menu style={menuStyle} attached="top" borderless>
-        {this.props.currentRole === 'student' ?
-          (
-            <Menu.Item as={NavLink} activeClassName="" exact to="/userhome">
-              <Header as='h1' style={greenText}>BowedIn</Header>
-            </Menu.Item>
-          ) : ''}
+        {this.props.currentRole === 'student' ? (
+          <Menu.Item as={NavLink} activeClassName="" exact to="/userhome">
+            <Header as='h1' style={greenText}>BowedIn</Header>
+          </Menu.Item>
+        ) : ''}
         {this.props.currentRole === 'company' ?
           (
             <Menu.Item as={NavLink} activeClassName="" exact to="/companyhome">
@@ -35,9 +34,11 @@ class NavBar extends React.Component {
         {this.props.currentUser ? (
           [
             <Menu.Item style={greenText} as={NavLink} activeClassName="active" exact to="/add" key='add'>Add Stuff</Menu.Item>,
-            <Menu.Item id="navbar-search" style={greenText} as={NavLink} activeClassName="active" exact to="/search" key='search'>Search Postings</Menu.Item>,
             <Menu.Item style={greenText} as={NavLink} activeClassName="active" exact to="/profile" key='profile'>Company Profile</Menu.Item>,
           ]
+        ) : ''}
+        {Roles.userIsInRole(Meteor.userId(), 'student') ? (
+          <Menu.Item id="navbar-search" style={greenText} as={NavLink} activeClassName="active" exact to="/search" key='search'>Search Postings</Menu.Item>
         ) : ''}
         {Roles.userIsInRole(Meteor.userId(), 'admin') ? (
           <Menu.Item id="admin-profile" as={NavLink} activeClassName="active" exact to="/profileadmin" key='admin'>Profile Admin</Menu.Item>
