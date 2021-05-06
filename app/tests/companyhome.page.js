@@ -13,9 +13,11 @@ class CompanyHomePage {
   }
 
   async messageDisplayed(testController, message) {
-    const expected = Selector('.ui.feed .content .summary').innerText;
+    await this.isDisplayed(testController);
+    const expected = Selector('.ui.feed .content .summary').nth(-1).innerText;
     await testController.expect(expected).eql(message);
   }
+  // consider: _.filter(array[ message summaries ], message) Selector gets the array of summaries.
 }
 
 export const companyHomePage = new CompanyHomePage();

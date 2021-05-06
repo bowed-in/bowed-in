@@ -8,8 +8,8 @@ class SearchPage {
     this.messageSelector = Selector('.extra.content .ui.input input').nth(0);
     // this.messageSelector = Selector('.extra.content .ui.input input').nth(0);
     // this.messageSelector = Selector(this.messageField).nth(0);
-    this.messageSubmit = '.extra.content .ui.button';
-    this.messageSubSelector = Selector(this.messageSubmit);
+    this.messageSubmit = '.extra.content .ui.form .ui.button';
+    this.messageSubSelector = Selector(this.messageSubmit).nth(0);
     // this.messageSubSelector = Selector(this.messageSubmit).nth(0);
   }
 
@@ -22,7 +22,7 @@ class SearchPage {
   async selectMessageField(testController, message) {
     await testController.typeText(this.messageSelector, message);
     await testController.click(this.messageSubSelector);
-    // await testController.click(Selector('swal-button swal-button--confirm'));
+    await testController.click(Selector('.swal-button--confirm'));
   }
 }
 

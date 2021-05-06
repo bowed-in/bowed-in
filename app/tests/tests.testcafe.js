@@ -152,8 +152,19 @@ test('Test the search posting page', async (testController) => {
   await searchPage.isDisplayed(testController);
 });
 
+/* *************************************** GitHub.io *********************************************** */
+test('Test that the user gets redirected to the BowedIn github.io page when they click About BowedIn in the footer', async (testController) => {
+  await landingPage.aboutBowedInTest(testController);
+});
+
+/* *************************************** About BowedIn Team *********************************************** */
+test('Test that the user gets redirected to the BowedIn About Us page when they click About the BowedIn Team in the footer', async (testController) => {
+  await landingPage.aboutBowedInTeam(testController);
+});
+
+/* *************************************** M e s s a g e ************************************************ */
 test.only('Test messaging service', async (testController) => {
-  const message = 'hello';
+  const message = `${new Date().getTime()} is a message`;
   await navBar.gotoSigninPage(testController);
   // await signinPage.signin(testController, companyCred2.username, companyCred2.password);
   await signinPage.signin(testController, studentCred.username, studentCred.password);
