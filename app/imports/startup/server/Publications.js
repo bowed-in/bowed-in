@@ -3,6 +3,7 @@ import { Roles } from 'meteor/alanning:roles';
 import { Stuffs } from '../../api/stuff/Stuff';
 import { Positions } from '../../api/position/Position';
 import { users } from '../../api/user/users';
+import { Favorites } from '../../api/favorite/favorites';
 
 // User-level publication.
 // If logged in, then publish documents owned by this user. Otherwise publish nothing.
@@ -20,6 +21,13 @@ Meteor.publish(Stuffs.userPublicationName, function () {
   if (this.userId) {
     const username = Meteor.users.findOne(this.userId).username;
     return Stuffs.collection.find({ owner: username });
+  }
+  return this.ready();
+});
+
+Meteor.publish(Favorites.userPublicationName, function () {
+  if (this.userId) {
+    return Favorites.collection.find({ userID: this.userId });
   }
   return this.ready();
 });

@@ -5,6 +5,7 @@ import { withTracker } from 'meteor/react-meteor-data';
 import { Meteor } from 'meteor/meteor';
 import PropTypes from 'prop-types';
 import { Positions } from '../../api/position/Position';
+import { Favorites } from '../../api/favorite/favorites';
 import PositionResult from '../components/PositionResult';
 import Position from '../components/Position';
 
@@ -71,11 +72,11 @@ class SearchPosting extends React.Component {
             <Container align='center' id='results'>
               <Label id='yours' size='huge' circular color='teal' >Your Results</Label>
               <Card.Group centered>
-                {results.map((positions) => <Position key={positions._id} position={positions}/>)}
+                {results.map((positions) => <Position key={positions._id} position={positions} favorites={this.props.favorites.filter(favorite => (favorite.positionID === positions._id))}/>)}
               </Card.Group>
               <Label id='postings' size='huge' circular color='teal' >Postings</Label>
               <Card.Group centered>
-                {this.props.positions.map((positions) => <Position key={positions._id} position={positions}/>)}
+                {this.props.positions.map((positions) => <Position key={positions._id} position={positions} favorites={this.props.favorites.filter(favorite => (favorite.positionID === positions._id))}/>)}
               </Card.Group>
             </Container>
           </Grid.Column>
@@ -87,18 +88,22 @@ class SearchPosting extends React.Component {
 
 SearchPosting.propTypes = {
   positions: PropTypes.array.isRequired,
+  favorites: PropTypes.array.isRequired,
   ready: PropTypes.bool.isRequired,
 };
 
 export default withTracker(() => {
   // Get access to Position documents.
   const subscription = Meteor.subscribe(Positions.userPublicationName);
+  const subscription2 = Meteor.subscribe(Favorites.userPublicationName);
   // Determine if the subscription is ready
-  const ready = subscription.ready();
+  const ready = subscription.ready() && subscription2.ready();
   // Get the Position documents
   const positions = Positions.collection.find({}).fetch();
+  const favorites = Favorites.collection.find({}).fetch();
   return {
     positions,
+    favorites,
     ready,
   };
 })(SearchPosting);
