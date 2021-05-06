@@ -9,7 +9,7 @@ class MessagesCollection {
   constructor() {
     // The name of this collection.
     this.name = 'MessagesCollection';
-    // Define the Mongo collection.
+    // Define the Mongo collection THIS IS THE ACTUAL COLLECTION don't forget .collection later.
     this.collection = new Mongo.Collection(this.name);
     // Define the structure of each document in the collection.
     this.schema = new SimpleSchema({
