@@ -21,8 +21,6 @@ class Position extends React.Component {
   };
 
   render() {
-    // const font = { color: 'black', fontSize: 20 };
-    // let fRef = null;
     return (
       <Card>
         <Card.Content align='left'>
