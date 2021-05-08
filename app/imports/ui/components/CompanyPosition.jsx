@@ -30,11 +30,9 @@ class CompanyPosition extends React.Component {
           <Card.Description> <strong>Skill(s): </strong> {this.props.position.skills}</Card.Description>
         </Card.Content>
         <Card.Content extra>
-          <div className='ui one buttons'>
-            <Button onClick={this.cancel} basic color='red'>
+          <Button onClick={this.cancel} fluid color='red'>
               Delete
-            </Button>
-          </div>
+          </Button>
         </Card.Content>
       </Card>
     );
