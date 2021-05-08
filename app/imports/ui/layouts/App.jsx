@@ -9,7 +9,7 @@ import Footer from '../components/Footer';
 import Landing from '../pages/Landing';
 import SearchPosting from '../pages/SearchPosting';
 import ProfilePage from '../pages/ProfilePage';
-import AddStuff from '../pages/AddStuff';
+import AddPosition from '../pages/AddPosition';
 import EditStuff from '../pages/EditStuff';
 import NotFound from '../pages/NotFound';
 import AboutUs from '../pages/AboutUs';
@@ -47,7 +47,7 @@ class App extends React.Component {
             <CompanyProtectedRoute path="/liststudents" component={ListStudents}/>
             <StudentProtectedRoute path="/studenthome" component={UserHomePage}/>
             <ProtectedRoute path="/profile" component={ProfilePage}/>
-            <ProtectedRoute path="/add" component={AddStuff}/>
+            <ProtectedRoute path="/add" component={AddPosition}/>
             <ProtectedRoute path="/edit/:_id" component={EditStuff}/>
             <ProtectedRoute path="/editdata/:_id" component={EditUser}/>
             <AdminProtectedRoute path="/profileadmin" component={ProfilePageAdmin}/>

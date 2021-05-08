@@ -5,7 +5,7 @@ import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { users } from '../../api/user/users';
 import { Positions } from '../../api/position/Position';
-import Position from '../components/Position';
+import CompanyPosition from '../components/CompanyPosition';
 import CompanyCard from '../components/CompanyCard';
 import PotentialHire from '../components/PotentialHire';
 import CompanyMessage from '../components/Message';
@@ -31,7 +31,7 @@ class CompanyHomePage extends React.Component {
             </Grid.Column>
             <Grid.Column id='owned-positions' textAlign='left' style={rightGrid}>
               <Label size='massive' circular color='teal' key='white'>Your Positions</Label>
-              {this.props.myPositions ? this.props.myPositions.map((position, index) => <Position key={index} position={position} />) :
+              {this.props.myPositions ? this.props.myPositions.map((position, index) => <CompanyPosition key={index} position={position} />) :
                 <Message>Currently None</Message>
               }
             </Grid.Column>
