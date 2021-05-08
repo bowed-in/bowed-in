@@ -40,7 +40,7 @@ class AddMessage extends React.Component {
     return (
       <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => this.submit(data, fRef)} >
         <Segment>
-          <TextField label="Message This Company" name='message'/>
+          <TextField label="Send a message! NOTE: BowedIn will send a copy of your message as an email to this user on your behalf" name='message'/>
           <SubmitField value='Submit'/>
           <ErrorsField/>
           <HiddenField name='owner' value={this.props.owner}/>

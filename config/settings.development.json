@@ -13,9 +13,9 @@
   ],
 
   "defaultUser": [
-    {"email": "bowedinconnect@gmail.com", "firstName": "Admin", "lastName":  "Foo", "role": "company", "location": "Hawaii", "interest": "software engineering", "skill": "All skills required", "description": "I'm a representative from the company connecting website: Indeed. ", "image": "https://upload.wikimedia.org/wikipedia/commons/f/fa/Indeed_logo.png", "company": "Indeed", "position": "representative", "owner": "bowedinconnect@gmail.com" },
-    {"email": "john@foo.com", "firstName": "John", "lastName":  "Foo", "role": "student", "location": "Hawaii", "interest": "computer science", "skill": "Java", "description": "I'm a student from UHM", "image": "https://www.nps.gov/jame/learn/historyculture/images/jsmith-apva.jpg?maxwidth=650&autorotate=false", "company": "Indeed", "position": "representative", "owner": "john@foo.com"},
-    {"email": "e@hawaii.com", "firstName": "Edward", "lastName":  "Hawaii", "role": "student", "location": "Hawaii", "interest": "software engineering", "skill": "Java", "description": "I'm a student from UHM", "image": "https://cdn3.iconfinder.com/data/icons/emojies-1/50/11-512.png", "company": "Indeed", "position": "representative", "owner": "bowedinconnect@gmail.com" }
+    {"email": "bowedinconnect@gmail.com", "role": "company", "location": "Hawaii", "interest": "software engineering", "skill": "All skills required", "description": "I'm a representative from the company connecting website: Indeed. ", "image": "https://upload.wikimedia.org/wikipedia/commons/f/fa/Indeed_logo.png", "company": "Indeed", "owner": "bowedinconnect@gmail.com" },
+    {"email": "john@foo.com", "firstName": "John", "lastName":  "Foo", "role": "student", "interest": "computer science", "skill": "Java", "description": "I'm a student from UHM", "image": "https://www.nps.gov/jame/learn/historyculture/images/jsmith-apva.jpg?maxwidth=650&autorotate=false", "owner": "john@foo.com"},
+    {"email": "e@hawaii.com", "firstName": "Edward", "lastName":  "Hawaii", "role": "student", "interest": "software engineering", "skill": "Java", "description": "I'm a student from UHM", "image": "https://cdn3.iconfinder.com/data/icons/emojies-1/50/11-512.png", "owner": "john@foo.com" }
   ],
 
   "defaultPosition": [

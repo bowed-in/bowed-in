@@ -9,8 +9,8 @@ import { Messages } from '../../api/message/Messages';
 // If logged in, then publish documents owned by this user. Otherwise publish nothing.
 Meteor.publish(users.userPublicationName, function () {
   if (this.userId) {
-    const username = Meteor.users.findOne(this.userId).username;
-    return users.collection.find({ owner: username });
+    // const username = Meteor.users.findOne(this.userId).username;
+    return users.collection.find();
   }
   return this.ready();
 });
