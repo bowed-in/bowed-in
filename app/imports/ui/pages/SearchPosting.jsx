@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 import { Positions } from '../../api/position/Position';
 import PositionResult from '../components/PositionResult';
 import Position from '../components/Position';
-import { Messages } from '../../api/message/Messages';
+// import { Messages } from '../../api/message/Messages';
 
 const initialState = {
   results: [],
