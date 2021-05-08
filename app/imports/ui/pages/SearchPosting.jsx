@@ -8,6 +8,7 @@ import { Positions } from '../../api/position/Position';
 import { Favorites } from '../../api/favorite/favorites';
 import PositionResult from '../components/PositionResult';
 import Position from '../components/Position';
+// import { Messages } from '../../api/message/Messages';
 
 const initialState = {
   results: [],

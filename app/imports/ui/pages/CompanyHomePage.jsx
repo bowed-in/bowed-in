@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Loader, Grid, Label, Message } from 'semantic-ui-react';
+import { Loader, Grid, Label, Message, Feed } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { users } from '../../api/user/users';
@@ -8,6 +8,8 @@ import { Positions } from '../../api/position/Position';
 import Position from '../components/Position';
 import CompanyCard from '../components/CompanyCard';
 import PotentialHire from '../components/PotentialHire';
+import CompanyMessage from '../components/Message';
+import { Messages } from '../../api/message/Messages';
 
 /** Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
 class CompanyHomePage extends React.Component {
@@ -37,6 +39,12 @@ class CompanyHomePage extends React.Component {
               <Label size='massive' circular color='teal' key='white'>Potential Hiree</Label>
               {this.props.usersList.map((currentUser, index) => <PotentialHire key={index} potentialHire={currentUser} />)}
             </Grid.Column>
+            <Grid.Column id='messages' verticalAlign='middle' style={rightGrid}>
+              <Label size='massive' circular color='teal' key='white'>Messages</Label>
+              <Feed>
+                {this.props.myMessages.map((message, index) => <CompanyMessage key={index} message={message}/>)}
+              </Feed>
+            </Grid.Column>
           </Grid.Row>
         </Grid>
       </div>
@@ -50,6 +58,7 @@ CompanyHomePage.propTypes = {
   usersList: PropTypes.array.isRequired,
   myPositions: PropTypes.array.isRequired,
   ready: PropTypes.bool.isRequired,
+  myMessages: PropTypes.array.isRequired,
 };
 
 // withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
@@ -57,17 +66,20 @@ export default withTracker(() => {
   // Get access to Stuff documents.
   const subscription = Meteor.subscribe(users.userPublicationName);
   const subscription2 = Meteor.subscribe(Positions.userPublicationName);
+  const subscription3 = Meteor.subscribe(Messages.userPublicationName);
   // Determine if the subscription is ready
-  const ready = subscription2.ready() || subscription.ready();
+  const ready = subscription2.ready() || subscription.ready() || subscription3.ready();
   // Get the Stuff documents
   const usersList = users.collection.find({ role: 'student' }).fetch();
   const currentUsername = Meteor.user() ? Meteor.user().username : '';
   const currentUser = users.collection.find({ email: currentUsername }).fetch();
   const myPositions = Positions.collection.find({ owner: currentUsername }).fetch();
+  const myMessages = Messages.collection.find({ owner: currentUsername }).fetch();
   return {
     currentUser,
     myPositions,
     usersList,
     ready,
+    myMessages,
   };
 })(CompanyHomePage);

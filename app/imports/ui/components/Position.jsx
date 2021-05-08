@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import { Meteor } from 'meteor/meteor';
 import { Favorites } from '../../api/favorite/favorites';
+import AddMessage from './AddMessage';
 
 class Position extends React.Component {
   includesPosition = (favorite) => favorite.positionID === this.props.position._id;
@@ -54,6 +55,9 @@ class Position extends React.Component {
                 Message
             </Button>
           </div>
+        </Card.Content>
+        <Card.Content extra>
+          <AddMessage owner={this.props.position.owner} contactId={this.props.position._id}/>
         </Card.Content>
       </Card>
     );

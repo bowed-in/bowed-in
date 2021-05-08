@@ -11,10 +11,10 @@ class Footer extends React.Component {
         <div>
           <Button.Group widths='3'>
             <Button>
-              <a href="https://bowed-in.github.io" style={greenText}>About BowedIn</a>
+              <a id='about' href="https://bowed-in.github.io" style={greenText}>About BowedIn</a>
             </Button>
             <Button as={NavLink} activeClassName="active" exact to="/aboutus">
-              <Button.Content style={greenText}>About the BowedIn Team</Button.Content>
+              <Button.Content style={greenText} id='team'>About the BowedIn Team</Button.Content>
             </Button>
           </Button.Group>
         </div>

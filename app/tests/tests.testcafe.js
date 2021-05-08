@@ -18,6 +18,7 @@ import { companyEditPage } from './companyEdit.page';
 /** Credentials for one of the sample users defined in settings.development.json. */
 const studentCred = { username: 'john@foo.com', password: 'changeme', firstName: 'john' };
 const companyCred = { username: 'admin@foo.com', password: 'changeme', company: 'Apple' };
+const companyCred2 = { username: 'bowedinconnect@gmail.com', password: 'changeme', company: 'Apple' };
 const adminCred = { username: 'admin2@foo.com', password: 'changeme' };
 
 fixture('BowedIn localhost test with default db')
@@ -150,3 +151,31 @@ test('Test the search posting page', async (testController) => {
   await navBar.gotoSearchPage(testController);
   await searchPage.isDisplayed(testController);
 });
+
+/* *************************************** GitHub.io *********************************************** */
+test('Test that the user gets redirected to the BowedIn github.io page when they click About BowedIn in the footer', async (testController) => {
+  await landingPage.aboutBowedInTest(testController);
+});
+
+/* *************************************** About BowedIn Team *********************************************** */
+test('Test that the user gets redirected to the BowedIn About Us page when they click About the BowedIn Team in the footer', async (testController) => {
+  await landingPage.aboutBowedInTeam(testController);
+});
+
+/* *************************************** M e s s a g e ************************************************ */
+test.only('Test messaging service', async (testController) => {
+  const message = `${new Date().getTime()} is a message`;
+  await navBar.gotoSigninPage(testController);
+  // await signinPage.signin(testController, companyCred2.username, companyCred2.password);
+  await signinPage.signin(testController, studentCred.username, studentCred.password);
+  await navBar.gotoSearchPage(testController);
+  await searchPage.isDisplayed(testController);
+  await searchPage.selectMessageField(testController, message);
+  await navBar.logout(testController);
+  await navBar.gotoSigninPage(testController);
+  await signinPage.signin(testController, companyCred2.username, companyCred2.password);
+  await companyHomePage.messageDisplayed(testController, message);
+  // await signinPage.signin(testController, companyCred.username, companyCred.password);
+});
+
+// access CSS input within a tag: .extra.content .ui.input input
