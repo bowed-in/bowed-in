@@ -47,6 +47,11 @@
   background-size: cover;
 }
 
+.profile-background {
+  background: url("https://manoa.hawaii.edu/admissions/virtual/downloads/ManoaGreenBG.jpg") no-repeat center center fixed;
+  background-size: cover;
+}
+
 .search-background {
   background: url('images/garden.jpeg');
   background-size: cover;

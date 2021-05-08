@@ -1,7 +1,7 @@
 import React from 'react';
 import { Image, Header, Segment, Grid, List, Container } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
-import { withRouter } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
 class UserProfileAdmin extends React.Component {
@@ -11,30 +11,31 @@ class UserProfileAdmin extends React.Component {
         <Header as="h2" style={{
           fontSize: '40px',
           fontWeight: 'normal',
-          marginTop: '40px',
           textAlign: 'left',
           marginLeft: '20px',
-        }}>{this.props.profile.firstName} {this.props.profile.lastName}</Header>
+        }} inverted>{this.props.profile.firstName} {this.props.profile.lastName}</Header>
         <Segment style={{ padding: '10px' }} vertical>
           <Grid container stackable>
             <Grid.Row>
               <Grid.Column floated='left' width={6}>
                 <Image bordered rounded size='medium' src={this.props.profile.image} />
               </Grid.Column>
-              <Grid.Column floated='left' width={6}>
-                <List>
+              <Grid.Column floated='left' width={6} inverted>
+                <List inverted>
                   <List.Item>
-                    <List.Icon name='users' />
-                    <List.Content>{this.props.profile.company}</List.Content>
+                    <List.Icon name='marker inverted' />
+                    <List.Content style={{ color: 'white' }}>{this.props.profile.location}</List.Content>
                   </List.Item>
                   <List.Item>
-                    <List.Icon name='marker' />
-                    <List.Content>{this.props.profile.location}</List.Content>
-                  </List.Item>
-                  <List.Item>
-                    <List.Icon name='mail' />
+                    <List.Icon name='mail inverted' />
                     <List.Content>
                       <a href='mailto:{this.props.profile.email}'>{this.props.profile.email}</a>
+                    </List.Content>
+                  </List.Item>
+                  <List.Item>
+                    <List.Icon name='edit inverted' />
+                    <List.Content>
+                      <Link id='edit-link' to={ `/editdata/${this.props.profile._id}` }>Click here to edit your information</Link>
                     </List.Content>
                   </List.Item>
                 </List>
@@ -42,30 +43,30 @@ class UserProfileAdmin extends React.Component {
             </Grid.Row>
             <Grid.Row>
               <Grid.Column textAlign='left'>
-                <Header as='h2' style={{ fontSize: '24px' }}>
-                    Company and Position:
-                </Header>
-                <p style={{ fontSize: '18px' }}>
-                  {this.props.profile.company}, {this.props.profile.position}
-                </p>
-              </Grid.Column>
-            </Grid.Row>
-            <Grid.Row>
-              <Grid.Column textAlign='left'>
-                <Header as='h2' style={{ fontSize: '24px' }}>
+                <Header as='h2' style={{ fontSize: '24px' }} inverted>
                     Interests:
                 </Header>
-                <p style={{ fontSize: '18px' }}>
+                <p style={{ fontSize: '18px', color: 'white' }} >
                   {this.props.profile.interest}
                 </p>
               </Grid.Column>
             </Grid.Row>
             <Grid.Row>
               <Grid.Column textAlign='left'>
-                <Header as='h2' style={{ fontSize: '24px' }}>
+                <Header as='h2' style={{ fontSize: '24px' }} inverted>
+                    Skills:
+                </Header>
+                <p style={{ fontSize: '18px', color: 'white' }} >
+                  {this.props.profile.skill}
+                </p>
+              </Grid.Column>
+            </Grid.Row>
+            <Grid.Row>
+              <Grid.Column textAlign='left'>
+                <Header as='h2' style={{ fontSize: '24px' }} inverted>
                     Description:
                 </Header>
-                <p style={{ fontSize: '18px' }}>
+                <p style={{ fontSize: '18px', paddingBottom: '40px', color: 'white' }} >
                   {this.props.profile.description}
                 </p>
               </Grid.Column>
