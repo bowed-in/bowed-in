@@ -41,7 +41,7 @@ class CompanyMessage extends React.Component {
             {this.props.message.message}
           </Feed.Summary>
         </Feed.Content>
-        <Button onClick={this.onClick}>
+        <Button onClick={this.onClick} color='red'>
           Delete
         </Button>
       </Feed.Event>
