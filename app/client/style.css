@@ -55,6 +55,7 @@
 .search-background {
   background: url('images/garden.jpeg');
   background-size: cover;
+  padding-bottom: 60px;
 }
 
 .ui.item.item {
