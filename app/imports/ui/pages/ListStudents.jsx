@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 // import StuffItemAdmin from '../components/StuffItemAdmin';
 import { users } from '../../api/user/users';
 import StudentCard from '../components/StudentCard';
+import { Favorites } from '../../api/favorite/favorites';
 
 /** Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
 class ListStudents extends React.Component {
@@ -21,7 +22,7 @@ class ListStudents extends React.Component {
       <Container>
         <Header as="h2" textAlign="center">Take a look at student profiles!</Header>
         <Card.Group>
-          {this.props.students.map((student) => <StudentCard key={student._id} student={student} />)}
+          {this.props.students.map((student) => <StudentCard key={student._id} student={student} hireFavorites={this.props.hireFavorites.filter(favorite => (favorite.positionID === student._id))}/>)}
         </Card.Group>
       </Container>
     );
@@ -31,6 +32,7 @@ class ListStudents extends React.Component {
 // Require an array of Stuff documents in the props.
 ListStudents.propTypes = {
   students: PropTypes.array.isRequired,
+  hireFavorites: PropTypes.array.isRequired,
   ready: PropTypes.bool.isRequired,
 };
 
@@ -38,12 +40,15 @@ ListStudents.propTypes = {
 export default withTracker(() => {
   // Get access to users documents.
   const subscription = Meteor.subscribe(users.userPublicationName);
+  const subscription2 = Meteor.subscribe(Favorites.userPublicationName);
   // Determine if the subscription is ready
-  const ready = subscription.ready();
+  const ready = subscription.ready() || subscription2.ready();
   // Get the Stuff documents
   const students = users.collection.find({ role: 'student' }).fetch();
+  const hireFavorites = Favorites.collection.find({}).fetch();
   return {
     students,
     ready,
+    hireFavorites,
   };
 })(ListStudents);

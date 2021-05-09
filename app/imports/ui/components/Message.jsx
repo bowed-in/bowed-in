@@ -34,14 +34,14 @@ class CompanyMessage extends React.Component {
 
   render() {
     return (
-      <Feed.Event >
+      <Feed.Event>
         <Feed.Content>
           <Feed.Date content={this.props.message.createdAt.toLocaleString('en-US')} />
           <Feed.Summary>
             {this.props.message.message}
           </Feed.Summary>
         </Feed.Content>
-        <Button onClick={this.onClick}>
+        <Button onClick={this.onClick} color='red'>
           Delete
         </Button>
       </Feed.Event>

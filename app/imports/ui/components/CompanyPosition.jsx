@@ -2,13 +2,30 @@ import React from 'react';
 import { Card, Image, Button } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
+import swal from 'sweetalert';
 import { Positions } from '../../api/position/Position';
+import { Messages } from '../../api/message/Messages';
 
 class CompanyPosition extends React.Component {
   includesPosition = (deletee) => deletee.positionID === this.props.position._id;
 
   cancel = () => {
-    Positions.collection.remove(this.props.position._id);
+    swal('Are you sure you want to delete this position?', {
+      buttons: {
+        cancel: "Don't Delete",
+        delete: 'Delete',
+      },
+    })
+      .then((value) => {
+        switch (value) {
+        case 'delete':
+          Positions.collection.remove(this.props.position._id);
+          swal('Position Successfully Deleted');
+          break;
+        default:
+          swal('Delete Cancelled');
+        }
+      });
   };
 
   render() {
