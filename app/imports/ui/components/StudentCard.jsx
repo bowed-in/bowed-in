@@ -9,7 +9,7 @@ import { HireFavorites } from '../../hirefavorite/hirefavorites';
 /** Renders a single row in the List Stuff table. See pages/SearchPosting.jsx. */
 class StudentCard extends React.Component {
 
-  includesStudent = (favorite) => favorite.positionID === this.props.student._id;
+  includesStudent = (hireFavorite) => hireFavorite.positionID === this.props.student._id;
 
   add = () => {
     if (!this.props.hireFavorites.some(this.includesStudent)) {

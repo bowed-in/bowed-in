@@ -18,13 +18,16 @@ class ListStudents extends React.Component {
 
   // Render the page once subscriptions have been received.
   renderPage() {
+    const whiteFont = { color: 'white' };
     return (
-      <Container>
-        <Header as="h2" textAlign="center">Take a look at student profiles!</Header>
-        <Card.Group>
-          {this.props.students.map((student) => <StudentCard key={student._id} student={student} hireFavorites={this.props.hireFavorites.filter(favorite => (favorite.positionID === student._id))}/>)}
-        </Card.Group>
-      </Container>
+      <div className='home-background'>
+        <Container>
+          <Header as="h2" textAlign="center" style={whiteFont}>Take a look at student profiles!</Header>
+          <Card.Group>
+            {this.props.students.map((student) => <StudentCard key={student._id} student={student} hireFavorites={this.props.hireFavorites.filter(favorite => (favorite.positionID === student._id))}/>)}
+          </Card.Group>
+        </Container>
+      </div>
     );
   }
 }

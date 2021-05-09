@@ -7,12 +7,9 @@ import { users } from '../../api/user/users';
 import { Positions } from '../../api/position/Position';
 import CompanyPosition from '../components/CompanyPosition';
 import CompanyCard from '../components/CompanyCard';
-import PotentialHire from '../components/PotentialHire';
 import CompanyMessage from '../components/Message';
 import { Messages } from '../../api/message/Messages';
-import { Favorites } from '../../api/favorite/favorites';
 import { HireFavorites } from '../../hirefavorite/hirefavorites';
-import Position from '../components/Position';
 import StudentCard from '../components/StudentCard';
 
 /** Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
@@ -38,8 +35,13 @@ class CompanyHomePage extends React.Component {
             </Grid.Column>
             <Grid.Column id='owned-positions' textAlign='left' style={rightGrid}>
               <Label size='massive' circular color='teal' key='white'>Your Positions</Label>
-              {this.props.myPositions ? this.props.myPositions.map((position, index) => <CompanyPosition key={index} position={position} />) :
-                <Message>Currently None</Message>
+              {this.props.myPositions.length !== 0 ? this.props.myPositions.map((position, index) => <CompanyPosition key={index} position={position} />) :
+                <Message>
+                  <Message.Header>Currently not searching for Hirees</Message.Header>
+                  <p>
+                      Create a job opportunity by going through the Add Position in the Navigation Bar
+                  </p>
+                </Message>
               }
             </Grid.Column>
             <Grid.Column id='potential-hire-list' verticalAlign='middle' style={rightGrid}>
