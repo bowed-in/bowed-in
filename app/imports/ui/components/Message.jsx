@@ -34,7 +34,7 @@ class CompanyMessage extends React.Component {
 
   render() {
     return (
-      <Feed.Event >
+      <Feed.Event>
         <Feed.Content>
           <Feed.Date content={this.props.message.createdAt.toLocaleString('en-US')} />
           <Feed.Summary>

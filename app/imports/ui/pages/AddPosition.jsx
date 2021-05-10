@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Segment, Header } from 'semantic-ui-react';
+import { Grid, Segment, Header, Form } from 'semantic-ui-react';
 import { AutoForm, ErrorsField, NumField, SubmitField, TextField } from 'uniforms-semantic';
 import swal from 'sweetalert';
 import { Meteor } from 'meteor/meteor';
@@ -31,27 +31,34 @@ class AddPosition extends React.Component {
   // Render the form. Use Uniforms: https://github.com/vazco/uniforms
   render() {
     let fRef = null;
+    const whiteFont = { color: 'white' };
     return (
-      <Grid container centered>
-        <Grid.Column>
-          <Header as="h2" textAlign="center">Post a New Position Opportunity</Header>
-          <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => this.submit(data, fRef)} >
-            <Segment>
-              <TextField id='positionId' name='name'/>
-              <TextField id='positionDescription' name='description'/>
-              <TextField id='positionImage' name='image'/>
-              <TextField id='positionPlace' name='place'/>
-              <TextField id='positionSkills' name='skills'/>
-              <NumField id='positionHire' name='hire' decimal={false}/>
-              <NumField id='positionLowerSalary' name='lowerSalary' decimal={false}/>
-              <NumField id='positionHigherSalary' name='higherSalary' decimal={false}/>
-              <RadioField id='positionJobType' name='jobType'/>
-              <SubmitField id='positionSubmit' value='Submit'/>
-              <ErrorsField/>
-            </Segment>
-          </AutoForm>
-        </Grid.Column>
-      </Grid>
+      <div className='home-background'>
+        <Grid container centered>
+          <Grid.Column>
+            <Header as="h2" textAlign="center" style={whiteFont}>Post a New Position Opportunity</Header>
+            <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => this.submit(data, fRef)} >
+              <Segment>
+                <Form.Group widths={'equal'}>
+                  <TextField id='positionName' name='name' placeholder='Enter Name'/>
+                  <TextField id='positionPlace' name='place' placeholder='Enter Location'/>
+                  <TextField id='positionImage' name='image' placeholder='Enter Image Link'/>
+                </Form.Group>
+                <TextField id='positionSkills' name='skills' placeholder='Enter in the form of Skill 1, Skill 2, Skill 3'/>
+                <NumField id='positionHire' name='hire' decimal={false} placeholder='Enter Number of Position Available'/>
+                <Form.Group widths={'equal'}>
+                  <NumField id='positionLowerSalary' name='lowerSalary' decimal={false} placeholder='Enter Minimum Number'/>
+                  <NumField id='positionHigherSalary' name='higherSalary' decimal={false} placeholder='Enter Maximum Number'/>
+                </Form.Group>
+                <TextField id='positionDescription' name='description' placeholder='Enter Description'/>
+                <RadioField id='positionJobType' name='jobType'/>
+                <SubmitField id='positionSubmit' value='Submit'/>
+                <ErrorsField/>
+              </Segment>
+            </AutoForm>
+          </Grid.Column>
+        </Grid>
+      </div>
     );
   }
 }
