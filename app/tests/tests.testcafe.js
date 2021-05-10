@@ -80,7 +80,7 @@ test('Test that company signup process works, then logout works', async (testCon
   await signoutPage.isDisplayed(testController);
 });
 
-test.only('Test that edit student user information process works then logout', async (testController) => {
+test('Test that edit student user information process works then logout', async (testController) => {
   // Create a new user email address that's guaranteed to be unique.
   const firstName = 'Sigourney';
   await navBar.gotoSigninPage(testController);
