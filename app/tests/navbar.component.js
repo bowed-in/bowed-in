@@ -51,6 +51,10 @@ class NavBar {
     await testController.click('#navbar-current-user');
     await testController.click('#navbar-search');
   }
+
+  async gotoListStudentPage(testController) {
+    await testController.click('#recruit');
+  }
 }
 
 export const navBar = new NavBar();

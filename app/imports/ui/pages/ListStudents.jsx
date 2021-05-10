@@ -18,7 +18,7 @@ class ListStudents extends React.Component {
   renderPage() {
     const listStyle = { marginTop: '10px', marginBottom: '10px' };
     return (
-      <div className='search-background'>
+      <div className='search-background' id="recruitPage">
         <Container align='center'>
           <Label size='massive' circular color='teal' key='white' style={listStyle}>Take a look at these students!</Label>
           <Card.Group>

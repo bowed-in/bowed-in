@@ -48,7 +48,6 @@ class CompanyHomePage extends React.Component {
                   </Feed>
                 </Card.Content>
               </Card>
-              )
             </Grid.Column>
           </Grid.Row>
         </Grid>

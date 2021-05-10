@@ -12,6 +12,7 @@ import { studentSignupPage } from './studentSignup.page';
 import { companySignupPage } from './companySignup.page';
 import { studentEditPage } from './studentEdit.page';
 import { companyEditPage } from './companyEdit.page';
+import { recruitPage } from './listStudents.page';
 
 /* global fixture:false, test:false */
 
@@ -161,9 +162,16 @@ test('Test that the user gets redirected to the BowedIn github.io page when they
 test('Test that the user gets redirected to the BowedIn About Us page when they click About the BowedIn Team in the footer', async (testController) => {
   await landingPage.aboutBowedInTeam(testController);
 });
+/* *************************************** List Student Page ************************************************ */
+test.only('Test that the List Student page shows up', async (testController) => {
+  await navBar.gotoSigninPage(testController);
+  await signinPage.signin(testController, companyCred2.username, companyCred2.password);
+  await navBar.gotoListStudentPage(testController);
+  await recruitPage.isDisplayed(testController);
+});
 
 /* *************************************** M e s s a g e ************************************************ */
-test.only('Test messaging service', async (testController) => {
+test('Test messaging from student to company and that the delete button works', async (testController) => {
   const message = `${new Date().getTime()} is a message`;
   await navBar.gotoSigninPage(testController);
   // await signinPage.signin(testController, companyCred2.username, companyCred2.password);
@@ -175,6 +183,23 @@ test.only('Test messaging service', async (testController) => {
   await navBar.gotoSigninPage(testController);
   await signinPage.signin(testController, companyCred2.username, companyCred2.password);
   await companyHomePage.messageDisplayed(testController, message);
+  // await signinPage.signin(testController, companyCred.username, companyCred.password);
+});
+/* *************************************** M e s s a g e ************************************************ */
+test('Test messaging from company to student and that the delete button works', async (testController) => {
+  const message = `${new Date().getTime()} is a message`;
+  await navBar.gotoSigninPage(testController);
+  // await signinPage.signin(testController, companyCred2.username, companyCred2.password);
+  await signinPage.signin(testController, companyCred2.username, companyCred2.password);
+  await navBar.gotoListStudentPage(testController);
+  await recruitPage.isDisplayed(testController);
+  await recruitPage.selectMessageField(testController, message);
+  await navBar.logout(testController);
+  await navBar.gotoSigninPage(testController);
+  await signinPage.signin(testController, studentCred.username, studentCred.password);
+  await studentHomePage.messageDisplayed(testController, message);
+  await studentHomePage.dontDeleteMessage(testController);
+  await studentHomePage.deleteMessage(testController);
   // await signinPage.signin(testController, companyCred.username, companyCred.password);
 });
 

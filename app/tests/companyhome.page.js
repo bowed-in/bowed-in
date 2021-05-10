@@ -14,7 +14,7 @@ class CompanyHomePage {
 
   async messageDisplayed(testController, message) {
     await this.isDisplayed(testController);
-    const expected = Selector('.ui.feed .content .summary').nth(-1).innerText;
+    const expected = Selector('.ui.card .content .ui.feed .content .summary').nth(-1).innerText;
     await testController.expect(expected).eql(message);
   }
   // consider: _.filter(array[ message summaries ], message) Selector gets the array of summaries.

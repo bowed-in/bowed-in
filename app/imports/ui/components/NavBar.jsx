@@ -34,7 +34,7 @@ class NavBar extends React.Component {
 
         {this.props.currentRole === 'company' ?
           (
-            <Menu.Item style={greenText} as={NavLink} activeClassName="" exact to="/liststudents">
+            <Menu.Item style={greenText} as={NavLink} activeClassName="" exact to="/liststudents" id="recruit">
               Recruit Students
             </Menu.Item>
           ) : ''}
