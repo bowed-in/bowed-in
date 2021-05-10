@@ -23,7 +23,7 @@ class ListStudents extends React.Component {
         <Container align='center'>
           <Label size='massive' circular color='teal' key='white' style={listStyle}>Take a look at these students!</Label>
           <Card.Group>
-            {this.props.students.map((student) => <StudentCard key={student._id} student={student}/>)}
+            {this.props.students.map((student) => <StudentCard key={student._id} student={student} hireFavorites={this.props.hireFavorites.filter(favorite => (favorite.positionID === student._id))}/>)}
           </Card.Group>
         </Container>
       </div>
