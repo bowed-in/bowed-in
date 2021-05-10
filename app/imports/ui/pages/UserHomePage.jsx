@@ -26,12 +26,12 @@ class UserHomePage extends React.Component {
     const rightGrid = { marginRight: '200px' };
     return (
       <div className='home-background'>
-        <Grid id='studenthome' stackable columns='3'>
+        <Grid id='studenthome' stackable columns='5'>
           <Grid.Row centered>
-            <Grid.Column verticalAlign='middle'>
+            <Grid.Column verticalAlign='middle' style={rightGrid}>
               {this.props.currentUser.map((currentUser, index) => <UserCard key={index} currentUser={currentUser} />)}
             </Grid.Column>
-            <Grid.Column textAlign='left'>
+            <Grid.Column textAlign='left' style={rightGrid}>
               <Label id='yours' size='massive' circular color='teal' key='white'>Current Interested Positions</Label>
               {this.props.favorites.length !== 0 ?
               // eslint-disable-next-line max-len
