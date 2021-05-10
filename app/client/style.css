@@ -58,6 +58,12 @@
   padding-bottom: 60px;
 }
 
+.position-admin-background {
+  background: url("https://manoa.hawaii.edu/admissions/virtual/downloads/ManoaGreenBG.jpg") no-repeat center center fixed;
+  background-size: cover;
+  padding-bottom: 60px;
+}
+
 .ui.item.item {
   color: white;
 }

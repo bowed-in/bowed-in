@@ -25,6 +25,7 @@ import CompanyRouteTest from '../pages/CompanyRouteTest';
 import CompanyHomePage from '../pages/CompanyHomePage';
 import ProfilePageAdmin from '../pages/ProfilePageAdmin';
 import ListStudents from '../pages/ListStudents';
+import ListPositionAdmin from '../pages/ListPositionAdmin';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 class App extends React.Component {
@@ -51,6 +52,7 @@ class App extends React.Component {
             <ProtectedRoute path="/edit/:_id" component={EditStuff}/>
             <ProtectedRoute path="/editdata/:_id" component={EditUser}/>
             <AdminProtectedRoute path="/profileadmin" component={ProfilePageAdmin}/>
+            <AdminProtectedRoute path="/positionadmin" component={ListPositionAdmin}/>
             <StudentProtectedRoute path="/student" component={StudentRouteTest}/>
             <CompanyProtectedRoute path="/company" component={CompanyRouteTest}/>
             <Route component={NotFound}/>
