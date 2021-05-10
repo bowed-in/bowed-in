@@ -5,6 +5,7 @@ import { Positions } from '../../api/position/Position';
 import { users } from '../../api/user/users';
 import { Favorites } from '../../api/favorite/favorites';
 import { Messages } from '../../api/message/Messages';
+import { HireFavorites } from '../../hirefavorite/hirefavorites';
 
 // User-level publication.
 // If logged in, then publish documents owned by this user. Otherwise publish nothing.
@@ -29,6 +30,13 @@ Meteor.publish(Stuffs.userPublicationName, function () {
 Meteor.publish(Favorites.userPublicationName, function () {
   if (this.userId) {
     return Favorites.collection.find({ userID: this.userId });
+  }
+  return this.ready();
+});
+
+Meteor.publish(HireFavorites.userPublicationName, function () {
+  if (this.userId) {
+    return HireFavorites.collection.find({ userID: this.userId });
   }
   return this.ready();
 });

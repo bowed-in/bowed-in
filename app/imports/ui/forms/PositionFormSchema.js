@@ -8,7 +8,7 @@ const PositionFormSchema = new SimpleSchema({
   image: { label: 'Link to your profile picture', type: String, optional: true },
   lowerSalary: { label: 'What is the lower bound salary of the job?', type: Number },
   higherSalary: { label: 'What is the upper bound salary of the job?', type: Number },
-  description: { label: 'Where duties are required for the job?', type: String },
+  description: { label: 'Description', type: String },
   jobType: { label: 'Is the Job an Internship, Permanent, or Both?', type: String, allowedValues: ['internship', 'permanent', 'internship and/or permanent'], defaultValue: 'internship and/or permanent' },
 
 });

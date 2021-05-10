@@ -69,25 +69,27 @@ class EditUser extends React.Component {
     // Build the model object that Uniforms will use to fill in the form.
     const model = _.extend({}, this.props.doc);
     return (
-      <Grid container centered id='editStudent'>
-        <Grid.Column>
-          <Header as="h2" textAlign="center">Edit Your Information</Header>
-          <AutoForm schema={studentBridge} onSubmit={data => this.studentSubmit(data)} model={model}>
-            <Segment>
-              <Form.Group widths={'equal'}>
-                <TextField id='studentFName' name='firstName' showInlineError={true} />
-                <TextField id='studentLName' name='lastName' showInlineError={true} />
-              </Form.Group>
-              <Form.Group widths={'equal'}>
-                <TextField name='image' showInlineError={true} />
-              </Form.Group>
-              <TextField name='interest' showInlineError={true} />
-              <TextField name='skill' showInlineError={true} />
-              <SubmitField id='student-edit-submit' value='Submit'/>
-            </Segment>
-          </AutoForm>
-        </Grid.Column>
-      </Grid>
+      <div className='home-background'>
+        <Grid container centered id='editStudent'>
+          <Grid.Column>
+            <Header as="h2" textAlign="center">Edit Your Information</Header>
+            <AutoForm schema={studentBridge} onSubmit={data => this.studentSubmit(data)} model={model}>
+              <Segment>
+                <Form.Group widths={'equal'}>
+                  <TextField id='studentFName' name='firstName' showInlineError={true} />
+                  <TextField id='studentLName' name='lastName' showInlineError={true} />
+                </Form.Group>
+                <Form.Group widths={'equal'}>
+                  <TextField name='image' showInlineError={true} />
+                </Form.Group>
+                <TextField name='interest' showInlineError={true} />
+                <TextField name='skill' showInlineError={true} />
+                <SubmitField id='student-edit-submit' value='Submit'/>
+              </Segment>
+            </AutoForm>
+          </Grid.Column>
+        </Grid>
+      </div>
     );
   }
 
@@ -98,24 +100,26 @@ class EditUser extends React.Component {
     // Build the model object that Uniforms will use to fill in the form.
     const model = _.extend({}, this.props.doc);
     return (
-      <Grid container centered id='editCompany'>
-        <Grid.Column>
-          <Header as="h2" textAlign="center">Edit Your Information</Header>
-          <AutoForm schema={companyBridge} onSubmit={data => this.companySubmit(data)} model={model}>
-            <Segment>
-              <Form.Group widths={'equal'}>
-                <TextField id='compaName' name='company' showInlineError={true} />
-              </Form.Group>
-              <Form.Group widths={'equal'}>
-                <TextField id='compaImage' name='image' showInlineError={true} />
-              </Form.Group>
-              <TextField id='compaLocation' name='location' showInlineError={true} />
-              <TextField id='compaInterest' name='interest' showInlineError={true} />
-              <SubmitField id='company-edit-submit' value='Submit'/>
-            </Segment>
-          </AutoForm>
-        </Grid.Column>
-      </Grid>
+      <div className='home-background'>
+        <Grid container centered id='editCompany'>
+          <Grid.Column>
+            <Header as="h2" textAlign="center">Edit Your Information</Header>
+            <AutoForm schema={companyBridge} onSubmit={data => this.companySubmit(data)} model={model}>
+              <Segment>
+                <Form.Group widths={'equal'}>
+                  <TextField id='compaName' name='company' showInlineError={true} />
+                </Form.Group>
+                <Form.Group widths={'equal'}>
+                  <TextField id='compaImage' name='image' showInlineError={true} />
+                </Form.Group>
+                <TextField id='compaLocation' name='location' showInlineError={true} />
+                <TextField id='compaInterest' name='interest' showInlineError={true} />
+                <SubmitField id='company-edit-submit' value='Submit'/>
+              </Segment>
+            </AutoForm>
+          </Grid.Column>
+        </Grid>
+      </div>
     );
   }
 }
