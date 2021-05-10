@@ -4,7 +4,6 @@ import { Container, Loader } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { users } from '../../api/user/users';
-import { StudentCollection } from '../../api/student/students';
 import UserProfile from '../components/UserProfile';
 
 /** Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
@@ -20,7 +19,7 @@ class ProfilePage extends React.Component {
     return (
       <div className="profile-background">
         <Container id="view-profile-page">
-          {this.props.profile.map((profile) => <UserProfile key={profile._id} profile={profile} />)}
+          <UserProfile profile={this.props.doc}/>
         </Container>
       </div>
     );
@@ -29,9 +28,7 @@ class ProfilePage extends React.Component {
 
 // Require an array of Stuff documents in the props.
 ProfilePage.propTypes = {
-  profile: PropTypes.array.isRequired,
   ready: PropTypes.bool.isRequired,
-  studentReady: PropTypes.bool.isRequired,
   doc: PropTypes.object,
 };
 
@@ -39,28 +36,13 @@ ProfilePage.propTypes = {
 export default withTracker(() => {
   // Get access to Stuff documents.
   const subscription = Meteor.subscribe(users.userPublicationName);
-  const studentSubscription = Meteor.subscribe(StudentCollection.userPublicationName);
-  const studentReady = studentSubscription.ready();
   // Determine if the subscription is ready
   const ready = subscription.ready();
   // Get the Stuff documents
-  const profile = users.collection.find({}).fetch();
   const user = Meteor.user() ? Meteor.user().username : '';
-  const doc = StudentCollection.findOne({ owner: user });
+  const doc = users.collection.findOne({ owner: user });
   return {
-    profile,
     ready,
-    studentReady,
     doc,
   };
 })(ProfilePage);
-
-/*
-Meteor.publish(StudentCollection.userPublicationName, function () {
-  if (this.userId) {
-    const username = Meteor.users.findOne(this.userId).username;
-    return StudentCollection.find({
-      owner: username
-    });
-  }
-*/
