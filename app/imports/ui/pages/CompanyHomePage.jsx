@@ -11,6 +11,7 @@ import CompanyMessage from '../components/Message';
 import { Messages } from '../../api/message/Messages';
 import { HireFavorites } from '../../hirefavorite/hirefavorites';
 import StudentCard from '../components/StudentCard';
+import PotentialHire from '../components/PotentialHire';
 
 /** Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
 class CompanyHomePage extends React.Component {
@@ -48,7 +49,7 @@ class CompanyHomePage extends React.Component {
               <Label size='massive' circular color='teal' key='white'>Potential Hiree</Label>
               {this.props.hireFavorites.length !== 0 ?
               // eslint-disable-next-line max-len
-                this.props.usersList.filter((position) => this.isInHireFavorites(position._id)).map((position, index) => <StudentCard key={index} student={position} hireFavorites={this.props.hireFavorites.filter(favorite => (favorite.positionID === position._id))}/>) :
+                this.props.usersList.filter((position) => this.isInHireFavorites(position._id)).map((position, index) => <PotentialHire key={index} student={position} hireFavorites={this.props.hireFavorites.filter(favorite => (favorite.positionID === position._id))}/>) :
                 <Message>
                   <Message.Header>No Students Currently Interested In</Message.Header>
                   <p>

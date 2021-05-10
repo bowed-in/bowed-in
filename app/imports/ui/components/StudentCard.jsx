@@ -38,9 +38,6 @@ class StudentCard extends React.Component {
           <b>Interest(s): </b> {this.props.student.interest}
         </Card.Content>
         <Card.Content extra>
-          <AddMessage owner={this.props.student.owner} contactId={this.props.student._id}/>
-        </Card.Content>
-        <Card.Content extra>
           <div className='ui two buttons'>
             {this.props.hireFavorites.some(this.includesStudent) ? (
               <Button onClick={this.cancel} color='red'>
@@ -56,6 +53,9 @@ class StudentCard extends React.Component {
               Message
             </Button>
           </div>
+        </Card.Content>
+        <Card.Content extra>
+          <AddMessage owner={this.props.student.owner} contactId={this.props.student._id}/>
         </Card.Content>
       </Card>
     );
