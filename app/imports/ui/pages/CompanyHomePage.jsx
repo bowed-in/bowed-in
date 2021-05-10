@@ -10,7 +10,7 @@ import CompanyCard from '../components/CompanyCard';
 import CompanyMessage from '../components/Message';
 import { Messages } from '../../api/message/Messages';
 import { HireFavorites } from '../../hirefavorite/hirefavorites';
-import StudentCard from '../components/StudentCard';
+// import StudentCard from '../components/StudentCard';
 import PotentialHire from '../components/PotentialHire';
 
 /** Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */

@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import swal from 'sweetalert';
 import { Positions } from '../../api/position/Position';
-import { Messages } from '../../api/message/Messages';
 
 class CompanyPosition extends React.Component {
   includesPosition = (deletee) => deletee.positionID === this.props.position._id;
