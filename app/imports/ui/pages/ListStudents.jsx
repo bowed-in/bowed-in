@@ -6,7 +6,6 @@ import PropTypes from 'prop-types';
 // import StuffItemAdmin from '../components/StuffItemAdmin';
 import { users } from '../../api/user/users';
 import StudentCard from '../components/StudentCard';
-import { Favorites } from '../../api/favorite/favorites';
 import { HireFavorites } from '../../hirefavorite/hirefavorites';
 
 /** Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
