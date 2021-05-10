@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Label, Message, Loader, Grid, Feed } from 'semantic-ui-react';
+import { Label, Message, Loader, Grid, Feed, Card } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { users } from '../../api/user/users';
@@ -46,9 +46,13 @@ class UserHomePage extends React.Component {
             </Grid.Column>
             <Grid.Column id='messages' verticalAlign='middle' style={rightGrid}>
               <Label size='massive' circular color='teal' key='white'>Messages</Label>
-              <Feed>
-                {this.props.myMessages.map((message, index) => <CompanyMessage key={index} message={message}/>)}
-              </Feed>
+              <Card>
+                <Card.Content>
+                  <Feed>
+                    {this.props.myMessages.map((message, index) => <CompanyMessage key={index} message={message}/>)}
+                  </Feed>
+                </Card.Content>
+              </Card>
             </Grid.Column>
           </Grid.Row>
         </Grid>
