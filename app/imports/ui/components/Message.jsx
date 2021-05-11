@@ -27,9 +27,6 @@ class CompanyMessage extends React.Component {
           swal('message saved');
         }
       });
-
-    /* Messages.collection.remove(this.props.message._id);
-    swal('Success', 'Your data has been recorded.', 'success'); */
   }
 
   render() {
@@ -48,7 +45,6 @@ class CompanyMessage extends React.Component {
     );
   }
 }
-// Create button next to each message => onClick => 'Messages.collection.deleteOne(this.props.message._id)'
 
 // Require a document to be passed to this component.
 CompanyMessage.propTypes = {

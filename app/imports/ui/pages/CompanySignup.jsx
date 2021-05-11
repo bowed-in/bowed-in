@@ -6,8 +6,6 @@ import swal from 'sweetalert';
 import { Meteor } from 'meteor/meteor';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import { Redirect } from 'react-router-dom';
-// import MultiSelectField from '../forms/controllers/MultiSelectField';
-// import { StudentFormSchema as formSchema, gpa2String, gpa2Number } from '../forms/StudentFormInfo';
 import { users } from '../../api/user/users';
 import { CompanyFormSchema } from '../forms/CompanyFormSchema';
 
