@@ -42,19 +42,25 @@ class NavBar extends React.Component {
             </Menu.Item>
           ) : ''}
 
-        {this.props.currentUser ? (
-          [
-            <Menu.Item style={greenText} as={NavLink} activeClassName="active" exact to="/profile" key='profile'>Company Profile</Menu.Item>,
-          ]
-        ) : ''}
+        {/* {this.props.currentUser ? ( */}
+        {/*  [ */}
+        {/*    <Menu.Item style={greenText} as={NavLink} activeClassName="active" exact to="/profile" key='profile'>Company Profile</Menu.Item>, */}
+        {/*  ] */}
+        {/* ) : ''} */}
         {Roles.userIsInRole(Meteor.userId(), 'student') ? (
           <Menu.Item id="navbar-search" style={greenText} as={NavLink} activeClassName="active" exact to="/search" key='search'>Search Postings</Menu.Item>
         ) : ''}
         {Roles.userIsInRole(Meteor.userId(), 'company') ? (
-          <Menu.Item id="add-position" style={greenText} as={NavLink} activeClassName="active" exact to="/add" key='add'>Add Position</Menu.Item>
+          [
+            <Menu.Item id="add-position" style={greenText} as={NavLink} activeClassName="active" exact to="/add" key='add'>Add Position</Menu.Item>,
+            <Menu.Item style={greenText} as={NavLink} activeClassName="active" exact to="/profile" key='profile'>Company Profile</Menu.Item>,
+          ]
         ) : ''}
         {Roles.userIsInRole(Meteor.userId(), 'admin') ? (
-          <Menu.Item id="admin-profile" style={greenText} as={NavLink} activeClassName="active" exact to="/profileadmin" key='admin'>Profile Admin</Menu.Item>
+          [
+            <Menu.Item id="admin-profile" style={greenText} as={NavLink} activeClassName="active" exact to="/profileadmin" key='admin'>Profile Admin</Menu.Item>,
+            <Menu.Item id="admin-position" style={greenText} as={NavLink} activeClassName="active" exact to="/positionadmin" key='admin'>List Positions Admin</Menu.Item>,
+          ]
         ) : ''}
         <Menu.Item position="right">
           {this.props.currentUser === '' ? (

@@ -3,7 +3,6 @@ import { Meteor } from 'meteor/meteor';
 import { Card, Loader, Container, Label } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
-// import StuffItemAdmin from '../components/StuffItemAdmin';
 import { users } from '../../api/user/users';
 import StudentCard from '../components/StudentCard';
 import { HireFavorites } from '../../api/hirefavorite/hirefavorites';

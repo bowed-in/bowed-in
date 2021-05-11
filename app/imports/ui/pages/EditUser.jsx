@@ -29,7 +29,6 @@ class EditUser extends React.Component {
   studentSubmit(data) {
     let updateError;
     const studentId = this.props.doc._id;
-    console.log(studentId);
     const { firstName, lastName, image, skill, interest } = data;
     users.collection.update(studentId, { $set: { firstName, lastName, image, skill, interest } }, (error) => { updateError = error; });
     if (updateError) {

@@ -6,8 +6,6 @@ import swal from 'sweetalert';
 import { Meteor } from 'meteor/meteor';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import { Redirect } from 'react-router-dom';
-// import MultiSelectField from '../forms/controllers/MultiSelectField';
-// import { StudentFormSchema as formSchema, gpa2String, gpa2Number } from '../forms/StudentFormInfo';
 import { users } from '../../api/user/users';
 import { StudentFormSchema } from '../forms/StudentFormSchema';
 
@@ -46,8 +44,6 @@ class StudentSignup extends React.Component {
   render() {
     // if correct authentication, redirect to from: page instead of signup screen
     if (this.state.redirectTo) {
-      // {this.state.redirectTo} is initially set to undefined in the constructor. This stores the redirect path in the Accounts.createUser function.
-      // return <Redirect to={this.state.redirectTo}/>;
       return <Redirect to={ this.state.redirectTo }/>;
     }
     return (
@@ -75,10 +71,3 @@ class StudentSignup extends React.Component {
 }
 
 export default (StudentSignup);
-
-/*
-VM178 react_devtools_backend.js:2557 Warning: Can't perform a React state update on an unmounted component.
-This is a no-op, but it indicates a memory leak in your application. To fix, cancel all subscriptions and asynchronous tasks in the componentWillUnmount method.
-    in Signup (created by Context.Consumer)
-    in Route (created by App)
- */

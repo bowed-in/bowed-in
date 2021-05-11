@@ -1,16 +1,9 @@
 {
   "defaultAccounts": [
-    { "email": "bowedinconnect@gmail.com", "password": "changeme", "role": "company" },
     { "email": "john@foo.com", "password": "changeme", "role": "student" },
     { "email": "admin@foo.com", "password": "changeme", "role": "admin" },
     { "email": "e@hawaii.com", "password": "changeme", "role": "student" }
-  ],
-
-  "defaultData": [
-    { "name": "Basket", "quantity": 3, "owner": "john@foo.com", "condition": "excellent" },
-    { "name": "Bicycle", "quantity": 2, "owner": "john@foo.com", "condition": "poor" },
-    { "name": "Banana", "quantity": 2, "owner": "bowedinconnect@gmail.com", "condition": "good" },
-    { "name": "Boogie Board", "quantity": 2, "owner": "bowedinconnect@gmail.com", "condition": "excellent" }
+    { "email": "bowedinconnect@gmail.com", "password": "changeme", "role": "company" },
   ],
 
   "defaultUser": [

@@ -39,32 +39,13 @@ class Signup extends React.Component {
         }
         this.setState({ error: '', redirectTo: '/companysignup' });
       }
-      /* NOTES:
-       If account type === student...redeirectTo: studentPath (StudentSignup)
-       elseif === company redirectTo: companyPath (CompanySignup
-       Go through the two role types 'student' and 'company' conditional check.
-       In each conditional check set the redirectTo to the appropriate signup form page
-
-       Notice that in each of these conditional statements we do not need to send the radioField input
-       because the conditional makes sure that the correct redirectTo is selected.
-       this.setState({ error: '', redirectTo: `StudentSignup/${this.state.email}` });
-       */
     });
   }
 
-  /* Display the signup form. Redirect to add page after successful registration and login. */
-  /*
-   NOTES: const {from} redirects the user to the page that they were
-   trying to access the app from. i.e the View Profiles page from the landing page
-   The user will be prompted to log in then will be redirected to the View Profiles page
-   or to the add page
-   */
   render() {
     const { from } = this.props.location.state || { from: { pathname: this.state.redirectTo } };
     // if correct authentication, redirect to from: page instead of signup screen
     if (this.state.redirectTo) {
-      // {this.state.redirectTo} is initially set to undefined in the constructor. This stores the redirect path in the Accounts.createUser function.
-      // return <Redirect to={this.state.redirectTo}/>;
       return <Redirect to={ from }/>;
     }
     return (
