@@ -5,7 +5,7 @@ import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { users } from '../../api/user/users';
 import StudentCard from '../components/StudentCard';
-import { HireFavorites } from '../../hirefavorite/hirefavorites';
+import { HireFavorites } from '../../api/hirefavorite/hirefavorites';
 
 /** Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
 class ListStudents extends React.Component {

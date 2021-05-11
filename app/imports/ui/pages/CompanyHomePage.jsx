@@ -9,7 +9,7 @@ import CompanyPosition from '../components/CompanyPosition';
 import CompanyCard from '../components/CompanyCard';
 import CompanyMessage from '../components/Message';
 import { Messages } from '../../api/message/Messages';
-import { HireFavorites } from '../../hirefavorite/hirefavorites';
+import { HireFavorites } from '../../api/hirefavorite/hirefavorites';
 // import StudentCard from '../components/StudentCard';
 import PotentialHire from '../components/PotentialHire';
 
