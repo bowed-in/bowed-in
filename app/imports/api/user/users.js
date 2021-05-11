@@ -22,7 +22,7 @@ class UsersCollection {
       owner: { type: String, optional: true },
       role: {
         type: String,
-        allowedValues: ['student', 'company'],
+        allowedValues: ['student', 'company', 'admin'],
       },
       location: { type: String, optional: true },
       interest: { type: String, optional: true },

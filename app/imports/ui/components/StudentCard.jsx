@@ -4,7 +4,7 @@ import { Button, Card, Icon, Image } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import AddMessage from './AddMessage';
-import { HireFavorites } from '../../hirefavorite/hirefavorites';
+import { HireFavorites } from '../../api/hirefavorite/hirefavorites';
 
 /** Renders a single row in the List Stuff table. See pages/SearchPosting.jsx. */
 class StudentCard extends React.Component {
