@@ -10,7 +10,6 @@ import Landing from '../pages/Landing';
 import SearchPosting from '../pages/SearchPosting';
 import ProfilePage from '../pages/ProfilePage';
 import AddPosition from '../pages/AddPosition';
-import EditStuff from '../pages/EditStuff';
 import NotFound from '../pages/NotFound';
 import AboutUs from '../pages/AboutUs';
 import Signin from '../pages/Signin';
@@ -20,12 +19,10 @@ import CompanySignup from '../pages/CompanySignup';
 import EditUser from '../pages/EditUser';
 import Signout from '../pages/Signout';
 import UserHomePage from '../pages/UserHomePage';
-import StudentRouteTest from '../pages/StudentRouteTest';
-import CompanyRouteTest from '../pages/CompanyRouteTest';
 import CompanyHomePage from '../pages/CompanyHomePage';
 import ProfilePageAdmin from '../pages/ProfilePageAdmin';
 import ListStudents from '../pages/ListStudents';
-import ListPositionAdmin from '../pages/ListPositionAdmin';
+import AdminHomePage from '../pages/AdminHomePage';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 class App extends React.Component {
@@ -47,14 +44,11 @@ class App extends React.Component {
             <StudentProtectedRoute path="/search" component={SearchPosting}/>
             <CompanyProtectedRoute path="/liststudents" component={ListStudents}/>
             <StudentProtectedRoute path="/studenthome" component={UserHomePage}/>
+            <AdminProtectedRoute path="/adminhome" component={AdminHomePage}/>
             <ProtectedRoute path="/profile" component={ProfilePage}/>
             <ProtectedRoute path="/add" component={AddPosition}/>
-            <ProtectedRoute path="/edit/:_id" component={EditStuff}/>
             <ProtectedRoute path="/editdata/:_id" component={EditUser}/>
             <AdminProtectedRoute path="/profileadmin" component={ProfilePageAdmin}/>
-            <AdminProtectedRoute path="/positionadmin" component={ListPositionAdmin}/>
-            <StudentProtectedRoute path="/student" component={StudentRouteTest}/>
-            <CompanyProtectedRoute path="/company" component={CompanyRouteTest}/>
             <Route component={NotFound}/>
           </Switch>
           <Footer/>
