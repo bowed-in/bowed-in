@@ -18,7 +18,7 @@ class AdminHomePage extends React.Component {
   renderPage() {
     const whiteFont = { color: 'white' };
     return (
-      <div className='home-background'>
+      <div className='home-background' id='adminhome'>
         <div style={{ paddingTop: '30px', paddingBottom: '70px' }}>
           <Image src={this.props.currentUser[0].image}
             size={'small'}
@@ -31,12 +31,12 @@ class AdminHomePage extends React.Component {
           <Container style={{ verticalAlign: 'middle' }}>
             <Grid columns={ 2 }
               container>
-              <Grid.Column as={NavLink} exact to={'/profileadmin'} textAlign={'center'}>
+              <Grid.Column id='admin-list-users' as={NavLink} exact to={'/profileadmin'} textAlign={'center'}>
                 <Icon name={'users'} inverted size={'huge'}/>
                 <Header as={'h3'} style={whiteFont} content={'List Users'}/>
                 <Header as={'h4'} style={whiteFont} content={'Lists all Users in the System'}/>
               </Grid.Column>
-              <Grid.Column as={NavLink} exact to={'/positionadmin'} textAlign={'center'}>
+              <Grid.Column id='admin-list-positions' as={NavLink} exact to={'/positionadmin'} textAlign={'center'}>
                 <Icon name={'clipboard'} inverted size={'huge'}/>
                 <Header as={'h3'} style={whiteFont} content={'List Positions'}/>
                 <Header as={'h4'} style={whiteFont} content={'List All of the Positions in the System'}/>

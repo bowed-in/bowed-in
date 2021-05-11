@@ -20,7 +20,7 @@ class ListPositionAdmin extends React.Component {
   renderPage() {
     return (
       <div className="position-admin-background">
-        <Container>
+        <Container id='admin-list-positions'>
           <Header as="h2" textAlign="center" inverted>List Positions (Admin)</Header>
           {this.props.position.map((position) => <PositionAdmin key={position._id} position={position} />)}
         </Container>

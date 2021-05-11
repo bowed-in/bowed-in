@@ -13,12 +13,13 @@ import { companySignupPage } from './companySignup.page';
 import { studentEditPage } from './studentEdit.page';
 import { companyEditPage } from './companyEdit.page';
 import { recruitPage } from './listStudents.page';
+import { adminHomePage } from './adminhome.page';
+import { listPositionAdmin } from './listPositionAdmin.page';
 
 /* global fixture:false, test:false */
 
 /** Credentials for one of the sample users defined in settings.development.json. */
 const studentCred = { username: 'john@foo.com', password: 'changeme', firstName: 'john' };
-// const companyCred = { username: 'admin@foo.com', password: 'changeme', company: 'Apple' };
 const companyCred = { username: 'bowedinconnect@gmail.com', password: 'changeme', company: 'Apple' };
 const adminCred = { username: 'admin@foo.com', password: 'changeme' };
 
@@ -127,7 +128,7 @@ test('Test the View Profile Page', async (testController) => {
   await viewProfilePage.isDisplayed(testController);
 });
 
-test('Test the View Admin Profile Page', async (testController) => {
+test('Test the View Admin Profile Page from Nav Bar', async (testController) => {
   await navBar.gotoSigninPage(testController);
   await signinPage.signin(testController, adminCred.username, adminCred.password);
   await navBar.gotoViewAdminPage(testController);
@@ -144,6 +145,26 @@ test('Test that company home page is reachable', async (testController) => {
   await navBar.gotoSigninPage(testController);
   await signinPage.signin(testController, companyCred.username, companyCred.password);
   await companyHomePage.isDisplayed(testController);
+});
+
+test('Test that admin home page is reachable', async (testController) => {
+  await navBar.gotoSigninPage(testController);
+  await signinPage.signin(testController, adminCred.username, adminCred.password);
+  await adminHomePage.isDisplayed(testController);
+});
+
+test('Test the List Users from Admin Home Page', async (testController) => {
+  await navBar.gotoSigninPage(testController);
+  await signinPage.signin(testController, adminCred.username, adminCred.password);
+  await adminHomePage.goToAdminListUsers(testController);
+  await viewProfileAdminPage.isDisplayed(testController);
+});
+
+test('Test the List Positions from Admin Home Page', async (testController) => {
+  await navBar.gotoSigninPage(testController);
+  await signinPage.signin(testController, adminCred.username, adminCred.password);
+  await adminHomePage.goToAdminListPositions(testController);
+  await listPositionAdmin.isDisplayed(testController);
 });
 
 test('Test the search posting page', async (testController) => {
