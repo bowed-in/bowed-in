@@ -11,7 +11,7 @@ import { Favorites } from '../../api/favorite/favorites';
 import { Messages } from '../../api/message/Messages';
 import CompanyMessage from '../components/Message';
 
-/** Renders a table containing all of the Stuff documents. Use <StuffItemn> to render each row. */
+/** Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
 class UserHomePage extends React.Component {
 
   // If the subscription(s) have been received, render the page, otherwise show a loading icon.
