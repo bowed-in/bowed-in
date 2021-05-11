@@ -37,6 +37,7 @@ export default class Signin extends React.Component {
   render() {
     const isCompany = Roles.userIsInRole(Meteor.userId(), 'company');
     const isStudent = Roles.userIsInRole(Meteor.userId(), 'student');
+    const isAdmin = Roles.userIsInRole(Meteor.userId(), 'admin');
     const { from } = this.props.location.state || { from: { pathname: '/' } };
     // if correct authentication, redirect to page instead of login screen
     if (this.state.redirectToReferer) {
@@ -45,6 +46,9 @@ export default class Signin extends React.Component {
       }
       if (isStudent) {
         return <Redirect to={'/studenthome'}/>;
+      }
+      if (isAdmin) {
+        return <Redirect to={'/adminhome'}/>;
       }
       return <Redirect to={from}/>;
     }

@@ -2,8 +2,8 @@
   "defaultAccounts": [
     { "email": "john@foo.com", "password": "changeme", "role": "student" },
     { "email": "admin@foo.com", "password": "changeme", "role": "admin" },
-    { "email": "e@hawaii.com", "password": "changeme", "role": "student" }
-    { "email": "bowedinconnect@gmail.com", "password": "changeme", "role": "company" },
+    { "email": "e@hawaii.com", "password": "changeme", "role": "student" },
+    { "email": "bowedinconnect@gmail.com", "password": "changeme", "role": "company" }
   ],
 
   "defaultUser": [
