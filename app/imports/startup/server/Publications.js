@@ -62,3 +62,10 @@ Meteor.publish(users.adminPublicationName, function () {
   }
   return this.ready();
 });
+
+Meteor.publish(Positions.adminPublicationName, function () {
+  if (this.userId && Roles.userIsInRole(this.userId, 'admin')) {
+    return Positions.collection.find();
+  }
+  return this.ready();
+});

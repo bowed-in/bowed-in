@@ -23,6 +23,7 @@ import CompanyHomePage from '../pages/CompanyHomePage';
 import ProfilePageAdmin from '../pages/ProfilePageAdmin';
 import ListStudents from '../pages/ListStudents';
 import AdminHomePage from '../pages/AdminHomePage';
+import ListPositionAdmin from '../pages/ListPositionAdmin';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 class App extends React.Component {
@@ -49,6 +50,7 @@ class App extends React.Component {
             <ProtectedRoute path="/add" component={AddPosition}/>
             <ProtectedRoute path="/editdata/:_id" component={EditUser}/>
             <AdminProtectedRoute path="/profileadmin" component={ProfilePageAdmin}/>
+            <AdminProtectedRoute path="/positionadmin" component={ListPositionAdmin}/>
             <Route component={NotFound}/>
           </Switch>
           <Footer/>
