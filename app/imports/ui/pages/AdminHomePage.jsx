@@ -7,7 +7,7 @@ import { NavLink } from 'react-router-dom';
 import { users } from '../../api/user/users';
 
 /** Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
-class UserHomePage extends React.Component {
+class AdminHomePage extends React.Component {
 
   // If the subscription(s) have been received, render the page, otherwise show a loading icon.
   render() {
@@ -50,7 +50,7 @@ class UserHomePage extends React.Component {
 }
 
 // Require an array of Stuff documents in the props.
-UserHomePage.propTypes = {
+AdminHomePage.propTypes = {
   currentUser: PropTypes.array.isRequired, // Returns only the current user
   ready: PropTypes.bool.isRequired,
 };
@@ -68,4 +68,4 @@ export default withTracker(() => {
     currentUser,
     ready,
   };
-})(UserHomePage);
+})(AdminHomePage);
