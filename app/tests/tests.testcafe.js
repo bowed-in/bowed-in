@@ -167,7 +167,7 @@ test('Test the List Positions from Admin Home Page', async (testController) => {
   await listPositionAdmin.isDisplayed(testController);
 });
 
-test.only('Test the search posting page', async (testController) => {
+test('Test the search posting page', async (testController) => {
   await navBar.gotoSigninPage(testController);
   await signinPage.signin(testController, studentCred.username, studentCred.password);
   await navBar.gotoSearchPage(testController);
