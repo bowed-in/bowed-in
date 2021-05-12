@@ -5,6 +5,7 @@ const CompanyFormSchema = new SimpleSchema({
   image: { label: 'Link to your profile picture', type: String, optional: true },
   location: { label: 'Where is your company located?', type: String },
   interest: { label: 'What are some technical abilities of applicants are you interested in?', type: String },
+  description: { label: 'What else would you like potential employees to know about your company?', type: String },
 });
 
 export { CompanyFormSchema };
