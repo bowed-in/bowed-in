@@ -46,7 +46,7 @@ class Position extends React.Component {
                 <Icon name='delete' />
                 Delete
               </Button>
-            ) : <Button onClick={this.add} color='green'>
+            ) : <Button id='addbutton' onClick={this.add} color='green'>
               <Icon name='add' />
               Add
             </Button>}

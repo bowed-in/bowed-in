@@ -10,13 +10,24 @@ class SearchPage {
     // this.messageSelector = Selector(this.messageField).nth(0);
     this.messageSubmit = '.extra.content .ui.form .ui.button';
     this.messageSubSelector = Selector(this.messageSubmit).nth(0);
+    this.buttonId = '#addbutton';
+    this.addButtonSelector = Selector(this.buttonId).nth(0);
     // this.messageSubSelector = Selector(this.messageSubmit).nth(0);
   }
 
   /** Asserts that this page is currently displayed. */
   async isDisplayed(testController) {
     // This is first test to be run. Wait 10 seconds to avoid timeouts with GitHub Actions.
-    await testController.wait(10000).expect(this.pageSelector.exists).ok();
+    await testController.wait(2 ** 16).expect(this.pageSelector.exists).ok();
+  }
+
+  async selectSearchBar(testController) {
+    const text = 'a';
+    await testController.typeText('#searchbar', text);
+  }
+
+  async selectAddButton(testController) {
+    await testController.click(this.addButtonSelector);
   }
 
   async selectMessageField(testController, message) {
