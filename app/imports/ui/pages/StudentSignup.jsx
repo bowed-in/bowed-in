@@ -1,7 +1,7 @@
 import React from 'react';
 import { Grid, Segment, Header, Form } from 'semantic-ui-react';
 // Must use destructuring import to avoid https://github.com/vazco/uniforms/issues/433
-import { AutoForm, TextField, SubmitField } from 'uniforms-semantic';
+import { AutoForm, TextField, LongTextField, SubmitField } from 'uniforms-semantic';
 import swal from 'sweetalert';
 import { Meteor } from 'meteor/meteor';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
@@ -29,8 +29,8 @@ class StudentSignup extends React.Component {
     Meteor.call('role.update', {
       role: 'student',
     });
-    const { firstName, lastName, image, skill, interest } = data;
-    users.collection.insert({ firstName, lastName, image, skill, interest, email, owner, role },
+    const { firstName, lastName, image, skill, interest, description } = data;
+    users.collection.insert({ firstName, lastName, image, skill, description, interest, email, owner, role },
       (error) => { updateError = error; });
     if (updateError) {
       swal('Error', updateError.message, 'error');
@@ -61,6 +61,7 @@ class StudentSignup extends React.Component {
               </Form.Group>
               <TextField id='studentInterest' name='interest' showInlineError={true} placeholder={'Interest 1, Interest 2, Interest 3, ...'}/>
               <TextField id='studentSkill' name='skill' showInlineError={true} placeholder={'Skill 1, Skill 2, Skill 3, ...'}/>
+              <LongTextField id='studentDescription' name='description' showInlineError={true} placeholder={'A bit about you'}/>
               <SubmitField id='studentSubmit' value='Submit'/>
             </Segment>
           </AutoForm>

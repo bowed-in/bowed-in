@@ -18,12 +18,14 @@ class StudentSignupPage {
     const image = 'https://www.radgrad.org/img/radgrad_logo.png';
     const skill = 'C, JavaScript, React';
     const interest = 'Web Development, Game Development';
+    const description = 'I am a cricket and a student';
     // Define the new project
     await testController.typeText('#studentFirstName', firstName);
     await testController.typeText('#studentLastName', lastName);
     await testController.typeText('#studentImage', image);
     await testController.typeText('#studentSkill', skill);
     await testController.typeText('#studentInterest', interest);
+    await testController.typeText('#studentDescription', description);
 
     await testController.click('#studentSubmit');
     await testController.click(Selector('.swal-button--confirm'));
