@@ -44,16 +44,12 @@ class Position extends React.Component {
             {this.props.favorites.some(this.includesPosition) ? (
               <Button onClick={this.cancel} color='red'>
                 <Icon name='delete' />
-                Delete
+                Delete From Favorites
               </Button>
             ) : <Button id='addbutton' onClick={this.add} color='green'>
               <Icon name='add' />
-              Add
+              Add To Favorites
             </Button>}
-            <Button color='teal'>
-              <Icon name='mail' />
-                Message
-            </Button>
           </div>
         </Card.Content>
         <Card.Content extra>
