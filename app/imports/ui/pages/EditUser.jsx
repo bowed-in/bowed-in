@@ -71,7 +71,7 @@ class EditUser extends React.Component {
       <div className='home-background'>
         <Grid container centered id='editStudent'>
           <Grid.Column>
-            <Header as="h2" textAlign="center">Edit Your Information</Header>
+            <Header as="h2" inverted textAlign="center">Edit Your Information</Header>
             <AutoForm schema={studentBridge} onSubmit={data => this.studentSubmit(data)} model={model}>
               <Segment>
                 <Form.Group widths={'equal'}>
