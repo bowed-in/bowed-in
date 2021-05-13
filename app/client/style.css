@@ -90,3 +90,7 @@
 .ui.grid.column.rightGrid {
   marginRight: '200px'
 }
+
+.ui.fluid.card.message.card {
+  width: 300%;
+}

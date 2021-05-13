@@ -46,7 +46,7 @@ class UserHomePage extends React.Component {
             </Grid.Column>
             <Grid.Column id='messages' verticalAlign='middle' style={rightGrid}>
               <Label size='massive' circular color='teal' key='white'>Messages</Label>
-              <Card>
+              <Card fluid className='message card'>
                 <Card.Content>
                   <Feed>
                     {this.props.myMessages.map((message, index) => <CompanyMessage key={index} message={message}/>)}
