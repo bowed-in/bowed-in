@@ -1,5 +1,5 @@
 import React from 'react';
-import { Feed, Button, Icon } from 'semantic-ui-react';
+import { Feed, Button } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import swal from 'sweetalert';
@@ -32,9 +32,6 @@ class CompanyMessage extends React.Component {
   render() {
     return (
       <Feed.Event>
-        <Feed.Label>
-          <Icon name='mail outline'/>
-        </Feed.Label>
         <Feed.Content>
           <Feed.Date content={this.props.message.createdAt.toLocaleString('en-US')} />
           <Feed.Summary>
