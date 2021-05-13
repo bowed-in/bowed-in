@@ -23,10 +23,6 @@ class UserProfileAdmin extends React.Component {
               <Grid.Column floated='left' width={6} inverted>
                 <List inverted>
                   <List.Item>
-                    <List.Icon name='marker inverted' />
-                    <List.Content style={{ color: 'white' }}>{this.props.profile.location}</List.Content>
-                  </List.Item>
-                  <List.Item>
                     <List.Icon name='mail inverted' />
                     <List.Content>
                       <a href='mailto:{this.props.profile.email}'>{this.props.profile.email}</a>
