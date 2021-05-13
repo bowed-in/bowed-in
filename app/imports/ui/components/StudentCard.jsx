@@ -38,21 +38,15 @@ class StudentCard extends React.Component {
           <b>Interest(s): </b> {this.props.student.interest}
         </Card.Content>
         <Card.Content extra>
-          <div className='ui two buttons'>
-            {this.props.hireFavorites.some(this.includesStudent) ? (
-              <Button onClick={this.cancel} color='red'>
-                <Icon name='delete' />
+          {this.props.hireFavorites.some(this.includesStudent) ? (
+            <Button fluid onClick={this.cancel} color='red'>
+              <Icon name='delete' />
                   Delete
-              </Button>
-            ) : <Button onClick={this.add} color='green'>
-              <Icon name='add' />
-              Add
-            </Button>}
-            <Button color='teal'>
-              <Icon name='mail' />
-              Message
             </Button>
-          </div>
+          ) : <Button fluid onClick={this.add} color='green'>
+            <Icon name='add' />
+              Add
+          </Button>}
         </Card.Content>
         <Card.Content extra>
           <AddMessage owner={this.props.student.owner}/>
