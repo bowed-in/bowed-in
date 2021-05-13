@@ -13,7 +13,7 @@ const bridge = new SimpleSchema2Bridge(Messages.schema);
 class AddMessage extends React.Component {
   // On submit, insert the data.
   submit(data, formRef) {
-    const { message, owner, contactId, createdAt } = data;
+    const { message, owner, sentFrom, createdAt } = data;
     if (Meteor.settings.defaultCredentials) {
       Meteor.call(
         'sendEmail',
@@ -23,12 +23,12 @@ class AddMessage extends React.Component {
         message,
       );
     }
-    Messages.collection.insert({ message, owner, contactId, createdAt },
+    Messages.collection.insert({ message, owner, sentFrom, createdAt },
       (error) => {
         if (error) {
           swal('Error', error.message, 'error');
         } else {
-          swal('Success', 'Note added successfully', 'success');
+          swal('Success', 'Message sent successfully', 'success');
           formRef.reset();
         }
       });
@@ -44,7 +44,7 @@ class AddMessage extends React.Component {
           <SubmitField value='Submit'/>
           <ErrorsField/>
           <HiddenField name='owner' value={this.props.owner}/>
-          <HiddenField name='contactId' value={this.props.contactId}/>
+          <HiddenField name='sentFrom' value={Meteor.user().username}/>
           <HiddenField name='createdAt' value={new Date()}/>
         </Segment>
       </AutoForm>
@@ -54,7 +54,6 @@ class AddMessage extends React.Component {
 
 AddMessage.propTypes = {
   owner: PropTypes.string.isRequired,
-  contactId: PropTypes.string.isRequired,
 };
 
 export default AddMessage;

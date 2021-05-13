@@ -14,7 +14,7 @@ class MessagesCollection {
     // Define the structure of each document in the collection.
     this.schema = new SimpleSchema({
       message: String,
-      contactId: String,
+      sentFrom: String,
       owner: String,
       createdAt: Date,
     }, { tracker: Tracker });

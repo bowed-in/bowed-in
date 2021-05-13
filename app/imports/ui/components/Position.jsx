@@ -53,7 +53,7 @@ class Position extends React.Component {
           </div>
         </Card.Content>
         <Card.Content extra>
-          <AddMessage owner={this.props.position.owner} contactId={this.props.position._id}/>
+          <AddMessage owner={this.props.position.owner}/>
         </Card.Content>
       </Card>
     );

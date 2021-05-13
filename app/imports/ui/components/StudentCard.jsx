@@ -55,7 +55,7 @@ class StudentCard extends React.Component {
           </div>
         </Card.Content>
         <Card.Content extra>
-          <AddMessage owner={this.props.student.owner} contactId={this.props.student._id}/>
+          <AddMessage owner={this.props.student.owner}/>
         </Card.Content>
       </Card>
     );
