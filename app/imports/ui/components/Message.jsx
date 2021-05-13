@@ -35,8 +35,11 @@ class CompanyMessage extends React.Component {
         <Feed.Content>
           <Feed.Date content={this.props.message.createdAt.toLocaleString('en-US')} />
           <Feed.Summary>
-            {this.props.message.message}
+            Message from: {this.props.message.sentFrom}
           </Feed.Summary>
+          <Feed.Extra text>
+            {this.props.message.message}
+          </Feed.Extra>
         </Feed.Content>
         <Button onClick={this.onClick} color='red'>
           Delete
