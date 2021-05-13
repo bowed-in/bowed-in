@@ -4,7 +4,7 @@ class StudentHomePage {
   constructor() {
     this.pageId = '#studenthome';
     this.pageSelector = Selector(this.pageId);
-    this.delete = '.ui.card .ui.feed .event .ui.red.button';
+    this.delete = '.ui.fluid.card.message.card .content .ui.feed .event .ui.red.button';
     this.deleteButton = Selector(this.delete).nth(-1);
   }
 
@@ -16,7 +16,7 @@ class StudentHomePage {
 
   async messageDisplayed(testController, message) {
     await this.isDisplayed(testController);
-    const expected = Selector('.ui.card .content .ui.feed .content .summary').nth(-1).innerText;
+    const expected = Selector('.ui.fluid.card.message.card .content .ui.feed .event .content .text.extra').nth(-1).innerText;
     await testController.expect(expected).eql(message);
   }
 
